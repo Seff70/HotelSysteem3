@@ -3,11 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Page</title>
+    <style>
+        body {
+            background-color: slategrey;
+            text-align: center;
+            font-family: "Calibri";
+        }
+
+        .container {
+            width: 400px;
+            background-color: rgba(255,255,255, 0.7);
+            padding: 20px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 
 <body>
-    <h1 id="title"> dit is 1</h1>
-    <p id="content"> dit is een content</p>
+    <div class="container">
+        <h1 id="title"> dit is 1</h1>
+        <p id="content"> dit is een content</p>
+        <form>
+            <br/>
+            <input type="text" placeholder="Write stuff here"/>
+            <button>Click me!</button>
+            <br/>
+            <br/>
+            <input type="text" placeholder="Write stuff here"/>
+            <button>Click me!</button>
+            <br/>
+            <br/>
+            <input type="text" placeholder="Write stuff here"/>
+            <button>Click me!</button>
+            <br/>
+            <br/>
+            <input type="text" placeholder="Write stuff here"/>
+            <button id="clickme">Click me more!</button>
+            <br/>
+            <br/>
+        </form>
+
+    </div>
 
     <script src="lib/jquery-3.2.1.min.js"></script>
     <script src="js/page.js"></script>
