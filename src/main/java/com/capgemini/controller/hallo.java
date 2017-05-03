@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class hallo {
+public class Hallo {
 
     @RequestMapping("/hallo")
     public String Homes(){return
