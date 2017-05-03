@@ -1,27 +1,27 @@
 package com.capgemini.Model;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-@SpringBootApplication
 public class Page {
-    String title;
-    String content;
+    private String title;
 
-    public String getTitle(String title) {
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(String s) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public String getContent(String content) {
+    public String getContent() {
         return content;
     }
 
-    public void setContent(String s) {
+    public void setContent(String content) {
         this.content = content;
     }
+
+    private String content;
+
+
 
 
 }
