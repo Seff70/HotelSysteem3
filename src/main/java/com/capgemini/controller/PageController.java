@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PageController {
 
-    @RequestMapping(value = "/api/page", method= RequestMethod.GET)
+    @RequestMapping(value = "/api/pages", method= RequestMethod.GET)
     public Page get() {
         Page page = new Page();
         page.setTitle("titel");
