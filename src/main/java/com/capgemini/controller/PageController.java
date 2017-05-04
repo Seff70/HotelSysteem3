@@ -27,8 +27,10 @@ public class PageController {
         ArrayList<Kamer> kamerList = new ArrayList<>(  );
         for (int i = 0; i<10; i++) {
             Kamer k = new Kamer();
+            k.setKamernummer( i );
             if (i< 5) {
                 k.settype( Etype.standaard );
+
             }
             else {
                 k.settype( Etype.luxe );
