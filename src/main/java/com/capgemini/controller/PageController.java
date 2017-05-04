@@ -1,8 +1,7 @@
 package com.capgemini.controller;
 
+import com.capgemini.Model.Kamers.Etype;
 import com.capgemini.Model.Kamers.Kamer;
-import com.capgemini.Model.Kamers.Luxe;
-import com.capgemini.Model.Kamers.Standaard;
 import com.capgemini.Model.Page;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,14 +25,18 @@ public class PageController {
     public Kamer post(@RequestBody Kamer input) {
         ArrayList<Kamer> kamerList = new ArrayList<>(  );
         for (int i = 0; i<10; i++) {
-            Kamer k = i<5? new Luxe(): new Standaard();
-            k.setKamernummer( i );
-            kamerList.add( k );
+            Kamer k = new Kamer();
+            if (i< 5) {
+                k.settype( Etype.standaard );
+            }
+            else {
+                k.settype( Etype.luxe );
+            }
+                kamerList.add( k );
         }
+
         int kamernummer = input.getKamernummer();
-
-        return kamerList.get(kamernummer).;
-
+        return kamerList.get(kamernummer);
 
     }
 

@@ -14,4 +14,16 @@ public class Kamer {
 
     private int kamernummer;
 
+    public Etype gettype() {
+        return type;
+    }
+
+    public void settype(Etype type) {
+        this.type = type;
+    }
+
+    private Etype type;
+
 }
+
+
