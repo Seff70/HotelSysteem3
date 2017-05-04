@@ -1,5 +1,6 @@
 package com.capgemini.controller;
 
+import com.capgemini.Exception.RoomNotFoundException;
 import com.capgemini.Model.Kamers.Etype;
 import com.capgemini.Model.Kamers.Kamer;
 import com.capgemini.Model.Page;
@@ -22,7 +23,7 @@ public class PageController {
     }
 
     @RequestMapping(value="/api/kamernummer", method=RequestMethod.POST)
-    public Kamer post(@RequestBody Kamer input) {
+    public Kamer post(@RequestBody Kamer input) throws RoomNotFoundException{
         ArrayList<Kamer> kamerList = new ArrayList<>(  );
         for (int i = 0; i<10; i++) {
             Kamer k = new Kamer();
@@ -36,7 +37,13 @@ public class PageController {
         }
 
         int kamernummer = input.getKamernummer();
-        return kamerList.get(kamernummer);
+        if(kamernummer < kamerList.size()) {
+            return kamerList.get(kamernummer);
+        } else {
+
+            throw new RoomNotFoundException();
+        }
+
 
     }
 

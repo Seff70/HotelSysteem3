@@ -16,11 +16,15 @@ $("#btn1").click(function(event){
             type: "POST",
             url:"/api/kamernummer",
             data: JSON.stringify(k),
-                        success: function(result) {
+            success: function(result) {
                         console.log(result);
                         var s = ("Kamer " + result.kamernummer + " is een " + result.type + " kamer "   );
                         $("#content").text(s);
-                        }
+                        },
+            error: function(e){
+                  console.log(e);
+
+            }
           });
 });
 
