@@ -22,16 +22,16 @@ public class PageController {
     }
 
     @RequestMapping(value="/api/kamernummer", method=RequestMethod.POST)
-    public String post(String input) {
+    public Kamer post(Kamer input) {
         ArrayList<Kamer> kamerList = new ArrayList<>(  );
         for (int i = 0; i<10; i++) {
             Kamer k = i<5? new Luxe(): new Standaard();
             k.setKamernummer( i );
             kamerList.add( k );
         }
-        int kamernummer = Integer.parseInt( input );
+        int kamernummer = input.getKamernummer();
 
-        return "Is een luxe of normale kamer";
+        return kamerList.get( kamernummer );
 
 
     }
