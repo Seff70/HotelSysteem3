@@ -11,8 +11,8 @@ public class PageController {
     @RequestMapping(value = "/api/pages", method= RequestMethod.GET)
     public Page get() {
         Page page = new Page();
-        page.setTitle("titel");
-        page.setContent("dit is de content");
+        page.setTitle("Kamer management");
+        page.setContent("Vul hieronder het betrefffende kamernummer");
         return page;
     }
 

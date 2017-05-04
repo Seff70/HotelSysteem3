@@ -22,6 +22,4 @@ public class Page {
     private String content;
 
 
-
-
 }
