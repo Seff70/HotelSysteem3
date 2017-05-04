@@ -1,5 +1,5 @@
 package com.capgemini.controller;
-import com.capgemini.Model.Guest;
+import com.capgemini.Model.Guests.Guest;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,12 +13,12 @@ public class GuestController {
         // Spring maakt er automatisch js van
         Guest g = new Guest();
         g.setName(name);
-        g.setAge(age);
+
         return g;
     }
     @RequestMapping(value= "/guest", method= RequestMethod.POST)
     public String setGuest(@RequestBody Guest g){
-        return g.getName() +',' + g.getAge();
+        return g.getName();
 
     }
 
