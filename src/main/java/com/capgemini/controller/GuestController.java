@@ -28,7 +28,7 @@ public class GuestController {
         System.out.println("banaan");
 
         ArrayList<Guest> guestList = new ArrayList<>();
-        guestList.add(new Guest("Robbert vd Pas", "Dasselaarweg 10", "3896LT", "Zeewolde", "Nederland", "06-12345234", "arsenist"));
+        guestList.add(new Guest("Robbert vd Pas", "Dasselaarweg 10", "3896LT", "Zeewolde", "Nederland", "06-12345234", "Opperdocent"));
         guestList.add(new Guest("Kim Lammers","Singel 14","1023AB","Amsterdam","Nederland","06-12345678","hockey"));
         guestList.add(new Guest("Ruud van Nistelrooij","Have 3", "7800AA","Eindhoven","Nederland","06-45678912","voetbal"));
         guestList.add(new Guest("Yuri van Gelder","Strand 145a","2104SW", "Oranjestad","Curaçao","0900-45678","ringen"));
