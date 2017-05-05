@@ -23,7 +23,7 @@ $("#btn1").click(function(event){
                         },
             error: function(e){
                   console.log(e);
-             
+
                   var e = ("Dit is geen geldig kamernummer!")
                     $("#content").text(e);
             }
