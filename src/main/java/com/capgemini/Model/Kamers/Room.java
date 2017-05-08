@@ -6,7 +6,7 @@ package com.capgemini.Model.Kamers;
 public class Room {
 
     private int roomNumber;
-    private String guestLastName;
+    //private String guestLastName;
     private Etype roomType;
 
 
@@ -18,13 +18,13 @@ public class Room {
         this.roomNumber = roomNumber;
     }
 
-    public String getGuestLastName() {
-        return guestLastName;
-    }
-
-    public void setGuestLastName(String guestLastName) {
-        this.guestLastName = guestLastName;
-    }
+//    public String getGuestLastName() {
+//        return guestLastName;
+//    }
+//
+//    public void setGuestLastName(String guestLastName) {
+//        this.guestLastName = guestLastName;
+//    }
 
     public Etype getRoomType() {
         return roomType;
