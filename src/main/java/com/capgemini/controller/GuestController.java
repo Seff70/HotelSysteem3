@@ -31,7 +31,7 @@ public class GuestController extends AbstractDatabaseController {
     public ArrayList<Guest> getGuestList() throws SQLException {
         System.out.println("banaan");
 
-        Connection connection = getConnection("hotel5");
+        Connection connection = getConnection("hotel2");
         PreparedStatement statement = connection.prepareStatement("SELECT * FROM Guest");
         ResultSet rs = statement.executeQuery();
         ArrayList<Guest> guestList = new ArrayList<>();
