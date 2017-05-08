@@ -29,7 +29,7 @@ public class PageController {
             Kamer k = new Kamer();
             k.setKamernummer( i );
             if (i< 5) {
-                k.settype( Etype.Standaard );
+                k.settype( Etype.Standard );
 
             }
             else {
