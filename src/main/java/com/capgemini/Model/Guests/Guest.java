@@ -7,9 +7,18 @@ public class Guest {
     private String name;
     private String address;
     private String zipcode;
-    private String woonplaats;
+    private String city;
     private String country;
     private String phonenumber;
+    private String special;
+
+    public String getSpecial() {
+        return special;
+    }
+
+    public void setSpecial(String special) {
+        this.special = special;
+    }
 
     // met setters en getters om data te retrieven
     public String getName() {
@@ -36,12 +45,12 @@ public class Guest {
         this.zipcode = zipcode;
     }
 
-    public String getWoonplaats() {
-        return woonplaats;
+    public String getCity() {
+        return city;
     }
 
-    public void setWoonplaats(String woonplaats) {
-        this.woonplaats = woonplaats;
+    public void setCity(String woonplaats) {
+        this.city = woonplaats;
     }
 
     public String getCountry() {
@@ -60,10 +69,20 @@ public class Guest {
         this.phonenumber = phonenumber;
     }
 
+    public Guest(){}
+    public Guest(String name, String address, String zipcode, String city, String country, String phonenumber, String special){
+        this.name = name;
+        this.address = address;
+        this.zipcode = zipcode;
+        this.city = city;
+        this.country = country;
+        this.phonenumber = phonenumber;
+        this.special = special;
+    }
 
     /**
      * Created by LMANNA on 3-5-2017.
      */
-    public static class Particulier extends Guest {
+//    public static class Particulier extends Guest {
     }
-}
+//}
