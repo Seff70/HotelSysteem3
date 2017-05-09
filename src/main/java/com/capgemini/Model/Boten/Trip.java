@@ -32,7 +32,6 @@ public abstract class Trip {
 
     }
 
-
     public int getTripID() {
         return tripID;
     }
