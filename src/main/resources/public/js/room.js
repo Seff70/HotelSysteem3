@@ -1,4 +1,4 @@
-$.get("/api/kamergegevens", function(result) {
+$.get("/api/roomList", function(result) {
     console.table(result);
     var roomTable = [];
     for(var i = 0; i < result.length; i++) {

@@ -25,7 +25,7 @@ public class BookingRepository {
     GuestRepository guestRepository;
 
     @Autowired
-    RoomRepostitory roomRepository;
+    RoomRepository roomRepository;
 
 
     public ArrayList<Booking> getAllBookings() throws SQLException {

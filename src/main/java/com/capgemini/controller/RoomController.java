@@ -24,15 +24,15 @@ public class RoomController {
     @Autowired
     RoomRepository roomRepository;
 
-    @RequestMapping(value= "/api/roomList", method=RequestMethod.GET)
-    public List<Room> getRoomList() throws SQLException {
-        return roomRepository.getAllRooms();
-    }
-
-//    @RequestMapping(value= "/api/room", method=RequestMethod.GET)
-//    public List<Room> getRoom() throws SQLException {
-//        return roomRepository.getRoom();
+//    @RequestMapping(value= "/api/roomList", method=RequestMethod.GET)
+//    public List<Room> getRoomList() throws SQLException {
+//        return roomRepository.getAllRooms();
 //    }
+
+    @RequestMapping(value= "/api/room", method=RequestMethod.GET)
+    public List<Room> getRoom() throws SQLException {
+        return roomRepository.getRoom();
+    }
 
 }
 
