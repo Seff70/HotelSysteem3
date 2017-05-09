@@ -50,9 +50,7 @@ public class GuestRepository {
 
     private Guest mapGuest(ResultSet rs) throws SQLException {
         String naam = rs.getString("Name");
-        Guest guest = new Guest();
-        guest.setName(naam);
-        // TODO: alle velden vullen
+        Guest guest = new Guest(rs.getString("name"), rs.getString("address"), rs.getString("zipcode"), rs.getString("city"), rs.getString("country"), rs.getString("phonenumber"),rs.getString("special") );
         return guest;
     }
 }

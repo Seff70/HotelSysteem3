@@ -33,7 +33,7 @@ public class BookingController {
     @Autowired
     BookingRepository bookingRepository;
 
-    @RequestMapping(value = "api/bookinggegevens", method = RequestMethod.GET)
+    @RequestMapping(value = "api/bookings", method = RequestMethod.GET)
     public ArrayList <Booking> get() throws SQLException {
        return bookingRepository.getAllBookings();
     }

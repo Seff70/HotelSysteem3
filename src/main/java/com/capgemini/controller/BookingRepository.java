@@ -2,6 +2,7 @@ package com.capgemini.controller;
 
 import com.capgemini.Model.Booking.Booking;
 import com.capgemini.Model.Guests.Guest;
+import com.capgemini.Model.Kamers.Etype;
 import com.capgemini.Model.Kamers.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,8 +24,8 @@ public class BookingRepository {
     @Autowired
     GuestRepository guestRepository;
 
-    //@Autowired
-    // RoomRepostitory roomRepository;
+    @Autowired
+    RoomRepostitory roomRepository;
 
 
     public ArrayList<Booking> getAllBookings() throws SQLException {
@@ -63,7 +64,9 @@ public class BookingRepository {
         int guestID = rs.getInt("GuestID");
 
         Guest guest = guestRepository.getGuest(guestID);
-        Room room = new Room(); //roomRepository.getRoom(roomID);
+        Room room = roomRepository.getRoom(roomID);
+        //room.setRoomNumber(roomID);
+        //room.setRoomType(Etype.Luxe);
         Booking booking = new Booking(start, end, guest, room, bookingID);
         return booking;
     }
