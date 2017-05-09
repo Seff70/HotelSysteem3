@@ -1,4 +1,4 @@
-$.get("api/guestlist", function(result) {
+$.get("api/guests", function(result) {
     console.table(result);
 
     var dataSet = [];
@@ -22,6 +22,7 @@ $("#guestlist").DataTable( {
 //        {title: "Special"}
 //        ]
     });
+
 
 });
 

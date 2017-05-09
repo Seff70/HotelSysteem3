@@ -60,4 +60,21 @@ public class GuestRepository {
                 rs.getString("special")
         );
     }
+
+    public boolean addGuest(Guest guest) throws SQLException{
+        try (Connection connection = databaseService.getConnection("hotel2")) {
+            try (PreparedStatement statement = connection.prepareStatement("insert into Guest (name, address, zipcode,city,country,phonenumber,special) VALUES (?,?,?,?,?,?,?)");) {
+                statement.setString(1, guest.getName());
+                statement.setString(2, guest.getAddress());
+                statement.setString(3, guest.getZipcode());
+                statement.setString(4, guest.getCity());
+                statement.setString(5, guest.getCountry());
+                statement.setString(6, guest.getPhonenumber());
+                statement.setString(7, guest.getSpecial());
+                int result = statement.executeUpdate();
+                return result>0;
+            }
+        }
+
+    }
 }
