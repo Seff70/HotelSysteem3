@@ -6,7 +6,10 @@ $.get("api/bookings", function(result) {
     for (var i = 0; i<result.length; i++) {
     console.log("result: "+  result);
     console.log("result[0]: " + result[0] + " "+ result[0].guest.name);
-    dataSet.push([result[i].bookingNumber, result[i].guest.name, result[i].guest.address, result[i].start, result[i].end,  result[i].roomNumber, result[i].room.roomType]);
+    var start = "" + result[i].start[2]+ "-" + result[i].start[1] + "-" + result[i].start[0]
+    var eind = "" + result[i].eind[2]+ "-" + result[i].eind[1] + "-" + result[i].eind[0]
+
+    dataSet.push([result[i].bookingNumber, result[i].guest.name, result[i].guest.address, start, eind, result[i].room.roomNumber, result[i].room.roomType]);
     }
 
 $("#bookings").DataTable( {
