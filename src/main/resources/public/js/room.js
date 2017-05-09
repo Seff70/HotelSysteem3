@@ -1,33 +1,13 @@
-//$.get("/api/roomList", function(result) {
-//    console.table(result);
-//    var roomTable = [];
-//    for(var i = 0; i < result.length; i++) {
-//        roomTable.push([result[i].roomNumber, result[i].roomType]);
-//    }
-//    $('#tableRooms').DataTable( {
-//        data: roomTable
-//    });
-//});
-
-
-//$.get("/api/{roomNumber}", function(result) {
-//    console.table(result);
-//
-//
-//
-//    $('#tableRooms').DataTable( {
-//        data: roomTable
-//    });
-//});
-
-
-
-//$.get("/api/{roomNumber}", function(result) {
-//
-//$("#title").text(result.title);
-//$("#content").text(result.content);
-//
-//});
+$.get("/api/rooms", function(result) {
+    console.table(result);
+    var roomTable = [];
+    for(var i = 0; i < result.length; i++) {
+        roomTable.push([result[i].roomNumber, result[i].roomType]);
+    }
+    $('#tableRooms').DataTable( {
+        data: roomTable
+    });
+});
 
 
 $("#btn1").click(function(event){
@@ -38,12 +18,11 @@ $("#btn1").click(function(event){
     $.ajax({
 
             contentType: "application/json",
-            type: "POST",
-            url:"/api/{roomNumber}",
-            data: JSON.stringify(k),
+            type: "GET",
+            url:"/api/rooms/" + k.roomNumber,
             success: function(result) {
                         console.log(result);
-                        var s = ("Kamer " + result.roomNumber + " is een " + result.type + " kamer "   );
+                        var s = ("Kamer " + result.roomNumber + " is een " + result.roomType + " kamer "   );
                         $("#content").text(s);
                         },
             error: function(e){

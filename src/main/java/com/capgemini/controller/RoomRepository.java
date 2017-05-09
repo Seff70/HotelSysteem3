@@ -35,9 +35,9 @@ public class RoomRepository {
         return roomList;
     }
 
-    public Room post(int id) throws SQLException {
+    public Room getRoom(int id) throws SQLException {
         try (Connection connection = databaseService.getConnection("hotel2")){
-            try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM Room WHERE RoomID = ?")){
+            try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM Room WHERE roomNumber = ?")){
                 statement.setInt(1, id);
                 try (ResultSet rs = statement.executeQuery()) {
                     if (rs.next()) {
