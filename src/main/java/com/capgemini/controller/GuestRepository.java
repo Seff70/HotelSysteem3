@@ -34,7 +34,8 @@ public class GuestRepository {
         }
         return guestList;
     }
-public Guest getGuest(int id) throws SQLException {
+
+    public Guest getGuest(int id) throws SQLException {
         try (Connection connection = databaseService.getConnection("hotel2")) {
             try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM Guest WHERE GuestID = ?")) {
                 statement.setInt(1, id);
@@ -49,8 +50,14 @@ public Guest getGuest(int id) throws SQLException {
     }
 
     private Guest mapGuest(ResultSet rs) throws SQLException {
-        String naam = rs.getString("Name");
-        Guest guest = new Guest(rs.getString("name"), rs.getString("address"), rs.getString("zipcode"), rs.getString("city"), rs.getString("country"), rs.getString("phonenumber"),rs.getString("special") );
-        return guest;
+        return new Guest(
+                rs.getString("name"),
+                rs.getString("address"),
+                rs.getString("zipcode"),
+                rs.getString("city"),
+                rs.getString("country"),
+                rs.getString("phonenumber"),
+                rs.getString("special")
+        );
     }
 }
