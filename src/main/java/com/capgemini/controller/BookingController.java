@@ -50,7 +50,8 @@ public class BookingController {
             int guestID = rs.getInt("GuestID");
 
             Guest guest = guestRepository.getGuest(guestID);
-            Booking b = new Booking(start, end, guest, roomID, bookingID);
+            Room room = new Room(); //roomRepository.getRoom(roomID);
+            Booking b = new Booking(start, end, guest, room, bookingID);
 
             bookingList.add(b);
             }
