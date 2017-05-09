@@ -1,16 +1,22 @@
 package com.capgemini.Model.Boten;
 
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
 
+import
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.MINIMAL_CLASS, property = "type")
 public abstract class Tocht {
 
 
     private int tripnummer;
     private LocalDateTime starttime;
     private LocalDateTime endtime;
+    private int Bootnummer;
 
     public int getTripnummer() {
         return tripnummer;
@@ -44,7 +50,6 @@ public abstract class Tocht {
             return false;
         }
     }
-
 
     boolean stop(){
         if (endtime == null) {

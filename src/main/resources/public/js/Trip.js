@@ -5,7 +5,7 @@ $.get("/api/Tochten", function(result) {
        var item = [];
        for (var i = 0 ; i < result.length ; i++) {
         var Trip = result[i];
-        var totaal = [Trip.TripID, Trip.startTime, Trip.endTime, Trip.type, Trip.BoatID];
+        var totaal = [Trip.tripnummer, Trip.starttime, Trip.endtime, Trip.type, Trip.BoatID];
 
        eind.push(totaal);
 

@@ -53,6 +53,7 @@ public class TochtController {
             tocht.setTripnummer( TripID );
             tocht.setEndtime( endTime );
             tocht.setStarttime( startTime );
+
             tochtenlist.add( tocht );
         }
         return tochtenlist;
