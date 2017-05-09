@@ -1,9 +1,20 @@
-$.get("/api/roomList", function(result) {
+//$.get("/api/roomList", function(result) {
+//    console.table(result);
+//    var roomTable = [];
+//    for(var i = 0; i < result.length; i++) {
+//        roomTable.push([result[i].roomNumber, result[i].roomType]);
+//    }
+//    $('#tableRooms').DataTable( {
+//        data: roomTable
+//    });
+//});
+
+
+$.get("/api/{roomNumber}", function(result) {
     console.table(result);
-    var roomTable = [];
-    for(var i = 0; i < result.length; i++) {
-        roomTable.push([result[i].roomNumber, result[i].roomType]);
-    }
+
+
+
     $('#tableRooms').DataTable( {
         data: roomTable
     });
