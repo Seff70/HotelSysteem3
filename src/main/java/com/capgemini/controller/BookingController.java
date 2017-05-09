@@ -1,8 +1,10 @@
 package com.capgemini.controller;
 
 import com.capgemini.Model.Booking.Booking;
+import com.capgemini.Model.Guests.Guest;
 import com.capgemini.Model.Kamers.Etype;
 import com.capgemini.Model.Kamers.Room;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,11 +26,16 @@ import static java.sql.DriverManager.getConnection;
  */
 
 @RestController
-public class BookingController extends AbstractDatabaseController {
+public class BookingController {
+
+    @Autowired
+    DatabaseService databaseService;
+    @Autowired
+    GuestRepository guestRepository;
 
     @RequestMapping(value = "api/bookinggegevens", method = RequestMethod.GET)
     public ArrayList <Booking> get() throws SQLException {
-        Connection connection = getConnection("hotel2");
+        Connection connection = databaseService.getConnection("hotel2");
         PreparedStatement statement = connection.prepareStatement("SELECT * FROM Booking");
         ResultSet rs = statement.executeQuery();
 
@@ -42,7 +49,8 @@ public class BookingController extends AbstractDatabaseController {
             int roomID = rs.getInt("RoomID");
             int guestID = rs.getInt("GuestID");
 
-            Booking b = new Booking(start, end, bookingID, roomID, guestID);
+            Guest guest = guestRepository.getGuest(guestID);
+            Booking b = new Booking(start, end, guest, roomID, bookingID);
 
             bookingList.add(b);
             }
