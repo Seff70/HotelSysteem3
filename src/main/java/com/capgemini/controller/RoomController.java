@@ -29,10 +29,10 @@ public class RoomController {
         return roomRepository.getAllRooms();
     }
 
-//    @RequestMapping(value= "/api/room", method=RequestMethod.GET)
-//    public Room getRoom() throws SQLException {
-//        return roomRepository.getRoom(1);
-//    }
+    @RequestMapping(value= "/api/room", method=RequestMethod.GET)
+    public Room getRoom() throws SQLException {
+        return roomRepository.getRoom(1);
+    }
 
 }
 

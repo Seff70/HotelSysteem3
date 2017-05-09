@@ -7,8 +7,6 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
 
-import
-
 @JsonTypeInfo(use = JsonTypeInfo.Id.MINIMAL_CLASS, property = "type")
 public abstract class Tocht {
 
