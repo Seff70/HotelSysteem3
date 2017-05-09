@@ -2,6 +2,7 @@ package com.capgemini.controller;
 
 import com.capgemini.Model.Guests.Guest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,9 +37,15 @@ public class GuestController {
 //
 //    }
 
-    @RequestMapping(value = "/api/guestlist", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/guests", method = RequestMethod.GET)
     public List<Guest> getGuestList() throws SQLException {
         return guestRepository.getAllGuests();
+    }
+
+    @RequestMapping(value = "/api/guests", method = RequestMethod.POST)
+    public boolean addGuestList(@RequestBody Guest guest) throws SQLException {
+        return guestRepository.addGuest(guest);
+
     }
 
 }
