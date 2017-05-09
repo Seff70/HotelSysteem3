@@ -1,7 +1,10 @@
 package com.capgemini.controller;
+
 import com.capgemini.Model.Boten.Boot;
-import com.capgemini.Model.Guests.Guest;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,16 +12,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import static java.sql.DriverManager.getConnection;
-
 
 @RestController
-public class BootController extends AbstractDatabaseController {
+public class BootController {
+
+    @Autowired
+    DatabaseService databaseService;
 
     @RequestMapping(value = "/api/boot", method= RequestMethod.GET )
     public ArrayList<Boot> boot() throws SQLException{
 
-        Connection connection = getConnection("hotel2");
+        Connection connection = databaseService.getConnection("hotel2");
         PreparedStatement statement = connection.prepareStatement("SELECT * FROM Boat");
         ResultSet rs = statement.executeQuery();
 

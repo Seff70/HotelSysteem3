@@ -14,7 +14,7 @@ import java.util.ArrayList;
 @RestController
 public class PageController {
 
-    @RequestMapping(value = "/api/pages", method= RequestMethod.GET)
+    @RequestMapping(value = "/api/pages", method = RequestMethod.GET)
     public Page get() {
         Page page = new Page();
         page.setTitle("Kamer management");
@@ -22,24 +22,23 @@ public class PageController {
         return page;
     }
 
-    @RequestMapping(value="/api/kamernummer", method=RequestMethod.POST)
-    public Kamer post(@RequestBody Kamer input) throws RoomNotFoundException{
-        ArrayList<Kamer> kamerList = new ArrayList<>(  );
-        for (int i = 0; i<10; i++) {
+    @RequestMapping(value = "/api/kamernummer", method = RequestMethod.POST)
+    public Kamer post(@RequestBody Kamer input) throws RoomNotFoundException {
+        ArrayList<Kamer> kamerList = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
             Kamer k = new Kamer();
-            k.setKamernummer( i );
-            if (i< 5) {
-                k.settype( Etype.Standard );
+            k.setKamernummer(i);
+            if (i < 5) {
+                k.settype(Etype.Standard);
 
+            } else {
+                k.settype(Etype.Luxe);
             }
-            else {
-                k.settype( Etype.Luxe );
-            }
-                kamerList.add( k );
+            kamerList.add(k);
         }
 
         int kamernummer = input.getKamernummer();
-        if(kamernummer < kamerList.size()) {
+        if (kamernummer < kamerList.size()) {
             return kamerList.get(kamernummer);
         } else {
 

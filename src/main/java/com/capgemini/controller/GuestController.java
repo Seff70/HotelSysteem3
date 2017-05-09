@@ -1,6 +1,10 @@
 package com.capgemini.controller;
+
 import com.capgemini.Model.Guests.Guest;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +15,10 @@ import java.util.ArrayList;
 @RestController
 // het is een referentie naar een stukje code in dit geval de restcontroller
 
-public class GuestController extends AbstractDatabaseController {
+public class GuestController {
+
+    @Autowired
+    DatabaseService databaseService;
 
 //    @RequestMapping(value = "/guest", method= RequestMethod.GET )
 //    public Guest getGuest(@RequestParam String name,@RequestParam int age){
@@ -27,15 +34,16 @@ public class GuestController extends AbstractDatabaseController {
 //        return g.getName();
 //
 //    }
-    @RequestMapping(value = "/api/guestlist", method= RequestMethod.GET )
+
+    @RequestMapping(value = "/api/guestlist", method = RequestMethod.GET)
     public ArrayList<Guest> getGuestList() throws SQLException {
         System.out.println("banaan");
 
-        Connection connection = getConnection("hotel2");
+        Connection connection = databaseService.getConnection("hotel2");
         PreparedStatement statement = connection.prepareStatement("SELECT * FROM Guest");
         ResultSet rs = statement.executeQuery();
         ArrayList<Guest> guestList = new ArrayList<>();
-        while(rs.next()) {
+        while (rs.next()) {
             String naam = rs.getString("Name");
             Guest guest = new Guest();
             guest.setName(naam);
@@ -44,9 +52,9 @@ public class GuestController extends AbstractDatabaseController {
         }
 
         guestList.add(new Guest("Robbert vd Pas", "Dasselaarweg 10", "3896LT", "Zeewolde", "Nederland", "06-12345234", "Opperdocent"));
-        guestList.add(new Guest("Kim Lammers","Singel 14","1023AB","Amsterdam","Nederland","06-12345678","hockey"));
-        guestList.add(new Guest("Ruud van Nistelrooij","Have 3", "7800AA","Eindhoven","Nederland","06-45678912","voetbal"));
-        guestList.add(new Guest("Yuri van Gelder","Strand 145a","2104SW", "Oranjestad","Curaçao","0900-45678","ringen"));
+        guestList.add(new Guest("Kim Lammers", "Singel 14", "1023AB", "Amsterdam", "Nederland", "06-12345678", "hockey"));
+        guestList.add(new Guest("Ruud van Nistelrooij", "Have 3", "7800AA", "Eindhoven", "Nederland", "06-45678912", "voetbal"));
+        guestList.add(new Guest("Yuri van Gelder", "Strand 145a", "2104SW", "Oranjestad", "Curaçao", "0900-45678", "ringen"));
 
         return guestList;
     }
