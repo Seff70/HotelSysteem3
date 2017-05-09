@@ -31,10 +31,31 @@ public class BookingController {
     @Autowired
     DatabaseService databaseService;
     @Autowired
-    BookingRepository bookingRepository;
+    GuestRepository guestRepository;
 
-    @RequestMapping(value = "api/bookings", method = RequestMethod.GET)
+    @RequestMapping(value = "api/bookinggegevens", method = RequestMethod.GET)
     public ArrayList <Booking> get() throws SQLException {
-       return bookingRepository.getAllBookings();
+        Connection connection = databaseService.getConnection("hotel2");
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM Booking");
+        ResultSet rs = statement.executeQuery();
+
+        ArrayList <Booking> bookingList = new ArrayList <>();
+
+        while (rs.next()) {
+            int roomNumber = rs.getInt("roomNumber");
+            LocalDate start = rs.getDate("startDate").toLocalDate();
+            LocalDate end = rs.getDate("endDate").toLocalDate();
+            int bookingID = rs.getInt("BookingID");
+            int roomID = rs.getInt("RoomID");
+            int guestID = rs.getInt("GuestID");
+
+            Guest guest = guestRepository.getGuest(guestID);
+         //   Booking b = new Booking(start, end, guest, roomID, bookingID);
+
+         //   bookingList.add(b);
+            }
+
+        return bookingList;
     }
+
 }

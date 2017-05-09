@@ -27,14 +27,14 @@ public class GuestRepository {
                 try (ResultSet rs = statement.executeQuery()) {
                     while (rs.next()) {
                         guestList.add(mapGuest(rs));
+
                     }
                 }
             }
         }
         return guestList;
     }
-
-    public Guest getGuest(int id) throws SQLException {
+public Guest getGuest(int id) throws SQLException {
         try (Connection connection = databaseService.getConnection("hotel2")) {
             try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM Guest WHERE GuestID = ?")) {
                 statement.setInt(1, id);
