@@ -3,6 +3,7 @@ package com.capgemini.controller;
 import com.capgemini.Model.Kamers.Etype;
 import com.capgemini.Model.Kamers.Room;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,6 +15,8 @@ import java.util.List;
 /**
  * Created by LMANNA on 9-5-2017.
  */
+
+@Service
 public class RoomRepository {
 
     @Autowired
