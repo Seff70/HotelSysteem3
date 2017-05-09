@@ -1,6 +1,6 @@
 package com.capgemini.controller;
 
-import com.capgemini.Model.Boten.Boot;
+import com.capgemini.Model.Boten.Boat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,22 +14,22 @@ import java.util.ArrayList;
 
 
 @RestController
-public class BootController {
+public class BoatController {
 
     @Autowired
     DatabaseService databaseService;
 
     @RequestMapping(value = "/api/boot", method= RequestMethod.GET )
-    public ArrayList<Boot> boot() throws SQLException{
+    public ArrayList<Boat> boot() throws SQLException{
 
         Connection connection = databaseService.getConnection("hotel2");
         PreparedStatement statement = connection.prepareStatement("SELECT * FROM Boat");
         ResultSet rs = statement.executeQuery();
 
-        ArrayList<Boot> botenList = new ArrayList<>();
+        ArrayList<Boat> botenList = new ArrayList<>();
         while(rs.next()) {
             int Boatnumber = rs.getInt( "Boatnumber" );
-            Boot boot = new Boot();
+            Boat boot = new Boat();
             boot.setNummer(Boatnumber);
             botenList.add(boot);
 
