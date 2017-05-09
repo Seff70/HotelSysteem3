@@ -3,7 +3,7 @@ package com.capgemini.Model.Boten;
 /**
  * Created by JVERDUIJ on 5-5-2017.
  */
-public class Boot {
+public class Boat {
     private int nummer;
 
     public int getNummer() {
@@ -23,10 +23,10 @@ public class Boot {
     }
 
     private String bootnaam;
-    public Boot(int nummer, String bootnaam){
+    public Boat(int nummer, String bootnaam){
         this.bootnaam =bootnaam;
         this.nummer=nummer;
     }
-    public Boot(){};
+    public Boat(){};
 
 }

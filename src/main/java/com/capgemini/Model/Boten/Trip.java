@@ -4,26 +4,41 @@ package com.capgemini.Model.Boten;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import java.time.Duration;
-import java.time.Instant;
 import java.time.LocalDateTime;
 
-import
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.MINIMAL_CLASS, property = "type")
-public abstract class Tocht {
+public abstract class Trip {
 
-
-    private int tripnummer;
+    private int tripID;
     private LocalDateTime starttime;
     private LocalDateTime endtime;
-    private int Bootnummer;
+    private int bootnummer;
 
-    public int getTripnummer() {
-        return tripnummer;
+    public int getBootnummer() {
+        return bootnummer;
     }
 
-    public void setTripnummer(int tripnummer) {
-        this.tripnummer = tripnummer;
+    public void setBootnummer(int bootnummer) {
+        this.bootnummer = bootnummer;
+    }
+
+    public Trip(int tripID, LocalDateTime startTime, LocalDateTime endTime, int BoatID) {
+        this.bootnummer = BoatID;
+        this.tripID = tripID;
+        this.starttime = startTime;
+        this.endtime = endTime;
+
+
+    }
+
+
+    public int getTripID() {
+        return tripID;
+    }
+
+    public void setTripID(int tripID) {
+        this.tripID = tripID;
     }
 
     public LocalDateTime getStarttime() {
@@ -42,30 +57,29 @@ public abstract class Tocht {
         this.endtime = endtime;
     }
 
-    boolean start(){
+    boolean start() {
         if (starttime == null) {
             starttime = LocalDateTime.now();
-            return(true);
+            return (true);
         } else {
             return false;
         }
     }
 
-    boolean stop(){
+    boolean stop() {
         if (endtime == null) {
             endtime = LocalDateTime.now();
-            return(true);
+            return (true);
         } else {
             return false;
         }
     }
 
-    Duration getDuur(){
-        if(starttime != null && endtime != null) {
+    Duration getDuur() {
+        if (starttime != null && endtime != null) {
             return Duration.between( starttime, endtime );
         } else {
             return Duration.ZERO;
         }
     }
-
 }
