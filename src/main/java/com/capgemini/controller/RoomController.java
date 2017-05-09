@@ -35,8 +35,8 @@ public class RoomController {
 //        return roomRepository.getAllRooms();
 //    }
 
-    @RequestMapping(value= "/api/{roomNumber}", method=RequestMethod.GET)
-    public Room getRoom(@PathVariable int roomNumber) throws SQLException {
+    @RequestMapping(value= "/api/{roomNumber}", method=RequestMethod.POST)
+    public Room post(@PathVariable int roomNumber) throws SQLException {
         return roomRepository.getRoom(roomNumber);
     }
 

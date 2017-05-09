@@ -10,37 +10,40 @@
 //});
 
 
-$.get("/api/{roomNumber}", function(result) {
-    console.table(result);
+//$.get("/api/{roomNumber}", function(result) {
+//    console.table(result);
+//
+//
+//
+//    $('#tableRooms').DataTable( {
+//        data: roomTable
+//    });
+//});
 
 
 
-    $('#tableRooms').DataTable( {
-        data: roomTable
-    });
-});
-$.get("api/pages", function(result) {
-
-$("#title").text(result.title);
-$("#content").text(result.content);
-
-});
+//$.get("/api/{roomNumber}", function(result) {
+//
+//$("#title").text(result.title);
+//$("#content").text(result.content);
+//
+//});
 
 
 $("#btn1").click(function(event){
     event.preventDefault();
-    var k ={kamernummer: $("#tf1").val()};
-    console.log("waarde = "+ $("#tf1").val())
+    var k ={roomNumber: $("#tf1").val()};
+    console.log("Kamernummer = "+ $("#tf1").val())
 
     $.ajax({
 
             contentType: "application/json",
             type: "POST",
-            url:"/api/kamernummer",
+            url:"/api/{roomNumber}",
             data: JSON.stringify(k),
             success: function(result) {
                         console.log(result);
-                        var s = ("Kamer " + result.kamernummer + " is een " + result.type + " kamer "   );
+                        var s = ("Kamer " + result.roomNumber + " is een " + result.type + " kamer "   );
                         $("#content").text(s);
                         },
             error: function(e){
