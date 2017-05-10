@@ -1,81 +1,8 @@
 package com.capgemini.controller;
 
 import com.capgemini.Model.Guests.Guest;
-import org.apache.tomcat.jdbc.pool.DataSource;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.data.repository.CrudRepository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+public interface GuestRepository extends CrudRepository<Guest, Integer> {
 
-/**
- * Created by gerard on 9-5-17.
- */
-@Service
-public class GuestRepository {
-
-    @Autowired
-    javax.sql.DataSource dataSource;
-
-    public List<Guest> getAllGuests() throws SQLException {
-        ArrayList<Guest> guestList = new ArrayList<>();
-        try (Connection connection = dataSource.getConnection()) {
-            try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM Guest")) {
-                try (ResultSet rs = statement.executeQuery()) {
-                    while (rs.next()) {
-                        guestList.add(mapGuest(rs));
-
-                    }
-                }
-            }
-        }
-        return guestList;
-    }
-
-    public Guest getGuest(int id) throws SQLException {
-        try (Connection connection = dataSource.getConnection()) {
-            try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM Guest WHERE GuestID = ?")) {
-                statement.setInt(1, id);
-                try (ResultSet rs = statement.executeQuery()) {
-                    if (rs.next()) {
-                        return mapGuest(rs);
-                    }
-                }
-            }
-        }
-        return null;
-    }
-
-    private Guest mapGuest(ResultSet rs) throws SQLException {
-        return new Guest(
-                rs.getString("name"),
-                rs.getString("address"),
-                rs.getString("zipcode"),
-                rs.getString("city"),
-                rs.getString("country"),
-                rs.getString("phonenumber"),
-                rs.getString("special")
-        );
-    }
-
-    public boolean addGuest(Guest guest) throws SQLException{
-        try (Connection connection = dataSource.getConnection()) {
-            try (PreparedStatement statement = connection.prepareStatement("insert into Guest (name, address, zipcode,city,country,phonenumber,special) VALUES (?,?,?,?,?,?,?)");) {
-                statement.setString(1, guest.getName());
-                statement.setString(2, guest.getAddress());
-                statement.setString(3, guest.getZipcode());
-                statement.setString(4, guest.getCity());
-                statement.setString(5, guest.getCountry());
-                statement.setString(6, guest.getPhonenumber());
-                statement.setString(7, guest.getSpecial());
-                int result = statement.executeUpdate();
-                return result>0;
-            }
-        }
-
-    }
 }

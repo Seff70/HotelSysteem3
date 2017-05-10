@@ -1,9 +1,20 @@
 package com.capgemini.Model.Guests;
 
 // define class Guest
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Guest {
 
     // we geven het volgende mee
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int GuestID;
+
     private String name;
     private String address;
     private String zipcode;
@@ -12,12 +23,13 @@ public class Guest {
     private String phonenumber;
     private String special;
 
-    public String getSpecial() {
-        return special;
+
+    public int getGuestID() {
+        return GuestID;
     }
 
-    public void setSpecial(String special) {
-        this.special = special;
+    public String getSpecial() {
+        return special;
     }
 
     // met setters en getters om data te retrieven
@@ -25,52 +37,30 @@ public class Guest {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getAddress() {
         return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getZipcode() {
         return zipcode;
     }
 
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
-
     public String getCity() {
         return city;
-    }
-
-    public void setCity(String woonplaats) {
-        this.city = woonplaats;
     }
 
     public String getCountry() {
         return country;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
     public String getPhonenumber() {
         return phonenumber;
     }
 
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
+    protected Guest() {
     }
 
-    public Guest(){}
-    public Guest(String name, String address, String zipcode, String city, String country, String phonenumber, String special){
+    public Guest(String name, String address, String zipcode, String city, String country, String phonenumber, String special) {
         this.name = name;
         this.address = address;
         this.zipcode = zipcode;
@@ -84,5 +74,5 @@ public class Guest {
      * Created by LMANNA on 3-5-2017.
      */
 //    public static class Particulier extends Guest {
-    }
+}
 //}

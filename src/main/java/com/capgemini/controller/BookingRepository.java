@@ -64,7 +64,7 @@ public class BookingRepository {
         int roomID = rs.getInt("RoomID");
         int guestID = rs.getInt("GuestID");
 
-        Guest guest = guestRepository.getGuest(guestID);
+        Guest guest = guestRepository.findOne(guestID);
         Room room = roomRepository.findOne(roomID);
         //room.setRoomNumber(roomID);
         //room.setRoomType(Etype.Luxe);
