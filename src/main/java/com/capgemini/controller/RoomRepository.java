@@ -61,4 +61,15 @@ public class RoomRepository {
         return room;
     }
 
+    public boolean addRoom (Room room) throws SQLException{
+        try (Connection connection = databaseService.getConnection("hotel2")) {
+            try (PreparedStatement statement = connection.prepareStatement("insert into Room (roomnumber, type) values (?,?)");) {
+                statement.setInt(1,room.getRoomNumber());
+//                String roomType = room.getRoomType().toString();
+                statement.setString(2,room.getRoomType().toString());
+                int result = statement.executeUpdate();
+                return result>0;
+            }
+        }
+    }
 }

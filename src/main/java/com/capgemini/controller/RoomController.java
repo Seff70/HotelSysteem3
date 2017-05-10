@@ -3,10 +3,7 @@ package com.capgemini.controller;
 import com.capgemini.Model.Kamers.Etype;
 import com.capgemini.Model.Kamers.Room;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -33,6 +30,11 @@ public class RoomController {
     @RequestMapping(value= "/api/rooms/{roomNumber}", method=RequestMethod.GET)
     public Room getRoom(@PathVariable int roomNumber) throws SQLException {
         return roomRepository.getRoom(roomNumber);
+    }
+
+    @RequestMapping(value= "/api/rooms/addroom", method=RequestMethod.POST)
+    public boolean addRoom (@RequestBody Room room) throws SQLException {
+        return roomRepository.addRoom(room);
     }
 
 }
