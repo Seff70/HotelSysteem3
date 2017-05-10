@@ -19,10 +19,14 @@ import java.util.List;
 public class TripController {
 
     @Autowired
+<<<<<<< HEAD
     DatabaseService databaseService;
 
     @Autowired
     TripRepository tripRepository;
+=======
+    TripRepository Eric;
+>>>>>>> origin/master
 
     @RequestMapping(value = "/api/Tochten", method = RequestMethod.GET)
     public List<Trip> tocht() throws SQLException {

@@ -7,6 +7,7 @@ import com.capgemini.Model.Boten.Trip;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import java.sql.Timestamp;
 public class TripRepository {
 
     @Autowired
-    DatabaseService databaseService;
+    DataSource dataSource;
 
     @Autowired
     BoatRepository boatRepository;
@@ -26,7 +27,7 @@ public class TripRepository {
 
     public List<Trip> getAllTrips() throws SQLException {
         ArrayList<Trip> tripList = new ArrayList<>();
-        try (Connection connection = databaseService.getConnection( "hotel2" )) {
+        try (Connection connection = dataSource.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement( "SELECT * FROM Trip" )) {
                 try (ResultSet rs = statement.executeQuery()) {
                     while (rs.next()) {
@@ -40,7 +41,7 @@ public class TripRepository {
     }
 
     public Trip getTrip(int id) throws SQLException {
-        try (Connection connection = databaseService.getConnection( "hotel2" )) {
+        try (Connection connection = dataSource.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement( "SELECT * FROM Trip WHERE TripID = ?" )) {
                 statement.setInt( 1, id );
                 try (ResultSet rs = statement.executeQuery()) {
@@ -80,6 +81,7 @@ public class TripRepository {
     }
 
     public boolean addTrip(Trip trip) throws SQLException{
+<<<<<<< HEAD
         Boat boat = boatRepository.findBoat( trip.getBootnummer() );
         try (Connection connection = databaseService.getConnection("hotel2")) {
             try (PreparedStatement statement = connection.prepareStatement("insert into Trip (startTime, endTime,BoatID,type) VALUES (?,?,?,?)")) {
@@ -87,6 +89,15 @@ public class TripRepository {
                 statement.setTimestamp(2, Timestamp.valueOf( trip.getEndTime() ));
                 statement.setInt(3, boat.getBoatID());
                 statement.setString( 4, trip.getClass().getSimpleName() );
+=======
+        try (Connection connection = dataSource.getConnection()) {
+            try (PreparedStatement statement = connection.prepareStatement("insert into Trip (TripID, startTime, endTime,BoatID) VALUES (?,?,?,?)");) {
+                statement.setInt(1, trip.getTripID());
+                statement.setTimestamp(2, Timestamp.valueOf( trip.getStarttime() ));
+                statement.setTimestamp(3, Timestamp.valueOf( trip.getEndtime() ));
+                statement.setInt(3, trip.getBootnummer());
+
+>>>>>>> origin/master
                 int result = statement.executeUpdate();
                 return result>0;
             }

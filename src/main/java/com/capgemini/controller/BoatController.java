@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,7 +23,13 @@ public class BoatController {
 
     @RequestMapping(value = "/api/boot", method= RequestMethod.GET )
     public List<Boat> boot() throws SQLException{
+<<<<<<< HEAD
         return boatRepository.getAllBoats();
+=======
+
+      return boatRepository.getAllBoats() ;
+
+>>>>>>> origin/master
     }
 
 
