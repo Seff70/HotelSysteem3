@@ -35,6 +35,8 @@ public class RoomController {
     @RequestMapping(value= "/api/rooms/addroom", method=RequestMethod.POST)
     public boolean addRoom (@RequestBody Room room) throws SQLException {
         return roomRepository.addRoom(room);
+
+
     }
 
 }
