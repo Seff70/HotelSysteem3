@@ -6,6 +6,8 @@ $.get("api/guests", function(result) {
     for (var i = 0; i<result.length; i++) {
     //console.log(result);
     //console.log(result[0].name);
+    $("#newguestform").hide();
+    $("#guestlist").show();
     dataSet.push([result[i].name, result[i].address, result[i].zipcode, result[i].city, result[i].country, result[i].phonenumber, result[i].special]);
     }
 
@@ -15,11 +17,22 @@ $("#guestlist").DataTable( {
 
 $(document).ready(function() {
     console.log("komt hier")
-    var table = $('#example').DataTable();
+    var table = $('#guestlist').DataTable();
 
-    $('#example tbody').on('click', 'tr', function () {
+    $('#guestlist tbody').on('click', 'tr', function () {
         var data = table.row( this ).data();
-        alert( 'You clicked on '+data[0]+'\'s row' );
+        console.log(data);
+        $("#newguestform").show();
+        $("#guestlist").hide();
+
+        $("#InputName").val(data[0]);
+        $("#InputAddress").value(data[1]);
+        $("#InputZipcode").val(data[2]);
+        $("#InputCity").val(data[3]);
+        $("#InputCountry").val(data[4]);
+        $("#InputTelephone").val(data[5]);
+        $("#InputSpecial").val(data[6]);
+//        alert( 'You clicked on '+data[0]+'\'s row' );
     } );
 } );
 });
