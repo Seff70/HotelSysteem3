@@ -5,7 +5,7 @@ nav {
 	background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
 	position: absolute;
 	top: 0;
-	z-index: 500;
+	z-index: 20;
 }
 .top-nav {
 	background: none repeat scroll 0 0 rgba(0, 30, 34, 0.85);
@@ -222,7 +222,7 @@ form.customform input, form.customform select, form.customform textarea {
   }
   nav {
   	background: none repeat scroll 0 0 rgb(0, 30, 34);
-  	line-height: 1em;
+  	line-height: 2em;
   	position: relative;
   }
   .top-nav {
