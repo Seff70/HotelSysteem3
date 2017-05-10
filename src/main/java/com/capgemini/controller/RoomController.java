@@ -12,31 +12,29 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by LMANNA on 3-5-2017.
- */
 
 @RestController
 public class RoomController {
 
+//    @Autowired
+//    RoomRepository roomRepository;
     @Autowired
-    RoomRepository roomRepository;
+    RoomInterfaceRepository roomInterfaceRepository;
+
 
     @RequestMapping(value= "/api/rooms", method=RequestMethod.GET)
-    public List<Room> getRoomList() throws SQLException {
-        return roomRepository.getAllRooms();
+    public Iterable<Room> getRoomList() throws SQLException {
+        return roomInterfaceRepository.findAll();
     }
 
     @RequestMapping(value= "/api/rooms/{roomNumber}", method=RequestMethod.GET)
     public Room getRoom(@PathVariable int roomNumber) throws SQLException {
-        return roomRepository.getRoom(roomNumber);
+        return roomInterfaceRepository.findByRoomNumber(roomNumber);
     }
 
     @RequestMapping(value= "/api/rooms/addroom", method=RequestMethod.POST)
-    public boolean addRoom (@RequestBody Room room) throws SQLException {
-        return roomRepository.addRoom(room);
-
-
+    public Room addRoom (@RequestBody Room room) throws SQLException {
+        return roomInterfaceRepository.save(room);
     }
 
 }

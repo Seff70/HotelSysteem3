@@ -3,35 +3,37 @@ package com.capgemini.Model.Kamers;
 /**
  * Created by SAKUNNEN on 5-5-2017.
  */
-public class Room {
+        import javax.persistence.Entity;
+        import javax.persistence.GeneratedValue;
+        import javax.persistence.GenerationType;
+        import javax.persistence.Id;
 
+@Entity
+public class Room {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int roomNumber;
-    //private String guestLastName;
     private Etype roomType;
 
+
+    protected Room() {}
+
+    public Room(int roomNumber, Etype roomType) {
+        this.roomNumber = roomNumber;
+        this.roomType= roomType;
+    }
 
     public int getRoomNumber() {
         return roomNumber;
     }
 
-    public void setRoomNumber(int roomNumber) {
-        this.roomNumber = roomNumber;
-    }
-
-//    public String getGuestLastName() {
-//        return guestLastName;
-//    }
-//
-//    public void setGuestLastName(String guestLastName) {
-//        this.guestLastName = guestLastName;
-//    }
-
     public Etype getRoomType() {
         return roomType;
     }
 
-    public void setRoomType(Etype roomType) {
-        this.roomType = roomType;
-    }
+
+
 
 }
+
+
