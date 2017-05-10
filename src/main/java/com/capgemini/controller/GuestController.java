@@ -42,7 +42,7 @@ public class GuestController {
         return guestRepository.getAllGuests();
     }
 
-    @RequestMapping(value = "/api/guests", method = RequestMethod.POST)
+      @RequestMapping(value = "/api/guests", method = RequestMethod.POST)
     public boolean addGuestList(@RequestBody Guest guest) throws SQLException {
         return guestRepository.addGuest(guest);
 
