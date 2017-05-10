@@ -2,18 +2,27 @@ package com.capgemini.Model.Boten;
 
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-
+@Entity
 @JsonTypeInfo(use = JsonTypeInfo.Id.MINIMAL_CLASS, property = "type")
 public abstract class Trip {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int tripID;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private int bootnummer;
+
+    protected Trip() {}
 
     public int getBootnummer() {
         return bootnummer;

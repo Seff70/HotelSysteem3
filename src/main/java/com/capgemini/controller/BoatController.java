@@ -17,8 +17,8 @@ public class BoatController {
     BoatRepository boatRepository;
 
     @RequestMapping(value = "/api/boot", method = RequestMethod.GET)
-    public List<Boat> boot() throws SQLException {
-        return boatRepository.getAllBoats();
+    public Iterable<Boat> boot() throws SQLException {
+        return boatRepository.findAll();
     }
 
 
