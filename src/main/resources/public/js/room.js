@@ -38,6 +38,7 @@ $.get("/api/rooms", function(result) {
          });
          // console.log("Kamernummer = "+ $("#tf1").val())
       })
+
         $("#btn3").click(function(event){
           event.preventDefault();
           var k ={roomNumber: data[0],
@@ -62,11 +63,16 @@ $.get("/api/rooms", function(result) {
          });
          // console.log("Kamernummer = "+ $("#tf1").val())
       })
+
       }
       );
 });
-
-
+//nieuwe kamer toevoegen
+ $("#btn4").click(function(event){
+                     $("#newroom").show();
+                     $("#btn3").hide();
+                     console.log("teskltj");
+                  });
 $("#btn1").click(function(event){
     event.preventDefault();
     var k ={roomNumber: $("#tf1").val()};
@@ -94,6 +100,3 @@ $("#btn1").click(function(event){
 
 
 
-    //
-//
-//});
