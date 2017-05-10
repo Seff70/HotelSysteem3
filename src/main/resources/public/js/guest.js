@@ -8,10 +8,9 @@ $.get("api/guests", function(result) {
     //console.log(result[0].name);
     $("#newguestform").hide();
     $("#guestlist").show();
-    $("#btn2").hide();
     $("#btn3").hide();
 
-    dataSet.push([result[i].name, result[i].address, result[i].zipcode, result[i].city, result[i].country, result[i].phonenumber, result[i].special]);
+    dataSet.push([result[i].guestID, result[i].name, result[i].address, result[i].zipcode, result[i].city, result[i].country, result[i].phonenumber, result[i].special]);
     }
 
     $("#guestlist").DataTable( {
@@ -27,21 +26,32 @@ $.get("api/guests", function(result) {
             console.log(data);
             $("#newguestform").show();
             $("#guestlist").hide();
-            $("#btn1").hide();
-            $("#btn2").show();
             $("#btn3").show();
 
-            $("#InputName").val(data[0]);
-            $("#InputAddress").val(data[1]);
-            $("#InputZipcode").val(data[2]);
-            $("#InputCity").val(data[3]);
-            $("#InputCountry").val(data[4]);
-            $("#InputTelephone").val(data[5]);
-            $("#InputSpecial").val(data[6]);
-    //        alert( 'You clicked on '+data[0]+'\'s row' );
+            $("#InputName").val(data[1]);
+            $("#InputAddress").val(data[2]);
+            $("#InputZipcode").val(data[3]);
+            $("#InputCity").val(data[4]);
+            $("#InputCountry").val(data[5]);
+            $("#InputTelephone").val(data[6]);
+            $("#InputSpecial").val(data[7]);
+
+            $("#btn3").click(function() {
+                 $.ajax ({
+                    contentType:'application/json',
+                    type: "DELETE",
+                    url:"/api/guests/" + data[0],
+                    success: function() {
+                        console.log("Guest was deleted");
+                    },
+                 });
+             });
         });
     });
 
 
 });
+
+
+//
 
