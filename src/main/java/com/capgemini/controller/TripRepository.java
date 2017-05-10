@@ -8,9 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 
 
 @Service
@@ -73,5 +80,27 @@ public class TripRepository {
             throw new IllegalArgumentException( "Geen gelding invoer" );
         }
 
+
     }
+
+
+
+    public boolean addTrip(Trip trip) throws SQLException{
+        try (Connection connection = databaseService.getConnection("hotel2")) {
+            try (PreparedStatement statement = connection.prepareStatement("insert into Trip (TripID, startTime, endTime,BoatID) VALUES (?,?,?,?)");) {
+                statement.setInt(1, trip.getTripID());
+                statement.setTimestamp(2, Timestamp.valueOf( trip.getStarttime() ));
+                statement.setTimestamp(3, Timestamp.valueOf( trip.getEndtime() ));
+                statement.setInt(3, trip.getBootnummer());
+
+                int result = statement.executeUpdate();
+                return result>0;
+            }
+
+        }
+
+
+    }
+
+
 }
