@@ -7,6 +7,7 @@ import com.capgemini.Model.Kamers.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +20,7 @@ import java.util.List;
 public class BookingRepository {
 
     @Autowired
-    DatabaseService databaseService;
+    DataSource dataSource;
 
     @Autowired
     GuestRepository guestRepository;
@@ -30,7 +31,7 @@ public class BookingRepository {
 
     public ArrayList<Booking> getAllBookings() throws SQLException {
         ArrayList<Booking> bookingList = new ArrayList<>();
-        try (Connection connection = databaseService.getConnection("hotel2")) {
+        try (Connection connection = dataSource.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM Booking")) {
                 try (ResultSet rs = statement.executeQuery()) {
                     while (rs.next()) {
@@ -43,7 +44,7 @@ public class BookingRepository {
     }
 
     public Booking getBooking(int id) throws SQLException {
-        try (Connection connection = databaseService.getConnection("hotel2")) {
+        try (Connection connection = dataSource.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM Booking WHERE BookingID = ?")) {
                 statement.setInt(1, id);
                 try (ResultSet rs = statement.executeQuery()) {

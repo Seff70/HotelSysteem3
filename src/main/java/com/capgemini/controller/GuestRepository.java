@@ -1,6 +1,7 @@
 package com.capgemini.controller;
 
 import com.capgemini.Model.Guests.Guest;
+import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,11 +19,11 @@ import java.util.List;
 public class GuestRepository {
 
     @Autowired
-    DatabaseService databaseService;
+    javax.sql.DataSource dataSource;
 
     public List<Guest> getAllGuests() throws SQLException {
         ArrayList<Guest> guestList = new ArrayList<>();
-        try (Connection connection = databaseService.getConnection("hotel2")) {
+        try (Connection connection = dataSource.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM Guest")) {
                 try (ResultSet rs = statement.executeQuery()) {
                     while (rs.next()) {
@@ -36,7 +37,7 @@ public class GuestRepository {
     }
 
     public Guest getGuest(int id) throws SQLException {
-        try (Connection connection = databaseService.getConnection("hotel2")) {
+        try (Connection connection = dataSource.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM Guest WHERE GuestID = ?")) {
                 statement.setInt(1, id);
                 try (ResultSet rs = statement.executeQuery()) {
@@ -62,7 +63,7 @@ public class GuestRepository {
     }
 
     public boolean addGuest(Guest guest) throws SQLException{
-        try (Connection connection = databaseService.getConnection("hotel2")) {
+        try (Connection connection = dataSource.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement("insert into Guest (name, address, zipcode,city,country,phonenumber,special) VALUES (?,?,?,?,?,?,?)");) {
                 statement.setString(1, guest.getName());
                 statement.setString(2, guest.getAddress());
