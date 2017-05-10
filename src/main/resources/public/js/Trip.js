@@ -17,7 +17,7 @@ $.get("/api/Tochten", function(result) {
          if(Trip.endTime != null) {
              eind = Trip.endTime[2]+ "-" + Trip.endTime[1] + "-" + Trip.endTime[0] + " " + pad(Trip.endTime[3], 2) + ":" + pad(Trip.endTime[4], 2)
          }
-        var totaal = [Trip.tripID, start, eind, Trip.type, Trip.bootnummer];
+        var totaal = [Trip.tripID, start, eind, Trip.type];
 
        dataSet.push(totaal);
 
