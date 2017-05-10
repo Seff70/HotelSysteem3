@@ -22,16 +22,16 @@ public class TripController {
     DatabaseService databaseService;
 
     @Autowired
-    TripRepository Eric;
+    TripRepository tripRepository;
 
     @RequestMapping(value = "/api/Tochten", method = RequestMethod.GET)
     public List<Trip> tocht() throws SQLException {
-        return Eric.getAllTrips();
+        return tripRepository.getAllTrips();
     }
 
-//    @RequestMapping(value = "/api/Tochten", method = RequestMethod.POST)
-//    public boolean addtochtlist(@RequestBody Trip trip) throws SQLException {
-//        //  return TripRepository.addTrip(trip);
-//
-//    }
+    @RequestMapping(value = "/api/Tochten", method = RequestMethod.POST)
+    public boolean addtochtlist(@RequestBody Trip trip) throws SQLException {
+         return tripRepository.addTrip(trip);
+
+    }
 }

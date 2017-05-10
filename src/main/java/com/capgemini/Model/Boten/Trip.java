@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 public abstract class Trip {
 
     private int tripID;
-    private LocalDateTime starttime;
-    private LocalDateTime endtime;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
     private int bootnummer;
 
     public int getBootnummer() {
@@ -23,11 +23,11 @@ public abstract class Trip {
         this.bootnummer = bootnummer;
     }
 
-    public Trip(int tripID, LocalDateTime startTime, LocalDateTime endTime, int BoatID) {
-        this.bootnummer = BoatID;
+    public Trip(int tripID, LocalDateTime startTime, LocalDateTime endTime, int bootnummer) {
+        this.bootnummer = bootnummer;
         this.tripID = tripID;
-        this.starttime = startTime;
-        this.endtime = endTime;
+        this.startTime = startTime;
+        this.endTime = endTime;
 
 
     }
@@ -40,25 +40,25 @@ public abstract class Trip {
         this.tripID = tripID;
     }
 
-    public LocalDateTime getStarttime() {
-        return starttime;
+    public LocalDateTime getStartTime() {
+        return startTime;
     }
 
-    public void setStarttime(LocalDateTime starttime) {
-        this.starttime = starttime;
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
     }
 
-    public LocalDateTime getEndtime() {
-        return endtime;
+    public LocalDateTime getEndTime() {
+        return endTime;
     }
 
-    public void setEndtime(LocalDateTime endtime) {
-        this.endtime = endtime;
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
     }
 
     boolean start() {
-        if (starttime == null) {
-            starttime = LocalDateTime.now();
+        if (startTime == null) {
+            startTime = LocalDateTime.now();
             return (true);
         } else {
             return false;
@@ -66,8 +66,8 @@ public abstract class Trip {
     }
 
     boolean stop() {
-        if (endtime == null) {
-            endtime = LocalDateTime.now();
+        if (endTime == null) {
+            endTime = LocalDateTime.now();
             return (true);
         } else {
             return false;
@@ -75,8 +75,8 @@ public abstract class Trip {
     }
 
     Duration getDuur() {
-        if (starttime != null && endtime != null) {
-            return Duration.between( starttime, endtime );
+        if (startTime != null && endTime != null) {
+            return Duration.between( startTime, endTime );
         } else {
             return Duration.ZERO;
         }

@@ -11,31 +11,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @RestController
 public class BoatController {
 
     @Autowired
-    DatabaseService databaseService;
+    BoatRepository boatRepository;
 
     @RequestMapping(value = "/api/boot", method= RequestMethod.GET )
-    public ArrayList<Boat> boot() throws SQLException{
-
-        Connection connection = databaseService.getConnection("hotel2");
-        PreparedStatement statement = connection.prepareStatement("SELECT * FROM Boat");
-        ResultSet rs = statement.executeQuery();
-
-        ArrayList<Boat> botenList = new ArrayList<>();
-        while(rs.next()) {
-            int Boatnumber = rs.getInt( "Boatnumber" );
-            Boat boot = new Boat();
-            boot.setNummer(Boatnumber);
-            botenList.add(boot);
-
-        }
-        return botenList ;
-
+    public List<Boat> boot() throws SQLException{
+        return boatRepository.getAllBoats();
     }
 
 

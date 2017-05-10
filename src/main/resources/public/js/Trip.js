@@ -12,10 +12,10 @@ $.get("/api/Tochten", function(result) {
        var item = [];
        for (var i = 0 ; i < result.length ; i++) {
         var Trip = result[i];
-        var start = "" + Trip.starttime[2]+ "-" + Trip.starttime[1] + "-" + Trip.starttime[0] + " " + pad(Trip.starttime[3], 2) + ":" + pad(Trip.starttime[4], 2)
+        var start = "" + Trip.startTime[2]+ "-" + Trip.startTime[1] + "-" + Trip.startTime[0] + " " + pad(Trip.startTime[3], 2) + ":" + pad(Trip.startTime[4], 2)
         var eind = ""
-         if(Trip.endtime != null) {
-             eind = Trip.endtime[2]+ "-" + Trip.endtime[1] + "-" + Trip.endtime[0] + " " + pad(Trip.endtime[3], 2) + ":" + pad(Trip.endtime[4], 2)
+         if(Trip.endTime != null) {
+             eind = Trip.endTime[2]+ "-" + Trip.endTime[1] + "-" + Trip.endTime[0] + " " + pad(Trip.endTime[3], 2) + ":" + pad(Trip.endTime[4], 2)
          }
         var totaal = [Trip.tripID, start, eind, Trip.type, Trip.bootnummer];
 

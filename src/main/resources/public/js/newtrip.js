@@ -1,16 +1,14 @@
-
 $("#btntrip").click(function(event){
     event.preventDefault();
-    var newtrip= { InputTrip:$("#InputTrip").val(),
-                    InputStart:$("#InputStart").val(),
-                    InputEnd:$("#InputEnd").val(),
-                    InputType:$("#InputType").val(),
-                    InputComment:$("#InputComment").val();
-
+    var newtrip ={ bootnummer:$("#InputBoat").val(),
+                    startTime:$("#InputStart").val(),
+                    endTime:$("#InputEnd").val(),
+                    type:"." + $("#InputType").val()
+                    };
 
 console.log(newtrip);
-    $.ajax({
 
+            $.ajax({
             contentType: "application/json",
             type: "POST",
             url:"/api/Tochten",

@@ -8,8 +8,8 @@ import java.time.LocalDateTime;
  */
 public class Rivier extends Trip {
 
-    public Rivier(int tripID, LocalDateTime startTime, LocalDateTime endTime, int BoatID) {
-        super(tripID,startTime,endTime,BoatID);
+    public Rivier(int tripID, LocalDateTime startTime, LocalDateTime endTime, int bootnummer) {
+        super(tripID,startTime,endTime,bootnummer);
     }
 
 

@@ -1,23 +1,17 @@
 package com.capgemini.controller;
 
+import com.capgemini.Model.Boten.Boat;
 import com.capgemini.Model.Boten.Meer;
 import com.capgemini.Model.Boten.Rivier;
 import com.capgemini.Model.Boten.Trip;
-import com.capgemini.Model.Guests.Guest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 
 
 @Service
@@ -63,7 +57,9 @@ public class TripRepository {
         int tripID = rs.getInt( "TripID" );
         Timestamp startTime = rs.getTimestamp("startTime");
         Timestamp endTimestamp = rs.getTimestamp( "endTime" );
-        int Bootnummer = rs.getInt( "BoatID" );
+        int boatID = rs.getInt( "BoatID" );
+        Boat boat = boatRepository.getBoat( boatID );
+        int bootnummer = boat.getNummer();
         LocalDateTime endTime;
         if (endTimestamp != null) {
             endTime = endTimestamp.toLocalDateTime();
@@ -72,27 +68,25 @@ public class TripRepository {
         }
 
         String type = rs.getString( "type" );
-        if (type.equals( "Meer" )) {
-            return new Meer( tripID, startTime.toLocalDateTime(), endTime, Bootnummer);
-        } else if (type.equals( "Rivier" )) {
-            return new Rivier( tripID, startTime.toLocalDateTime(), endTime, Bootnummer);
+        if ("Meer".equals( type )) {
+            return new Meer( tripID, startTime.toLocalDateTime(), endTime, bootnummer);
+        } else if ("Rivier".equals( type )) {
+            return new Rivier( tripID, startTime.toLocalDateTime(), endTime, bootnummer);
         } else {
-            throw new IllegalArgumentException( "Geen gelding invoer" );
+            throw new IllegalArgumentException( "Geen geldig type tocht: " + type );
         }
 
 
     }
 
-
-
     public boolean addTrip(Trip trip) throws SQLException{
+        Boat boat = boatRepository.findBoat( trip.getBootnummer() );
         try (Connection connection = databaseService.getConnection("hotel2")) {
-            try (PreparedStatement statement = connection.prepareStatement("insert into Trip (TripID, startTime, endTime,BoatID) VALUES (?,?,?,?)");) {
-                statement.setInt(1, trip.getTripID());
-                statement.setTimestamp(2, Timestamp.valueOf( trip.getStarttime() ));
-                statement.setTimestamp(3, Timestamp.valueOf( trip.getEndtime() ));
-                statement.setInt(3, trip.getBootnummer());
-
+            try (PreparedStatement statement = connection.prepareStatement("insert into Trip (startTime, endTime,BoatID,type) VALUES (?,?,?,?)")) {
+                statement.setTimestamp(1, Timestamp.valueOf( trip.getStartTime() ));
+                statement.setTimestamp(2, Timestamp.valueOf( trip.getEndTime() ));
+                statement.setInt(3, boat.getBoatID());
+                statement.setString( 4, trip.getClass().getSimpleName() );
                 int result = statement.executeUpdate();
                 return result>0;
             }

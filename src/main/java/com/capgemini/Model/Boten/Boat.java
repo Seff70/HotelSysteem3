@@ -4,7 +4,21 @@ package com.capgemini.Model.Boten;
  * Created by JVERDUIJ on 5-5-2017.
  */
 public class Boat {
+    private int boatID;
     private int nummer;
+
+    public Boat(int boatID, int nummer) {
+        this.boatID = boatID;
+        this.nummer = nummer;
+    }
+
+    public int getBoatID() {
+        return boatID;
+    }
+
+    public void setBoatID(int boatID) {
+        this.boatID = boatID;
+    }
 
     public int getNummer() {
         return nummer;
@@ -14,19 +28,5 @@ public class Boat {
         this.nummer = nummer;
     }
 
-    public String getBootnaam() {
-        return bootnaam;
-    }
-
-    public void setBootnaam(String bootnaam) {
-        this.bootnaam = bootnaam;
-    }
-
-    private String bootnaam;
-    public Boat(int nummer, String bootnaam){
-        this.bootnaam =bootnaam;
-        this.nummer=nummer;
-    }
-    public Boat(){};
 
 }

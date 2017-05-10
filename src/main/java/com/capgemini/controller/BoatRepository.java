@@ -23,7 +23,7 @@ public class BoatRepository {
             try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM Boat")){
                 try (ResultSet rs = statement.executeQuery()) {
                     while (rs.next()) {
-                        boatList.add( (Boat) rs );
+                        boatList.add(mapBoat( rs ));
                     }
                 }
             }
@@ -45,11 +45,24 @@ public class BoatRepository {
         return null;
     }
 
+    public Boat findBoat(int bootnummer) throws SQLException {
+        try (Connection connection = databaseService.getConnection("hotel2")){
+            try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM Boat WHERE boatnumber = ?")){
+                statement.setInt(1, bootnummer);
+                try (ResultSet rs = statement.executeQuery()) {
+                    if (rs.next()) {
+                        return mapBoat(rs);
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
     private Boat mapBoat(ResultSet rs) throws SQLException {
+        int boatID = rs.getInt("BoatID");
         int boatnumber = rs.getInt("boatnumber");
-        Boat boat = new Boat();
-        boat.setNummer( boatnumber );
-        return boat;
+        return new Boat(boatID, boatnumber);
     }
 
 }
