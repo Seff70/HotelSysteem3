@@ -10,7 +10,7 @@ $("#btn2").click(function(event){
 
             contentType: "application/json",
             type: "POST",
-            url:"/api/rooms/addroom",
+            url:"/api/rooms",
             data: JSON.stringify(k),
             success: function(result) {
                         console.log(result);

@@ -26,11 +26,15 @@ RoomRepository roomRepository;
         return roomRepository.findByRoomNumber(roomNumber);
     }
 
-    @RequestMapping(value= "/api/rooms/addroom", method=RequestMethod.POST)
-    public Room addRoom (@RequestBody Room room) throws SQLException {
+    @RequestMapping(value= "/api/rooms", method=RequestMethod.POST)
+    public Room saveRoom (@RequestBody Room room) throws SQLException {
         return roomRepository.save(room);
     }
-
+    @RequestMapping(value= "/api/rooms/delete", method=RequestMethod.POST)
+    public boolean deleteRoom (@RequestBody Room room) throws SQLException {
+         roomRepository.delete(room.getRoomNumber());
+         return true;
+    }
 }
 
 

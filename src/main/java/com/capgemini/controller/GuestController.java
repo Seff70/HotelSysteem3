@@ -2,10 +2,7 @@ package com.capgemini.controller;
 
 import com.capgemini.Model.Guests.Guest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 
@@ -42,7 +39,11 @@ public class GuestController {
     @RequestMapping(value = "/api/guests", method = RequestMethod.POST)
     public Guest addGuestList(@RequestBody Guest guest) throws SQLException {
         return guestRepository.save(guest);
+    }
 
+    @RequestMapping(value = "/api/guests/{GuestID}", method = RequestMethod.DELETE)
+    public void removeGuest(@PathVariable int GuestID) throws SQLException {
+        guestRepository.delete(GuestID);
     }
 
 }

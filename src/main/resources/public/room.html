@@ -13,7 +13,7 @@
 </head>
 
 <body>
-
+<div class="container">
     <table id="tableRooms" class="display">
         Hotel Klaas
         <thead>
@@ -34,38 +34,27 @@
             </tr>
         </tbody>
     </table>
-    <br />
     <br/>
-    <div class="container">
-        <p id="content">Wat is het kamertype van deze kamer?</p>
+    <br/>
+    <p id="content">Wat is het kamertype van deze kamer?</p>
         <form>
             <input type="text" id="tf1" placeholder="Kamernummer"/>
             <button id="btn1">Zoek</button>
         </form>
-    </div>
+
     <br>
+    <form id="newroom" hidden>
+            <input type="text" id="inputaddnumber" placeholder="Kamernummer"/>
+            <input type="text" id="inputaddtype" placeholder="Standaard of Luxe"/>
+            <button id="btn2">Submit</button>
+            <button id="btn3">Delete<</button>
+    </form>
+
     <div>
-        <a href="addroom.html">
-            <button>Nieuwe kamer toevoegen</button>
-        </a>
+
+            <button id="btn4">Nieuwe kamer toevoegen</button>
+
     </div>
-    <br>
-    <div>
-        <a href="changeroom.html">
-            <button>Bestaande kamer wijzigen</button>
-        </a>
-    </div>
-    <br>
-    <div>
-        <a href="blockroom.html">
-            <button>Kamer tijdelijk blokkeren</button>
-        </a>
-    </div>
-    <br>
-    <div>
-        <a href="removeroom.html">
-            <button>Kamer verwijderen</button>
-        </a>
     </div>
 
 <script src="lib/jquery-3.2.1.min.js"></script>
