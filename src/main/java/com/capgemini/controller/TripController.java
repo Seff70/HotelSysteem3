@@ -19,9 +19,6 @@ import java.util.List;
 public class TripController {
 
     @Autowired
-    DatabaseService databaseService;
-
-    @Autowired
     TripRepository Eric;
 
     @RequestMapping(value = "/api/Tochten", method = RequestMethod.GET)

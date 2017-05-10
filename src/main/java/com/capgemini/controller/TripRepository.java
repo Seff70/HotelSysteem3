@@ -7,6 +7,7 @@ import com.capgemini.Model.Guests.Guest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -24,7 +25,7 @@ import java.time.ZoneOffset;
 public class TripRepository {
 
     @Autowired
-    DatabaseService databaseService;
+    DataSource dataSource;
 
     @Autowired
     BoatRepository boatRepository;
@@ -32,7 +33,7 @@ public class TripRepository {
 
     public List<Trip> getAllTrips() throws SQLException {
         ArrayList<Trip> tripList = new ArrayList<>();
-        try (Connection connection = databaseService.getConnection( "hotel2" )) {
+        try (Connection connection = dataSource.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement( "SELECT * FROM Trip" )) {
                 try (ResultSet rs = statement.executeQuery()) {
                     while (rs.next()) {
@@ -46,7 +47,7 @@ public class TripRepository {
     }
 
     public Trip getTrip(int id) throws SQLException {
-        try (Connection connection = databaseService.getConnection( "hotel2" )) {
+        try (Connection connection = dataSource.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement( "SELECT * FROM Trip WHERE TripID = ?" )) {
                 statement.setInt( 1, id );
                 try (ResultSet rs = statement.executeQuery()) {
@@ -86,7 +87,7 @@ public class TripRepository {
 
 
     public boolean addTrip(Trip trip) throws SQLException{
-        try (Connection connection = databaseService.getConnection("hotel2")) {
+        try (Connection connection = dataSource.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement("insert into Trip (TripID, startTime, endTime,BoatID) VALUES (?,?,?,?)");) {
                 statement.setInt(1, trip.getTripID());
                 statement.setTimestamp(2, Timestamp.valueOf( trip.getStarttime() ));
