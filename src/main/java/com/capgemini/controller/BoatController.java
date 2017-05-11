@@ -28,15 +28,9 @@ public class BoatController {
     }
 
     @RequestMapping(value = "/api/newtrip", method = RequestMethod.GET)
-    public Boat getAvailableBoat(){
-        System.out.println("tripRep = "+tripRepository.count());
-        //boolean[] isBoatAvailable = new boolean[(int)tripRepository.findAll().iterator()];
-        //Arrays.fill(isBoatAvailable, true);
-
-//        for(Trip trip : tripRepository.findAll()) {
-
-        }
-        return boatRepository.findOne(1);
+    public Trip newTrip(Boat b){
+        Trip trip = new Trip(Boat b);
+        return trip;
     }
 
 }
