@@ -28,8 +28,9 @@ public class BoatController {
         return boatRepository.findAll();
     }
 
-    @RequestMapping(value = "/api/addlaketrip", method = RequestMethod.POST)
-    public Trip newLakeTrip(@RequestBody Boat b) throws SQLException{
+    @RequestMapping(value = "/api/boats/{boatID}/addlaketrip", method = RequestMethod.POST)
+    public Trip newLakeTrip(@PathVariable int boatID) throws SQLException{
+        Boat b = boatRepository.findOne(boatID);
         System.out.println("Bootgeg in controller: nummer= "+ b.getNummer());
         Trip trip = new Meer();
         trip.start();
