@@ -2,10 +2,6 @@ package com.capgemini.Model.Boten;
 
 import javax.persistence.*;
 
-/**
- * Created by JVERDUIJ on 5-5-2017.
- */
-
 @Entity
 public class Boat {
 
