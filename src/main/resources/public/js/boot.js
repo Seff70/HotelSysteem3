@@ -1,74 +1,99 @@
-$.get("/api/boot", function(result) {
-       var dataSet = [];
-       for (var i = 0 ; i < result.length ; i++) {
-        var beschikbaar;
-         if (result[i].trip == null) {
-            beschikbaar = "Beschikbaar";
-         }
-         else {
-            beschikbaar = "Onderweg met tochtnummer " + result[i].trip.tripID;
-         }
-        dataSet.push([result[i].nummer, beschikbaar])
-       }
-        console.log(dataSet);
-       $("#botentabel").DataTable({
-            data: dataSet
-       });
+$.get("/api/boats", function(result) {
 
-       var table = $('#botentabel').DataTable();
+    var table = $("#botentabel").DataTable({
+        columns: [
+            {data: 'nummer'},
+            {
+                data: 'currentTrip',
+                render: function(data, type, row) {
+                    var trip = row.trip;
+                    if (trip == null) {
+                        return "Beschikbaar";
+                        }
+                    else {
+                        return "Onderweg met tochtnummer " + trip.tripID;
+                    }
+                }
+            }
+        ],
+        data: result
+    });
+
+//       var dataSet = [];
+//       for (var i = 0 ; i < result.length ; i++) {
+//        var beschikbaar;
+//         if (result[i].trip == null) {
+//            beschikbaar = "Beschikbaar";
+//         }
+//         else {
+//            beschikbaar = "Onderweg met tochtnummer " + result[i].trip.tripID;
+//         }
+//         var a = {boatID: result[i].boatID, nummer: result[i].nummer, beschikbaar: beschikbaar};
+//         dataSet.push(a);
+//       }
+//        console.log(dataSet);
+//       $("#botentabel").DataTable({
+//            columns: [
+//            {data: "nummer"},
+//            {data: "beschikbaar"}
+//            ],
+//            data: dataSet
+//       });
+
+//       var table = $('#botentabel').DataTable();
 
      $('#botentabel tbody').on('click', 'tr', function () {
-                var dataFromRow = table.row( this ).data();
-                console.log(dataFromRow);
+                event.preventDefault();
+                var boat = table.row( this ).data();
+                console.log("boot: " + boat + ", bootnr " + boat.nummer);
                 //start een nieuwe tocht
-                if (dataFromRow[1]=="Beschikbaar") {
+                if (boat.trip==null) {
                     $("#boatTableBig").hide();
-                    $("#header").text("Gegevens van boot " + dataFromRow[0]);
+                    $("#header").text("Gegevens van boot " + boat.nummer);
                     $("#oneBoat").show();
-                    startTrip(dataFromRow);
+                    startTrip(boat);
                 }
                 // beeindig de aangeklikte tocht
                 else {
                     $("#boatTableBig").hide();
-                    $("#header").text("Gegevens van boot " + dataFromRow[0]);
+                    $("#header").text("Gegevens van boot " + boat.nummer);
                     $("#endTripContainer").show();
-                    $("#tripID").text("Tochtnummer "+ dataFromRow[1]);
+                    $("#tripID").text("Tochtnummer "+ boat.trip.tripID);
                     //$("#startTime").val("")
     //                <div class="row" id="endTripContainer" hidden>
     //                            <div id="tripID"></div><br>
     //                            <div id="startTime"></div><br>
     //                            <div id="tripType"></div><br>
-                    endTrip(dataFromRow)
+                    endTrip(boat);
                 }
     });
 
     function startTrip(dataFromRow){
-        event.preventDefault();
         $('#startLakeTrip').on('click', function(){
+            event.preventDefault();
             startLakeTrip(dataFromRow);
         });
         $("#startRiverTrip").on('click', function(){
+            event.preventDefault();
             startRiverTrip(dataFromRow);
         });
         $("#cancelStartTrip").on('click', function(){
+            event.preventDefault();
             $("#boatTableBig").show();
             $("#header").text("Overzicht Boten");
             $("#oneBoat").hide();
         });
     };
 
-    function startLakeTrip(dataFromRow) {
-        console.log(JSON.stringify({nummer: dataFromRow[0]}));
+    function startLakeTrip(boat) {
+        console.log(JSON.stringify(boat));
         $.ajax({
             contentType: "application/json",
             type: "POST",
-            url: "/api/addlaketrip/",
-            data: JSON.stringify({
-                nummer: dataFromRow[0]
-                //currentTrip: null
-                }),
+            url: "/api/boats/"+ boat.boatID + "/addlaketrip",
+            data: JSON.stringify(boat),
             success: function(result){
-                alert("Tocht " + result.tripID + " is gestart met boot " + dataFromRow[0]);
+                alert("Tocht " + result.tripID + " is gestart met boot " + boat.nummer);
                 $("#boatTableBig").show();
                 $("#header").text("Overzicht Boten");
                 $("#oneBoat").hide();
