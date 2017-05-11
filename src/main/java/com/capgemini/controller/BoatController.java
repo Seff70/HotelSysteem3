@@ -29,8 +29,8 @@ public class BoatController {
 
     @RequestMapping(value = "/api/newtrip", method = RequestMethod.GET)
     public Trip newTrip(Boat b){
-        Trip trip = new Trip(Boat b);
-        return trip;
+//        Trip trip = new Trip(b);
+//        return trip;
     }
 
 }
