@@ -2,8 +2,9 @@ $.get("/api/rooms", function (result) {
     console.table(result);
     var table = $('#tableRooms').DataTable({
         columns: [
-            {data: "roomNumber"},
-            {data: "roomType"}
+            {data: "roomNumberreal"},
+            {data: "roomType"},
+            {data: "availability"}
         ],
         data: result
     });
@@ -12,15 +13,18 @@ $.get("/api/rooms", function (result) {
             var data = table.row(this).data();
             console.log('API row values : ', data);
             $("#newroom").show();
-            $("#tableRooms").hide();
-            $("#inputaddnumber").hide();
+            $("#tableRooms").show();
+            $("#submit").hide();
+            $("#addroom").hide();
+            $("#inputaddnumber").val(data.roomNumberreal);
             $("#inputaddtype").val(data.roomType);
-            $("#btn2").click(function (event) {
+            $("#inputboolean").prop('checked', data.availability)
+            $("#edit").click(function (event) {
                 event.preventDefault();
                 editRoom(data);
             });
 
-            $("#btn3").click(function (event) {
+            $("#delete").click(function (event) {
                 event.preventDefault();
                 deleteRoom(data);
             })
@@ -29,17 +33,36 @@ $.get("/api/rooms", function (result) {
     );
 });
 
+//nieuwe kamer toevoegen
+$("#addroom").click(function (event) {
+    $("#newroom").show();
+    $("#delete").hide();
+    $("#edit").hide();
+    $("#addroom").hide();
+
+     $("#submit").click(function (event) {
+     event.preventDefault();
+     addroom();
+
+    });
+
+});
+
 function editRoom(data) {
+    var edit ={ roomNumber: data.roomNumber,
+                roomNumberreal: $("#inputaddnumber").val(),
+                roomType: $("#inputaddtype").val(),
+                availability: $("#inputboolean").is(':checked')
+                };
+
     $.ajax({
         contentType: "application/json",
         type: "POST",
         url: "/api/rooms",
-        data: JSON.stringify({
-            roomNumber: data.roomNumber,
-            roomType: $("#inputaddtype").val()
-        }),
+        data: JSON.stringify(edit),
         success: function (result) {
             console.log(result);
+
             location.href = "room.html"
         },
         error: function (e) {
@@ -56,7 +79,6 @@ function deleteRoom(data) {
         contentType: "application/json",
         type: "DELETE",
         url: "/api/rooms/" + data.roomNumber,
-        data: JSON.stringify(k),
         success: function (result) {
             console.log(result);
             location.href = "room.html"
@@ -69,35 +91,77 @@ function deleteRoom(data) {
     });
 }
 
-//nieuwe kamer toevoegen
-$("#btn4").click(function (event) {
-    $("#newroom").show();
-    $("#btn3").hide();
-    console.log("teskltj");
-});
-
-//bestaande kamer opzoeken
-$("#btn1").click(function (event) {
-    event.preventDefault();
-    var roomNumber = $("#tf1").val();
-    console.log("Kamernummer = " + roomNumber);
+function addroom() {
 
     $.ajax({
-
         contentType: "application/json",
-        type: "GET",
-        url: "/api/rooms/" + roomNumber,
+        type: "POST",
+        url: "/api/rooms",
+        data: JSON.stringify({
+                    roomNumberreal: $("#inputaddnumber").val(),
+                    roomType: $("#inputaddtype").val(),
+                    availability: $("#inputboolean").is(':checked')
+                           }),
         success: function (result) {
             console.log(result);
-            $("#content").text("Kamer " + result.roomNumber + " is een " + result.roomType + " kamer ");
+            location.href = "room.html"
         },
         error: function (e) {
             console.log(e);
-            $("#content").text("Dit is geen geldig kamernummer!");
+            $("#confirmaddroom").text("Uw invoer is niet correct.");
         }
 
     });
-});
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//bestaande kamer opzoeken
+//$("#zoek").click(function (event) {
+//    event.preventDefault();
+//    var roomNumber = $("#tf1").val();
+//    console.log("Kamernummer = " + roomNumber);
+//
+//    $.ajax({
+//
+//        contentType: "application/json",
+//        type: "GET",
+//        url: "/api/rooms/" + roomNumber,
+//        success: function (result) {
+//            console.log(result);
+//            $("#content").text("Kamer " + result.roomNumber + " is een " + result.roomType + " kamer ");
+//        },
+//        error: function (e) {
+//            console.log(e);
+//            $("#content").text("Dit is geen geldig kamernummer!");
+//        }
+//
+//    });
+//});
 
 
 
