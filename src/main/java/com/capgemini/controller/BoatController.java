@@ -40,6 +40,31 @@ public class BoatController {
         return trip;
     }
 
+    @RequestMapping(value = "/api/boats/{boatID}/addrivertrip", method = RequestMethod.POST)
+    public Trip newRiverTrip(@PathVariable int boatID) throws SQLException{
+        Boat b = boatRepository.findOne(boatID);
+        System.out.println("Bootgeg in controller: nummer= "+ b.getNummer());
+        Trip trip = new Rivier();
+        trip.start();
+        trip = tripRepository.save(trip);
+        b.setTrip(trip);
+        boatRepository.save(b);
+        return trip;
+    }
+
+    @RequestMapping(value = "/api/boats/{boatID}/endtrip", method = RequestMethod.POST)
+    public Trip endTrip(@PathVariable int boatID) throws SQLException{
+        Boat b = boatRepository.findOne(boatID);
+        System.out.println("Bootgeg in controller eindig trip: nummer= "+ b.getNummer());
+        Trip trip = b.getTrip();
+        trip.stop();
+        trip = tripRepository.save(trip);
+        b.setTrip(null);
+        boatRepository.save(b);
+        return trip;
+    }
+
+
 }
 
 
