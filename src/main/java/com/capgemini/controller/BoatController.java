@@ -1,6 +1,7 @@
 package com.capgemini.controller;
 
 import com.capgemini.Model.Boten.Boat;
+import com.capgemini.Model.Boten.Rivier;
 import com.capgemini.Model.Boten.Trip;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,9 +29,9 @@ public class BoatController {
     }
 
     @RequestMapping(value = "/api/newtrip", method = RequestMethod.GET)
-    public Trip newTrip(Boat b){
+    public int newTrip(Boat b){
 //        Trip trip = new Trip(b);
-//        return trip;
+        return 0;
     }
 
 }
