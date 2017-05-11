@@ -23,12 +23,12 @@ public class BoatController {
     @Autowired
     TripRepository tripRepository;
 
-    @RequestMapping(value = "/api/boot", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/boats", method = RequestMethod.GET)
     public Iterable<Boat> boot() throws SQLException {
         return boatRepository.findAll();
     }
 
-    @RequestMapping(value = "/api/addlaketrip/", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/addlaketrip", method = RequestMethod.POST)
     public Trip newLakeTrip(@RequestBody Boat b) throws SQLException{
         System.out.println("Bootgeg in controller: nummer= "+ b.getNummer());
         Trip trip = new Meer();
