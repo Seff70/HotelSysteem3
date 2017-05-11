@@ -35,7 +35,7 @@ $.get("/api/rooms", function(result) {
                               $("#confirmaddroom").text(e);
                       }
 
-         });
+                    });
          // console.log("Kamernummer = "+ $("#tf1").val())
       })
 
@@ -46,9 +46,9 @@ $.get("/api/rooms", function(result) {
            $.ajax({
 
                       contentType: "application/json",
-                      type: "POST",
-                      url:"/api/rooms/delete",
-                      data: JSON.stringify(k),
+                      type: "DELETE",
+                      url:"/api/rooms/" + k.roomNumber,
+//                      data: JSON.stringify(k),
                       success: function(result) {
                                   console.log(result);
                                   location.href="room.html"
