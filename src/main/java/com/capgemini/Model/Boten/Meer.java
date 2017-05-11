@@ -9,11 +9,12 @@ import java.time.LocalDateTime;
 @Entity
 public class Meer extends Trip {
 
-    protected Meer() {
+    public Meer() {
     }
+//
+//    public Meer(int tripID, LocalDateTime startTime, LocalDateTime endTime) {
+//        super(tripID,startTime,endTime);
+//    }
 
-    public Meer(int tripID, LocalDateTime startTime, LocalDateTime endTime) {
-        super(tripID,startTime,endTime);
-    }
 
 }

@@ -17,7 +17,7 @@ public class TripController {
     TripRepository tripRepository;
 
     @RequestMapping(value = "/api/Tochten", method = RequestMethod.GET)
-    public Iterable<Trip> tocht() throws SQLException {
+    public List<Trip> tocht() throws SQLException {
         return tripRepository.findAll();
     }
 

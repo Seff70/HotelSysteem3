@@ -1,14 +1,14 @@
 package com.capgemini.controller;
 
 import com.capgemini.Model.Boten.Boat;
+import com.capgemini.Model.Boten.Meer;
 import com.capgemini.Model.Boten.Rivier;
 import com.capgemini.Model.Boten.Trip;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -28,10 +28,15 @@ public class BoatController {
         return boatRepository.findAll();
     }
 
-    @RequestMapping(value = "/api/newtrip", method = RequestMethod.GET)
-    public int newTrip(Boat b){
-//        Trip trip = new Trip(b);
-        return 0;
+    @RequestMapping(value = "/api/addlaketrip/", method = RequestMethod.POST)
+    public Trip newLakeTrip(@RequestBody Boat b) throws SQLException{
+        System.out.println("Bootgeg in controller: nummer= "+ b.getNummer());
+        Trip trip = new Meer();
+        trip.start();
+        trip = tripRepository.save(trip);
+        b.setTrip(trip);
+        boatRepository.save(b);
+        return trip;
     }
 
 }
