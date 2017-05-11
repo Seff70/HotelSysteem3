@@ -42,26 +42,19 @@
     <br>
     <form id="newroom" hidden>
             <input type="text" id="inputaddnumber" placeholder="Kamernummer"/>
-            <!--<input type="dropdown" id="inputaddtype" placeholder="Standaard of Luxe"/>-->
-        <select id="inputaddtype">
-            <option value="Standaard">Standaard</option>
-            <option value="Luxe">Luxe</option>
-        </select>
-        <!--<select id="inputboolean">-->
-            <!--<option value="true">Beschikbaar</option>-->
-            <!--<option value="false">niet beschikbaar</option>-->
-        <!--</select>-->
-
-        <span>Beschikbaar?<span> </span><input type="checkbox" id="inputboolean" placeholder="Beschikbaar ja of nee"/></span>
-            <button id="submit">Submit</button>
-            <button id="delete">Delete</button>
-            <button id="edit">Edit</button>
-
+            <select id="inputaddtype">
+                 <option value="Standaard">Standaard</option>
+                 <option value="Luxe">Luxe</option>
+             </select>
+            <span>Beschikbaar?<span> </span><input type="checkbox" id="inputboolean" placeholder="Beschikbaar ja of nee"/></span>
+                <button class="btn btn-success btn-xs" id="submit">Submit</button>
+                <button class="btn btn-danger btn-xs"id="delete">Delete</button>
+                <button class="btn btn-warning btn-xs"id="edit">Edit</button>
     </form>
 
     <div>
 
-            <button id="addroom">Nieuwe kamer toevoegen</button>
+            <button class="btn btn-primary btn-block "id="addroom">Nieuwe kamer toevoegen</button>
 
     </div>
     </div>
