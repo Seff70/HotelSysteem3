@@ -14,13 +14,18 @@
 <body>
 <!-- Start container -->
 <div class="container">
-    <h1>Gastenlijst:</h1>
+
 
     <!-- Start Guestlist -->
+    <br>
+    <h1>Gastenlijst</h1>
+    <br>
+
+
     <div id="Gastenlijst">
         <table id="guestList" class="table table-striped" style="width:80%">
+
             <thead>
-            Gastenlijst
             <tr>
                 <th>GuestID</th>
                 <th>Name</th>
@@ -43,6 +48,10 @@
 
     <!-- Start Guestlist -->
     <form id="newguestform" hidden>
+        <br>
+        <h3>Nieuwe gast</h3>
+        <p>Voer de volgende data in om een nieuwe gast aan te maken</p>
+        <br>
         <div class="form-group">
             <label for="InputName">Naam</label>
             <input type="text" class="form-control" id="InputName" placeholder="Naam">
@@ -71,11 +80,13 @@
             <label for="InputSpecial">Opmerkingen</label>
             <input type="text" class="form-control" id="InputSpecial" placeholder="Opmerkingen">
         </div>
+
         <div class="checkbox">
             <label>
                 <input type="checkbox"> Is zakelijke gast (werkt nog niet)
             </label>
         </div>
+        <br>
         <button type="submit" class="btn btn-default" id="addGuest">Submit</button>
         <button type="submit" class="btn btn-default" id="deleteGuest" hidden>Delete</button>
         <button type="submit" class="btn btn-default" id="editGuest" hidden>Edit Guest</button>

@@ -122,4 +122,5 @@ function deleteGuest(data){
 $('#btnAddGuest').click(function() {
     $("#newguestform").show();
     $("#guestlist").hide();
+
 })

@@ -15,7 +15,9 @@
 <body>
 <div class="container">
     <table id="tableRooms" class="display">
-        Hotel Klaas
+        <br>
+        <h1>Kamerlijst</h1>
+        <br>
         <thead>
             <tr>
                 <th>Kamernummer</th>
@@ -40,24 +42,32 @@
     <br/>
     <br/>
     <br>
+
     <form id="newroom" hidden>
-            <input type="text" id="inputaddnumber" placeholder="Kamernummer"/>
-            <select id="inputaddtype">
-                 <option value="Standaard">Standaard</option>
-                 <option value="Luxe">Luxe</option>
-             </select>
-            <span>Beschikbaar?<span> </span><input type="checkbox" id="inputboolean" placeholder="Beschikbaar ja of nee"/></span>
-                <button class="btn btn-success btn-xs" id="submit">Submit</button>
-                <button class="btn btn-danger btn-xs"id="delete">Delete</button>
-                <button class="btn btn-warning btn-xs"id="edit">Edit</button>
+        <input type="text" id="inputaddnumber" placeholder="Kamernummer"/>
+
+        <select id="inputaddtype">
+            <option value="Standaard">Standaard</option>
+            <option value="Luxe">Luxe</option>
+        </select>
+
+        <span>Beschikbaar?
+            <span> </span>
+            <input type="checkbox" id="inputboolean" placeholder="Beschikbaar ja of nee"/>
+        </span>
+
+        <button class="btn btn-success btn-xs" id="submit">Submit</button>
+        <button class="btn btn-danger btn-xs"id="delete">Delete</button>
+        <button class="btn btn-warning btn-xs"id="edit">Edit</button>
     </form>
 
     <div>
 
-            <button class="btn btn-primary btn-block btn-xs "id="addroom">Nieuwe kamer toevoegen</button>
+        <button class="btn btn-primary btn-block btn-xs "id="addroom">Nieuwe kamer toevoegen</button>
 
     </div>
-    </div>
+</div>
+
 
 <script src="lib/jquery-3.2.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
