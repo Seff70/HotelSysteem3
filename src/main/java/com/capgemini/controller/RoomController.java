@@ -30,6 +30,8 @@ RoomRepository roomRepository;
     public Room saveRoom (@RequestBody Room room) throws SQLException {
         return roomRepository.save(room);
     }
+
+
     @RequestMapping(value= "/api/rooms/{roomNumber}", method=RequestMethod.DELETE)
     public void deleteRoom (@PathVariable int roomNumber) throws SQLException {
          roomRepository.delete(roomNumber);

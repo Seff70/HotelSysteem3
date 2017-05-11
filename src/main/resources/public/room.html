@@ -20,15 +20,18 @@
             <tr>
                 <th>Kamernummer</th>
                 <th>Kamertype</th>
+                <th>Beschikbaar</th>
             </tr>
         </thead>
 
         <tbody>
             <tr>
                 <td>Row 1 Data 1</td>
+                <td>Row 1 Data 1</td>
                 <td>Row 1 Data 2</td>
             </tr>
             <tr>
+                <td>Row 2 Data 1</td>
                 <td>Row 2 Data 1</td>
                 <td>Row 2 Data 2</td>
             </tr>
@@ -36,23 +39,29 @@
     </table>
     <br/>
     <br/>
-    <p id="content">Wat is het kamertype van deze kamer?</p>
-        <form>
-            <input type="text" id="tf1" placeholder="Kamernummer"/>
-            <button id="btn1">Zoek</button>
-        </form>
-
     <br>
     <form id="newroom" hidden>
             <input type="text" id="inputaddnumber" placeholder="Kamernummer"/>
-            <input type="text" id="inputaddtype" placeholder="Standaard of Luxe"/>
-            <button id="btn2">Submit</button>
-            <button id="btn3">Delete<</button>
+            <!--<input type="dropdown" id="inputaddtype" placeholder="Standaard of Luxe"/>-->
+        <select id="inputaddtype">
+            <option value="Standaard">Standaard</option>
+            <option value="Luxe">Luxe</option>
+        </select>
+        <!--<select id="inputboolean">-->
+            <!--<option value="true">Beschikbaar</option>-->
+            <!--<option value="false">niet beschikbaar</option>-->
+        <!--</select>-->
+
+        <span>Beschikbaar?<span> </span><input type="checkbox" id="inputboolean" placeholder="Beschikbaar ja of nee"/></span>
+            <button id="submit">Submit</button>
+            <button id="delete">Delete</button>
+            <button id="edit">Edit</button>
+
     </form>
 
     <div>
 
-            <button id="btn4">Nieuwe kamer toevoegen</button>
+            <button id="addroom">Nieuwe kamer toevoegen</button>
 
     </div>
     </div>

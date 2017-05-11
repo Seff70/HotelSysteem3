@@ -13,14 +13,18 @@ public class Room {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int roomNumber;
+    private int roomNumberreal;
     private Etype roomType;
+    private boolean availability = true;
 
 
     protected Room() {}
 
-    public Room(int roomNumber, Etype roomType) {
+    public Room(int roomNumber, Etype roomType, int roomNumberreal, boolean availability) {
         this.roomNumber = roomNumber;
         this.roomType= roomType;
+        this.roomNumberreal = roomNumberreal;
+        this.availability = availability;
     }
 
     public int getRoomNumber() {
@@ -31,7 +35,9 @@ public class Room {
         return roomType;
     }
 
+    public int getRoomNumberreal() {return roomNumberreal;}
 
+    public boolean getAvailability() {return availability;}
 
 
 }
