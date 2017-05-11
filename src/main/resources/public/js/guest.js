@@ -4,7 +4,8 @@ $.get("api/guests", function(result) {
     for (var i = 0; i<result.length; i++) {
         $("#newguestform").hide();
         $("#guestlist").show();
-        $("#btn3").hide();
+        $("#deleteGuest").hide();
+        $("#editGuest").hide();
 
         dataSet.push([
             result[i].guestID,
@@ -18,46 +19,93 @@ $.get("api/guests", function(result) {
         ]);
     };
 
-    $("#guestlist").DataTable({
+    var table = $("#guestlist").DataTable({
         data: dataSet
     });
 
-    $(document).ready(function() {
-        console.log("komt hier");
+    $('#guestlist tbody').on('click', 'tr', function () {
+        var data = table.row( this ).data();
 
-        var table = $('#guestlist').DataTable();
+        console.log(data);
+        console.log("appel");
+        $("#newguestform").show();
+        $("#guestlist").hide();
+        $("#deleteGuest").show();
+        $("#editGuest").show();
 
-        $('#guestlist tbody').on('click', 'tr', function () {
-            var data = table.row( this ).data();
+        $("#InputName").val(data[1]);
+        $("#InputAddress").val(data[2]);
+        $("#InputZipcode").val(data[3]);
+        $("#InputCity").val(data[4]);
+        $("#InputCountry").val(data[5]);
+        $("#InputTelephone").val(data[6]);
+        $("#InputSpecial").val(data[7]);
 
-            console.log(data);
-            console.log("appel");
-            $("#newguestform").show();
-            $("#guestlist").hide();
-            $("#btn3").show();
 
-            $("#InputName").val(data[1]);
-            $("#InputAddress").val(data[2]);
-            $("#InputZipcode").val(data[3]);
-            $("#InputCity").val(data[4]);
-            $("#InputCountry").val(data[5]);
-            $("#InputTelephone").val(data[6]);
-            $("#InputSpecial").val(data[7]);
-
-            $("#btn3").click(function() {
-                $.ajax ({
-                    contentType:'application/json',
-                    type: "DELETE",
-                    url:"/api/guests/" + data[0],
-                    success: function() {
-                        console.log("Guest was deleted");
-                    },
-                });
+        $("#deleteGuest").click(function() {
+            $.ajax ({
+                contentType:'application/json',
+                type: "DELETE",
+                url:"/api/guests/" + data[0],
+                success: function() {
+                    console.log("Guest was deleted");
+                },
             });
-
-
         });
+
+         $("#editGuest").click(function() {
+            var newguest= { GuestID:data[0],
+                            name:$("#InputName").val(),
+                            address:$("#InputAddress").val(),
+                            zipcode:$("#InputZipcode").val(),
+                            city:$("#InputCity").val(),
+                            country:$("#InputCountry").val(),
+                            phonenumber:$("#InputTelephone").val(),
+                            special:$("#InputSpecial").val()};
+            $.ajax ({
+                contentType:'application/json',
+                type: "PUT",
+                data: JSON.stringify(newguest),
+                url:"/api/guests/" + data[0],
+                success: function() {
+                    console.log("Guest was edited");
+                },
+            });
+        });
+
+
     });
+});
+
+$("#addGuest").click(function(event){
+    event.preventDefault();
+    var newguest= { name:$("#InputName").val(),
+                    address:$("#InputAddress").val(),
+                    zipcode:$("#InputZipcode").val(),
+                    city:$("#InputCity").val(),
+                    country:$("#InputCountry").val(),
+                    phonenumber:$("#InputTelephone").val(),
+                    special:$("#InputSpecial").val()};
+
+    console.log(newguest);
+
+    $.ajax({
+
+            contentType: "application/json",
+            type: "POST",
+            url:"/api/guests",
+            data: JSON.stringify(newguest),
+            success: function(result) {
+                        console.log(result);
+                        location.href ="guest.html"
+                        },
+            error: function(e){
+                  console.log(e);
+
+                  var e = ("Het is niet gelukt om een gast toe te voegen")
+                     }
+          });
+
 });
 
 $('#btnAddGuest').click(function() {

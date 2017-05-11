@@ -29,4 +29,9 @@ public class GuestController {
         guestRepository.delete(GuestID);
     }
 
+    @RequestMapping(value = "/api/guests/{GuestID}", method = RequestMethod.PUT)
+    public Guest editGuest(@PathVariable int GuestID, @RequestBody Guest guest) throws SQLException {
+        return guestRepository.save(guest);
+    }
+
 }
