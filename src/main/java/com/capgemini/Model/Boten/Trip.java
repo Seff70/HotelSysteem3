@@ -1,8 +1,10 @@
 package com.capgemini.Model.Boten;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.persistence.*;
 import java.time.Duration;
@@ -32,6 +34,10 @@ public abstract class Trip {
         this.endTime = endTime;
     }
 
+    public Trip(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
     public int getTripID() {
         return tripID;
     }
@@ -44,7 +50,7 @@ public abstract class Trip {
         return endTime;
     }
 
-    boolean start() {
+    public boolean start() {
         if (startTime == null) {
             startTime = LocalDateTime.now();
             return (true);
@@ -53,7 +59,7 @@ public abstract class Trip {
         }
     }
 
-    boolean stop() {
+    public boolean stop() {
         if (endTime == null) {
             endTime = LocalDateTime.now();
             return (true);
@@ -62,6 +68,7 @@ public abstract class Trip {
         }
     }
 
+    @JsonProperty
     Duration getDuur() {
         if (startTime != null && endTime != null) {
             return Duration.between(startTime, endTime);

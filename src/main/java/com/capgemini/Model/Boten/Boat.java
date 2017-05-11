@@ -20,6 +20,7 @@ public class Boat {
         this.nummer = nummer;
     }
 
+
     public Trip getTrip() {
         return currentTrip;
     }
