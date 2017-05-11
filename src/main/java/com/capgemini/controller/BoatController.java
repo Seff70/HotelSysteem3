@@ -28,9 +28,9 @@ public class BoatController {
         return boatRepository.findAll();
     }
 
-    @RequestMapping(value = "/api/addLakeTrip/", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/addlaketrip/", method = RequestMethod.POST)
     public Trip newLakeTrip(@RequestBody Boat b) throws SQLException{
-        System.out.println("Bootgeg in controller: id= " + b.getBoatID()+ " nummer= "+ b.getNummer()+ " tripnr= "+ b.getTrip().getTripID());
+        System.out.println("Bootgeg in controller: nummer= "+ b.getNummer());
         Trip trip = new Meer();
         trip.start();
         trip = tripRepository.save(trip);

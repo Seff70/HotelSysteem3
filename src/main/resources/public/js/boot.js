@@ -62,7 +62,7 @@ $.get("/api/boot", function(result) {
         $.ajax({
             contentType: "application/json",
             type: "POST",
-            url: "/api/addLakeTrip",
+            url: "/api/addlaketrip/",
             data: JSON.stringify({
                 nummer: dataFromRow[0]
                 //currentTrip: null
