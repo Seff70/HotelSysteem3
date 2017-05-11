@@ -15,7 +15,7 @@ $.get("api/guests", function(result) {
 
     $("#guestlist").DataTable( {
             data: dataSet
-        });
+    });
 
     $(document).ready(function() {
         console.log("komt hier")
