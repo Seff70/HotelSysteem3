@@ -80,7 +80,9 @@ nav {
   line-height:0;
   visibility:hidden;
 }
-.top-nav ul {padding:0;}
+.top-nav ul {padding:0;
+    size:2em;
+}
 .top-nav ul ul {
   position:absolute;
   background:#262626;
