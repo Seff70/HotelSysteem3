@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Gasten</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 </head>
 
 <body>
-    <!-- Start container -->
-    <div class="container">
+<!-- Start container -->
+<div class="container">
     <h1>Gastenlijst:</h1>
 
-        <!-- Start Guestlist -->
-        <div id="Gastenlijst">
-            <table id="guestlist" class="table table-striped" style="width:80%">
+    <!-- Start Guestlist -->
+    <div id="Gastenlijst">
+        <table id="guestList" class="table table-striped" style="width:80%">
             <thead>
             Gastenlijst
             <tr>
@@ -32,63 +34,63 @@
             </thead>
 
         </table>
-        </div>
-        <!-- End Guestlist -->
-
-        <button type="button" class="btn btn-default" id="btnAddGuest">Voeg nieuwe gast toe</button>
-        <br>
-        <br>
-
-        <!-- Start Guestlist -->
-        <form id="newguestform" hidden>
-            <div class="form-group">
-                <label for="InputName">Naam</label>
-                <input type="text" class="form-control" id="InputName" placeholder="Naam">
-            </div>
-            <div class="form-group">
-                <label for="InputAddress">Adres</label>
-                <input type="text" class="form-control" id="InputAddress" placeholder="Adres">
-            </div>
-            <div class="form-group">
-                <label for="InputZipcode">Postcode</label>
-                <input type="text" class="form-control" id="InputZipcode" placeholder="1234 AB">
-            </div>
-            <div class="form-group">
-                <label for="InputCity">Woonplaats</label>
-                <input type="text" class="form-control" id="InputCity" placeholder="Woonplaats">
-            </div>
-            <div class="form-group">
-                <label for="InputCountry">Land</label>
-                <input type="text" class="form-control" id="InputCountry" placeholder="Land">
-            </div>
-            <div class="form-group">
-                <label for="InputTelephone">Tel. nr</label>
-                <input type="text" class="form-control" id="InputTelephone" placeholder="Telefoon">
-            </div>
-            <div class="form-group">
-                <label for="InputSpecial">Opmerkingen</label>
-                <input type="text" class="form-control" id="InputSpecial" placeholder="Opmerkingen">
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox"> Is zakelijke gast (werkt nog niet)
-                </label>
-            </div>
-            <button type="submit" class="btn btn-default" id="addGuest">Submit</button>
-            <button type="submit" class="btn btn-default" id="deleteGuest" hidden>Delete</button>
-            <button type="submit" class="btn btn-default" id="editGuest" hidden>Edit Guest</button>
-        </form>
-        <!-- End Guestlist -->
     </div>
-    <!-- Start main container -->
+    <!-- End Guestlist -->
 
-    <!-- Scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-    <script src="js/guest2.js"></script>
-    <!--<script src="js/newguest.js"></script>-->
+    <button type="button" class="btn btn-default" id="btnAddGuest">Voeg nieuwe gast toe</button>
+    <br>
+    <br>
+
+    <!-- Start Guestlist -->
+    <form id="newguestform" hidden>
+        <div class="form-group">
+            <label for="InputName">Naam</label>
+            <input type="text" class="form-control" id="InputName" placeholder="Naam">
+        </div>
+        <div class="form-group">
+            <label for="InputAddress">Adres</label>
+            <input type="text" class="form-control" id="InputAddress" placeholder="Adres">
+        </div>
+        <div class="form-group">
+            <label for="InputZipcode">Postcode</label>
+            <input type="text" class="form-control" id="InputZipcode" placeholder="1234 AB">
+        </div>
+        <div class="form-group">
+            <label for="InputCity">Woonplaats</label>
+            <input type="text" class="form-control" id="InputCity" placeholder="Woonplaats">
+        </div>
+        <div class="form-group">
+            <label for="InputCountry">Land</label>
+            <input type="text" class="form-control" id="InputCountry" placeholder="Land">
+        </div>
+        <div class="form-group">
+            <label for="InputTelephone">Tel. nr</label>
+            <input type="text" class="form-control" id="InputTelephone" placeholder="Telefoon">
+        </div>
+        <div class="form-group">
+            <label for="InputSpecial">Opmerkingen</label>
+            <input type="text" class="form-control" id="InputSpecial" placeholder="Opmerkingen">
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"> Is zakelijke gast (werkt nog niet)
+            </label>
+        </div>
+        <button type="submit" class="btn btn-default" id="addGuest">Submit</button>
+        <button type="submit" class="btn btn-default" id="deleteGuest" hidden>Delete</button>
+        <button type="submit" class="btn btn-default" id="editGuest" hidden>Edit Guest</button>
+    </form>
+    <!-- End Guestlist -->
+</div>
+<!-- Start main container -->
+
+<!-- Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+<script src="js/guest2.js"></script>
+<!--<script src="js/newguest.js"></script>-->
 
 </body>
 </html>

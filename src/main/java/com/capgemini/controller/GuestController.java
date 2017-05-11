@@ -26,6 +26,7 @@ public class GuestController {
 
     @RequestMapping(value = "/api/guests/{GuestID}", method = RequestMethod.DELETE)
     public void removeGuest(@PathVariable int GuestID) throws SQLException {
+        System.out.println("controller: "+ GuestID);
         guestRepository.delete(GuestID);
     }
 
