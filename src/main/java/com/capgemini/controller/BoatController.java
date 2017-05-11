@@ -33,7 +33,7 @@ public class BoatController {
         //boolean[] isBoatAvailable = new boolean[(int)tripRepository.findAll().iterator()];
         //Arrays.fill(isBoatAvailable, true);
 
-        for(Trip trip : tripRepository.findAll()) {
+//        for(Trip trip : tripRepository.findAll()) {
 
         }
         return boatRepository.findOne(1);

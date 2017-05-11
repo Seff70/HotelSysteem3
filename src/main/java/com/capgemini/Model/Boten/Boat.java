@@ -14,7 +14,7 @@ public class Boat {
     private int boatID;
     private int nummer;
     @OneToOne
-    private Trip trip;
+    private Trip currentTrip;
 
     protected Boat() {
     }
@@ -25,11 +25,11 @@ public class Boat {
     }
 
     public Trip getTrip() {
-        return trip;
+        return currentTrip;
     }
 
     public void setTrip(Trip trip) {
-        this.trip = trip;
+        this.currentTrip = trip;
     }
 
     public int getBoatID() {
