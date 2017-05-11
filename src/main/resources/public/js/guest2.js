@@ -49,6 +49,7 @@ function addGuest(data){
             };
             console.log("test bij new guest");
     $.ajax({
+
             contentType:"application/json",
             type: "POST",
             url: "/api/guests",
