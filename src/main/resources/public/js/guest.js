@@ -1,4 +1,5 @@
 $.get("api/guests", function(result) {
+    console.table(result);
     var dataSet = [];
 
     for (var i = 0; i<result.length; i++) {
@@ -42,36 +43,9 @@ $.get("api/guests", function(result) {
         $("#InputSpecial").val(data[7]);
 
 
-        $("#deleteGuest").click(function() {
-            $.ajax ({
-                contentType:'application/json',
-                type: "DELETE",
-                url:"/api/guests/" + data[0],
-                success: function() {
-                    console.log("Guest was deleted");
-                },
-            });
-        });
 
-         $("#editGuest").click(function() {
-            var newguest= { GuestID:data[0],
-                            name:$("#InputName").val(),
-                            address:$("#InputAddress").val(),
-                            zipcode:$("#InputZipcode").val(),
-                            city:$("#InputCity").val(),
-                            country:$("#InputCountry").val(),
-                            phonenumber:$("#InputTelephone").val(),
-                            special:$("#InputSpecial").val()};
-            $.ajax ({
-                contentType:'application/json',
-                type: "PUT",
-                data: JSON.stringify(newguest),
-                url:"/api/guests/" + data[0],
-                success: function() {
-                    console.log("Guest was edited");
-                },
-            });
-        });
+
+
 
 
     });
@@ -106,6 +80,39 @@ $("#addGuest").click(function(event){
                      }
           });
 
+});
+
+ $("#deleteGuest").click(function() {
+
+    $.ajax ({
+        contentType:'application/json',
+        type: "DELETE",
+        url:"/api/guests/" + data[0],
+        success: function() {
+            console.log("Guest was deleted");
+        },
+    });
+});
+
+ $("#editGuest").click(function() {
+ console.log("je hebt op editguest geklikt")
+    var newguest= { GuestID:data[0],
+                    name:$("#InputName").val(),
+                    address:$("#InputAddress").val(),
+                    zipcode:$("#InputZipcode").val(),
+                    city:$("#InputCity").val(),
+                    country:$("#InputCountry").val(),
+                    phonenumber:$("#InputTelephone").val(),
+                    special:$("#InputSpecial").val()};
+    $.ajax ({
+        contentType:'application/json',
+        type: "PUT",
+        data: JSON.stringify(newguest),
+        url:"/api/guests/" + data[0],
+        success: function() {
+            console.log("Guest was edited");
+        },
+    });
 });
 
 $('#btnAddGuest').click(function() {
