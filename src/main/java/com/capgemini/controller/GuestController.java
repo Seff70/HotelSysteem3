@@ -14,23 +14,6 @@ public class GuestController {
     @Autowired
     GuestRepository guestRepository;
 
-//    @RequestMapping(value = "/guest", method= RequestMethod.GET )
-//    public Guest getGuest(@RequestParam String name,@RequestParam int age){
-//        // je krijgt geen data binnen maar kunt het wel uitlezen
-//        // Spring maakt er automatisch js van
-//        Guest g = new Guest();
-//        g.setName(name);
-//
-//        return g;
-    //
-//
-//// }
-//    @RequestMapping(value= "/guest", method= RequestMethod.POST)
-//    public String setGuest(@RequestBody Guest g){
-//        return guestRepository();
-
-
-
     @RequestMapping(value = "/api/guests", method = RequestMethod.GET)
     public Iterable <Guest> getGuestList() throws SQLException {
         return guestRepository.findAll();
@@ -44,6 +27,11 @@ public class GuestController {
     @RequestMapping(value = "/api/guests/{GuestID}", method = RequestMethod.DELETE)
     public void removeGuest(@PathVariable int GuestID) throws SQLException {
         guestRepository.delete(GuestID);
+    }
+
+    @RequestMapping(value = "/api/guests/{GuestID}", method = RequestMethod.PUT)
+    public Guest editGuest(@PathVariable int GuestID, @RequestBody Guest guest) throws SQLException {
+        return guestRepository.save(guest);
     }
 
 }

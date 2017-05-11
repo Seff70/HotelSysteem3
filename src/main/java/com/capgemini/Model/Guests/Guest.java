@@ -1,7 +1,5 @@
 package com.capgemini.Model.Guests;
 
-// define class Guest
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -69,10 +67,4 @@ public class Guest {
         this.phonenumber = phonenumber;
         this.special = special;
     }
-
-    /**
-     * Created by LMANNA on 3-5-2017.
-     */
-//    public static class Particulier extends Guest {
 }
-//}
