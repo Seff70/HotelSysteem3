@@ -156,8 +156,9 @@ $.get("/api/boats", function(result) {
                     end = trip.endTime[2] + "-" + trip.endTime[1] + "-" + trip.endTime[0] + " " + pad(trip.endTime[3], 2) + ":" + pad(trip.endTime[4], 2)
                 }
                 var duration = "";
-               duration = trip.duur[2] + "-" + trip.duur[1] + "-" + trip.duur[0] + " " + pad(trip.duur[3], 2) + ":" + pad(trip.duur[4], 2);
-               alert("Tocht " + result.tripID + " met boot " + boat.nummer + " is geëindidgd.\n De tocht is gestart om: " +
+               duration = Math.floor(trip.duur/3600) + " uur en " + Math.floor(trip.duur/60) + " minuten.";
+               alert("Tocht " + trip.tripID + " met boot " + boat.nummer + " over " +
+               trip.type + " is geëindidgd.\n De tocht is gestart om: " +
                start + ". \n De tocht is geëindigd om: " +
                end + ". \n De tocht duurde: " +
                duration + "."
