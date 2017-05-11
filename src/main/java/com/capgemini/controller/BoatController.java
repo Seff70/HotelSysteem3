@@ -1,6 +1,7 @@
 package com.capgemini.controller;
 
 import com.capgemini.Model.Boten.Boat;
+import com.capgemini.Model.Boten.Rivier;
 import com.capgemini.Model.Boten.Trip;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,15 +29,9 @@ public class BoatController {
     }
 
     @RequestMapping(value = "/api/newtrip", method = RequestMethod.GET)
-    public Boat getAvailableBoat(){
-        System.out.println("tripRep = "+tripRepository.count());
-        //boolean[] isBoatAvailable = new boolean[(int)tripRepository.findAll().iterator()];
-        //Arrays.fill(isBoatAvailable, true);
-
-        for(Trip trip : tripRepository.findAll()) {
-
-        }
-        return boatRepository.findOne(1);
+    public int newTrip(Boat b){
+//        Trip trip = new Trip(b);
+        return 0;
     }
 
 }

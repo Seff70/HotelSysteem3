@@ -1,19 +1,12 @@
 $.get("/api/boot", function(result) {
-
-
-       var eind = [];
-       var item = [];
+       var dataSet = [];
        for (var i = 0 ; i < result.length ; i++) {
-        var boot = result[i];
-        var totaal = [boot.nummer, boot.bootnaam];
-
-       eind.push(totaal);
-
-
+        var beschikbaar = result[i].trip == null
+        dataSet.push([result[i].nummer, beschikbaar])
        }
-        console.log(eind);
+        console.log(dataSet);
        $("#botentabel").DataTable({
-            data: eind
+            data: dataSet
        });
 
 
@@ -22,10 +15,10 @@ $.get("/api/boot", function(result) {
 $("#startLakeTrip").click(function(event){
     event.preventDefault();
     $.get("/api/newtrip", function(result) {});
-    var newtrip ={ bootnummer:$("#InputBoat").val(),
+    var newtrip ={
                     startTime:$("#InputStart").val(),
                     endTime:$("#InputEnd").val(),
-                    type:"." + $("#InputType").val()
+                    type:"Meer"
                     };
 
 console.log(newtrip);
@@ -33,11 +26,10 @@ console.log(newtrip);
             $.ajax({
             contentType: "application/json",
             type: "POST",
-            url:"/api/Tochten",
+            url:"/api/boot",
             data: JSON.stringify(newtrip),
             success: function(result) {
                         console.log(result);
-                        location.href ="Tochten.html"
                         },
             error: function(e){
                   console.log(e);

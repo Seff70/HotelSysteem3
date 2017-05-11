@@ -1,13 +1,6 @@
 package com.capgemini.Model.Boten;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-/**
- * Created by JVERDUIJ on 5-5-2017.
- */
+import javax.persistence.*;
 
 @Entity
 public class Boat {
@@ -16,12 +9,23 @@ public class Boat {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int boatID;
     private int nummer;
-    
-    protected Boat() {}
+    @OneToOne
+    private Trip currentTrip;
+
+    protected Boat() {
+    }
 
     public Boat(int boatID, int nummer) {
         this.boatID = boatID;
         this.nummer = nummer;
+    }
+
+    public Trip getTrip() {
+        return currentTrip;
+    }
+
+    public void setTrip(Trip trip) {
+        this.currentTrip = trip;
     }
 
     public int getBoatID() {
@@ -40,5 +44,6 @@ public class Boat {
         this.nummer = nummer;
     }
 
-
 }
+
+
