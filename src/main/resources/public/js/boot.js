@@ -64,7 +64,7 @@ $.get("/api/boats", function(result) {
     //                            <div id="tripID"></div><br>
     //                            <div id="startTime"></div><br>
     //                            <div id="tripType"></div><br>
-                    endTrip(boat);
+                    endMenu(boat);
                 }
     });
 
@@ -82,6 +82,7 @@ $.get("/api/boats", function(result) {
             $("#boatTableBig").show();
             $("#header").text("Overzicht Boten");
             $("#oneBoat").hide();
+            location.href = "Bootpage.html"
         });
     };
 
@@ -94,6 +95,7 @@ $.get("/api/boats", function(result) {
             data: JSON.stringify(boat),
             success: function(result){
                 alert("Tocht " + result.tripID + " is gestart met boot " + boat.nummer);
+                location.href="Bootpage.html";
                 $("#boatTableBig").show();
                 $("#header").text("Overzicht Boten");
                 $("#oneBoat").hide();
@@ -103,4 +105,79 @@ $.get("/api/boats", function(result) {
             }
         });
     }
+    function startRiverTrip(boat) {
+            console.log(JSON.stringify(boat));
+            $.ajax({
+                contentType: "application/json",
+                type: "POST",
+                url: "/api/boats/"+ boat.boatID + "/addrivertrip",
+                data: JSON.stringify(boat),
+                success: function(result){
+                    alert("Tocht " + result.tripID + " is gestart met boot " + boat.nummer);
+                    location.href="Bootpage.html";
+                    $("#boatTableBig").show();
+                    $("#header").text("Overzicht Boten");
+                    $("#oneBoat").hide();
+                    },
+                error: function(e){
+                          console.log(e);
+                }
+            });
+        }
+
+    function endMenu(boat) {
+        $("#endTrip").on('click', function(){
+            event.preventDefault();
+            endTrip(boat);
+        });
+        $("#cancelEndTrip").on('click', function(){
+            event.preventDefault();
+            $("#boatTableBig").show();
+            $("#header").text("Overzicht Boten");
+            $("#oneBoat").hide();
+            $("#endTripContainer").show();
+            location.href = "Bootpage.html"
+        });
+    }
+
+   function endTrip(boat) {
+       $.ajax({
+           contentType: "application/json",
+           type: "POST",
+           url: "/api/boats/"+ boat.boatID + "/endtrip",
+           data: JSON.stringify(boat),
+           success: function(trip){
+                var start = "";
+                if (trip.startTime != null) {
+                    start = "" + trip.startTime[2] + "-" + trip.startTime[1] + "-" + trip.startTime[0] + " " + pad(trip.startTime[3], 2) + ":" + pad(trip.startTime[4], 2)
+                }
+                var end = "";
+                if (trip.endTime != null) {
+                    end = trip.endTime[2] + "-" + trip.endTime[1] + "-" + trip.endTime[0] + " " + pad(trip.endTime[3], 2) + ":" + pad(trip.endTime[4], 2)
+                }
+                var duration = "";
+               duration = trip.duur[2] + "-" + trip.duur[1] + "-" + trip.duur[0] + " " + pad(trip.duur[3], 2) + ":" + pad(trip.duur[4], 2);
+               alert("Tocht " + result.tripID + " met boot " + boat.nummer + " is geëindidgd.\n De tocht is gestart om: " +
+               start + ". \n De tocht is geëindigd om: " +
+               end + ". \n De tocht duurde: " +
+               duration + "."
+               );
+               location.href="Bootpage.html";
+               $("#boatTableBig").show();
+               $("#header").text("Overzicht Boten");
+               $("#oneBoat").hide();
+               $("#endTripContainer").hide();
+               },
+           error: function(e){
+                     console.log(e);
+           }
+       });
+   }
+
+   function pad(num, size) {
+       var s = num + "";
+       while (s.length < size) s = "0" + s;
+       return s;
+   }
+
 });

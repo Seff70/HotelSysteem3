@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Entity
 public class Rivier extends Trip {
 
-    protected Rivier() {
+    public Rivier() {
     }
 
     public Rivier(int tripID, LocalDateTime startTime, LocalDateTime endTime) {
