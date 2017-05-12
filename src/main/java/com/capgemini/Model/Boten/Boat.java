@@ -1,12 +1,17 @@
 package com.capgemini.Model.Boten;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Boat {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private int boatID;
     private int nummer;
     @OneToOne
@@ -20,31 +25,26 @@ public class Boat {
         this.nummer = nummer;
     }
 
-
-    public Trip getTrip() {
-        return currentTrip;
-    }
-
-    public void setTrip(Trip trip) {
-        this.currentTrip = trip;
-    }
-
     public int getBoatID() {
         return boatID;
-    }
-
-    public void setBoatID(int boatID) {
-        this.boatID = boatID;
     }
 
     public int getNummer() {
         return nummer;
     }
 
-    public void setNummer(int nummer) {
-        this.nummer = nummer;
+    public Trip getCurrentTrip() {
+        return currentTrip;
     }
 
+    public void setCurrentTrip(Trip currentTrip) {
+        this.currentTrip = currentTrip;
+    }
+
+    @JsonProperty
+    public Integer getCurrentTripID() {
+        return currentTrip != null ? currentTrip.getTripID() : null;
+    }
 }
 
 
