@@ -20,6 +20,11 @@ public class GuestController {
         return guestRepository.findAll();
     }
 
+    @RequestMapping(value = "/api/guest/{guestID}", method = RequestMethod.GET)
+    public Guest getGuest(@PathVariable int guestID) throws SQLException {
+        return guestRepository.findOne(guestID);
+    }
+
     @RequestMapping(value = "/api/guests", method = RequestMethod.POST)
     public Guest addGuestList(@RequestBody Guest guest) throws SQLException {
         return guestRepository.save(guest);
