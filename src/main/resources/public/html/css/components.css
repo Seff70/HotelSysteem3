@@ -4,6 +4,10 @@
  * Copyright 2015, Vision Design - graphic zoo
  * Free to use under the MIT license.
 */
+
+.glyphicon{
+    margin-bottom: 12px;
+}
 /* Tabs */
 .tab-item {
   background: none repeat scroll 0 0 #fff;
