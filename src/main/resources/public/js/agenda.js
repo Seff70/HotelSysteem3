@@ -17,12 +17,9 @@ $.get("api/bookings", function (result) {
         data: result
     });
 
-    });
+});
 
 
 $("#submitagenda").click(function(event){
-            var input
-            if(input < start)
-
-            $('#availableRooms').show();
-            });
+    $('#availableRooms').show();
+});
