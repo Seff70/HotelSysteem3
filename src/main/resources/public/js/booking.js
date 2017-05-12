@@ -83,8 +83,8 @@ function toConfirmBooking () {
         var guestTable = $("#GuestPickerTable").DataTable();
         var roomTable = $("availableRooms").DataTable();
         var newBooking = {
-//            start   : $("#start").val(),
-//            end     : $("#end").val(),
+//            start   : $("#start").datepicker().getDate(),
+//            end     : $("#end")datepicker().getDate(),
 //            room    : roomTable.row(0).data(),
             start   : "12-12-12",
             end     :   "13-12-12",
