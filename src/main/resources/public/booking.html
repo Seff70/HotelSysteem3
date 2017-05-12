@@ -3,62 +3,94 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"content="width=device-width, initial-scale=1">
-    <!--<link rel="stylesheet" type="text/css" href="Hello.css">-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="lib/bootstrap-datetimepicker.min.css">
     <title>Hotel Klaas</title>
+
+    <script src="lib/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="lib/bootstrap-datetimepicker.min.js"></script>
 
 </head>
 
 <body>
+<div class="container">
+    <table id="availableRooms" class="display">
+        <br>
+        <h1>Agenda</h1>
+        <br>
+        <thead>
+        <tr>
+            <th>Kamernummer</th>
+            <th>Kamertype</th>
+        </tr>
+        </thead>
 
-<table id="bookings" class="display">
+        <tbody>
+        <tr>
+
+            <td>1</td>
+            <td>Standaard</td>
+        </tr>
+        <tr>
+
+            <td>2</td>
+            <td>Luxe</td>
+        </tr>
+        </tbody>
+    </table>
+    <br/>
+    <br/>
     <br>
-    <h1>Boekingen</h1>
-    <br>
 
-    <thead>
-    <tr>
-        <th>Boeking ID</th>
-        <th>Gast</th>
-        <th>Adres</th>
-        <th>Startdatum</th>
-        <th>Einddatum</th>
-        <th>Kamernummer</th>
-        <th>Kamertype</th>
-    </tr>
-    </thead>
+    <form id="search">
+      <span> <div class="well">
+          <div id="datetimepicker1" class="input-append date">
+                <p>Incheck datum</p>   <input data-format="dd/MM/yyyy" type="text"/>
+                <span class="add-on">
+                    <i class= "icon-time" data-date-icon="icon-calendar"></i>
+                      <div id="datetimepicker2" class="input-append date">
+                      </div>
+                      </span>
 
-    <!--<tbody>-->
-    <!--<tr>-->
-        <!--<td>Row 1 Data 1</td>-->
-        <!--<td>Row 1 Data 2</td>-->
-        <!--<td>Row 1 Data 3</td>-->
-        <!--<td>Row 1 Data 4</td>-->
-        <!--<td>Row 1 Data 5</td>-->
-        <!--<td>Row 1 Data 6</td>-->
-        <!--<td>Row 1 Data 7</td>-->
-    <!--</tr>-->
-    <!--<tr>-->
-        <!--<td>Row 2 Data 1</td>-->
-        <!--<td>Row 2 Data 2</td>-->
-        <!--<td>Row 2 Data 3</td>-->
-        <!--<td>Row 1 Data 4</td>-->
-        <!--<td>Row 1 Data 5</td>-->
-        <!--<td>Row 1 Data 6</td>-->
-        <!--<td>Row 1 Data 7</td>-->
-    <!--</tr>-->
-    <!--</tbody>-->
-</table>
+                <p>Uitcheck datum</p>   <input data-format="dd/MM/yyyy" type="text"/>
+                <span class="add-on">
+                    <i class= "icon-time" data-date-icon="icon-calendar"></i>
+                </span>
+            </div>
 
+                </span>
+            </div>
+        </div>
 
+        <select id="typeroom">
+            <option value="Geen voorkeur">Geen voorkeur</option>
+            <option value="Standaard">Standaard</option>
+            <option value="Luxe">Luxe</option>
+        </select>
 
-<script src="lib/jquery-3.2.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-<script src="js/booking.js"></script>
+        <button class="btn btn-success btn-xs" id="submitagenda">Submit</button>
+        <!--<button class="btn btn-danger btn-xs"id="delete">Delete</button>-->
+        <!--<button class="btn btn-warning btn-xs"id="edit">Edit</button>-->
+    </form></span>
+
+    <div>
+
+        <!--<button class="btn btn-primary btn-block btn-xs " id="addroom">Nieuwe kamer toevoegen</button>-->
+
+    </div>
+</div>
+<script src="js/agenda.js"></script>
+
 </body>
 
 </html>
