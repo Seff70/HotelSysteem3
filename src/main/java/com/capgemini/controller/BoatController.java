@@ -33,7 +33,7 @@ public class BoatController {
         Trip trip = new Meer();
         trip.start();
         trip = tripRepository.save(trip);
-        b.setTrip(trip);
+        b.setCurrentTrip(trip);
         boatRepository.save(b);
         return trip;
     }
@@ -45,7 +45,7 @@ public class BoatController {
         Trip trip = new Rivier();
         trip.start();
         trip = tripRepository.save(trip);
-        b.setTrip(trip);
+        b.setCurrentTrip(trip);
         boatRepository.save(b);
         return trip;
     }
@@ -54,18 +54,13 @@ public class BoatController {
     public Trip endTrip(@PathVariable int boatID) throws SQLException{
         Boat b = boatRepository.findOne(boatID);
         System.out.println("Bootgeg in controller eindig trip: nummer= "+ b.getNummer());
-        Trip trip = b.getTrip();
+        Trip trip = b.getCurrentTrip();
         trip.stop();
         trip = tripRepository.save(trip);
-        b.setTrip(null);
+        b.setCurrentTrip(null);
         boatRepository.save(b);
         return trip;
     }
-//
-//    @RequestMapping(value = "/api/getTotalNumberTrips", method = RequestMethod.GET)
-//    public Iterable<Boat> boot() throws SQLException {
-//        return boatRepository.findAll();
-//    }
 
 }
 

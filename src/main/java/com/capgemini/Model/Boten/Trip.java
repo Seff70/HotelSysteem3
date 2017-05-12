@@ -20,23 +20,10 @@ import java.time.LocalDateTime;
 public abstract class Trip {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private int tripID;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
-
-    protected Trip() {
-    }
-
-    public Trip(int tripID, LocalDateTime startTime, LocalDateTime endTime) {
-        this.tripID = tripID;
-        this.startTime = startTime;
-        this.endTime = endTime;
-    }
-
-    public Trip(LocalDateTime startTime) {
-        this.startTime = startTime;
-    }
 
     public int getTripID() {
         return tripID;
