@@ -2,7 +2,7 @@ package com.capgemini.Model;
 
 import com.capgemini.Model.Boten.Rivier;
 import com.capgemini.Model.Boten.Trip;
-import com.capgemini.controller.TripRepository;
+import com.capgemini.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.Duration;
