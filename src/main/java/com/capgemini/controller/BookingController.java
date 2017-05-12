@@ -19,9 +19,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by LMANNA on 3-5-2017.
- */
 
 
 @RestController

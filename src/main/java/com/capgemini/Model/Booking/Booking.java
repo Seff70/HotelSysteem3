@@ -23,9 +23,6 @@ public class Booking {
     @ManyToOne
     private Room room;
 
-    public Booking(){
-    }
-
     public Booking(LocalDate start, LocalDate end, Guest guest, Room room) {
         this.start = start;
         this.end = end;
@@ -33,23 +30,48 @@ public class Booking {
         this.room = room;
     }
 
-    public int getBookingNumber() {
-        return bookingNumber;
-    }
+    public Booking(){}
 
     public LocalDate getStart() {
         return start;
     }
 
-    public LocalDate getEnd() {
+    public void setStart(LocalDate start) {
+        this.start = start;
+    }
+
+    public LocalDate getEind() {
         return end;
+    }
+
+    public void setEind(LocalDate end) {
+        this.end = end;
     }
 
     public Guest getGuest() {
         return guest;
     }
 
+    public void setGuest(Guest guest) {
+        this.guest = guest;
+    }
+
     public Room getRoom() {
         return room;
     }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public int getBookingNumber() {
+        return bookingNumber;
+    }
+
+    public void setBookingNumber(int bookingNumber) {
+        this.bookingNumber = bookingNumber;
+    }
+
+       
+    
 }

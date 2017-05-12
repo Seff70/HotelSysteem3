@@ -27,10 +27,10 @@ $.get("/api/rooms", function (result) {
             $("#delete").click(function (event) {
                 event.preventDefault();
                 deleteRoom(data);
-            })
+                  })
 
-        }
-    );
+              }
+          );
 });
 
 //nieuwe kamer toevoegen
