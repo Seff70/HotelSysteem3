@@ -1,4 +1,4 @@
-package com.capgemini.controller;
+package com.capgemini.repository;
 import java.util.List;
 
 import com.capgemini.Model.Kamers.Room;

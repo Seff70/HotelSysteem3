@@ -1,6 +1,7 @@
 package com.capgemini.controller;
 
 import com.capgemini.Model.Kamers.Room;
+import com.capgemini.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

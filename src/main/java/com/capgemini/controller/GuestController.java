@@ -1,6 +1,7 @@
 package com.capgemini.controller;
 
 import com.capgemini.Model.Guests.Guest;
+import com.capgemini.repository.GuestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

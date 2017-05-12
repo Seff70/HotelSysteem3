@@ -4,14 +4,12 @@ import com.capgemini.Model.Boten.Boat;
 import com.capgemini.Model.Boten.Meer;
 import com.capgemini.Model.Boten.Rivier;
 import com.capgemini.Model.Boten.Trip;
+import com.capgemini.repository.BoatRepository;
+import com.capgemini.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 
 @RestController

@@ -1,4 +1,4 @@
-package com.capgemini.controller;
+package com.capgemini.spring;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
