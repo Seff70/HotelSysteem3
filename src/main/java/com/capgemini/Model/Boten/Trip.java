@@ -2,21 +2,16 @@ package com.capgemini.Model.Boten;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-import javax.persistence.*;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
 @Entity
 @DiscriminatorColumn(name = "type")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
-@JsonSubTypes({
-        @JsonSubTypes.Type(Meer.class),
-        @JsonSubTypes.Type(Rivier.class)
-})
 public abstract class Trip {
 
     @Id
@@ -62,5 +57,10 @@ public abstract class Trip {
         } else {
             return Duration.ZERO;
         }
+    }
+
+    @JsonProperty
+    public String getType() {
+        return getClass().getSimpleName();
     }
 }

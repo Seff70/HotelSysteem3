@@ -1,5 +1,7 @@
 package com.capgemini.Model.Boten;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import javax.persistence.Entity;
 import java.time.Duration;
 import java.time.LocalDateTime;
