@@ -36,10 +36,6 @@ $.get("/api/guests",function (result){
         $("#InputTelephone").val(data.phonenumber);
         $("#InputSpecial").val(data.special);
 
-        $("#addGuest").click(function (event) {
-            event.preventDefault();
-            addGuest(data);
-        });
         $("#editGuest").click(function (event){
             event.preventDefault();
             editGuest(data);
@@ -51,9 +47,18 @@ $.get("/api/guests",function (result){
     });
 });
 
-function addGuest(data){
-    var newGuest = {
+$('#btnAddGuest').click(function() {
+    $("#newguestform").show();
+    $("#guestList").hide();
+});
 
+$("#addGuest").click(function (event) {
+    event.preventDefault();
+    addGuest();
+});
+
+function addGuest(){
+    var newGuest = {
             name:$("#InputName").val(),
             address:$("#InputAddress").val(),
             zipcode:$("#InputZipcode").val(),
@@ -65,7 +70,6 @@ function addGuest(data){
             console.log("test bij new guest");
 
     $.ajax({
-
             contentType:"application/json",
             type: "POST",
             url: "/api/guests",
@@ -86,7 +90,7 @@ function editGuest(data){
         type: "PUT",
         url: "/api/guests/" + data.guestID,
         data: JSON.stringify({
-//           guestID: data.guestID,
+           guestID: data.guestID,
            name:$("#InputName").val(),
            address:$("#InputAddress").val(),
            zipcode:$("#InputZipcode").val(),
@@ -119,8 +123,3 @@ function deleteGuest(data){
 };
 
 
-$('#btnAddGuest').click(function() {
-    $("#newguestform").show();
-    $("#guestlist").hide();
-
-})
