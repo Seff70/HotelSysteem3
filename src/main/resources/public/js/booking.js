@@ -53,7 +53,7 @@ function toGuestSelect() {
             ],
                data: result
         });
-    }
+    });
 }
 
 function toConfirmBooking () {
