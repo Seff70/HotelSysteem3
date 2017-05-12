@@ -3,19 +3,31 @@ package com.capgemini.Model.Booking;
 import com.capgemini.Model.Guests.Guest;
 import com.capgemini.Model.Kamers.Room;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
 /**
  * Created by DIVELDHU on 8-5-2017.
  */
+
+
+@Entity
 public class Booking {
-   
-    public Booking(LocalDate start, LocalDate end, Guest guest, Room room, int bookingNumber) {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int bookingNumber;
+    private LocalDate start;
+    private LocalDate end;
+    @ManyToOne
+    private Guest guest;
+    @ManyToOne
+    private Room room;
+
+    public Booking(LocalDate start, LocalDate end, Guest guest, Room room) {
         this.start = start;
         this.end = end;
         this.guest = guest;
         this.room = room;
-        this.bookingNumber = bookingNumber;
     }
 
     public LocalDate getStart() {
@@ -58,12 +70,6 @@ public class Booking {
         this.bookingNumber = bookingNumber;
     }
 
-    private LocalDate start;
-    private LocalDate end;
-    private Guest guest;
-    private Room room;
-    private int bookingNumber;
-    
        
     
 }
