@@ -29,13 +29,13 @@
         <tbody>
             <tr>
                 <td>Row 1 Data 1</td>
-                <td>Row 1 Data 1</td>
                 <td>Row 1 Data 2</td>
+                <td>Row 1 Data 3</td>
             </tr>
             <tr>
                 <td>Row 2 Data 1</td>
-                <td>Row 2 Data 1</td>
                 <td>Row 2 Data 2</td>
+                <td>Row 2 Data 3</td>
             </tr>
         </tbody>
     </table>
@@ -46,15 +46,14 @@
     <form id="newroom" hidden>
         <input type="text" id="inputaddnumber" placeholder="Kamernummer"/>
 
+        <label for="inputaddtype">Kamertype</label>
         <select id="inputaddtype">
             <option value="Standaard">Standaard</option>
             <option value="Luxe">Luxe</option>
         </select>
 
-        <span>Beschikbaar?
-            <span> </span>
-            <input type="checkbox" id="inputboolean" placeholder="Beschikbaar ja of nee"/>
-        </span>
+        <label for="inputboolean">Beschikbaar?</label>
+        <input type="checkbox" id="inputboolean" placeholder="Beschikbaar ja of nee"/>
 
         <button class="btn btn-success btn-xs" id="submit">Submit</button>
         <button class="btn btn-danger btn-xs"id="delete">Delete</button>

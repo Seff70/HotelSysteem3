@@ -2,9 +2,9 @@ $.get("/api/rooms", function (result) {
     console.table(result);
     var table = $('#tableRooms').DataTable({
         columns: [
-            {data: "roomNumberreal"},
+            {data: "roomNumber"},
             {data: "roomType"},
-            {data: "availability"}
+            {data: "available"}
         ],
         data: result
     });
@@ -16,9 +16,9 @@ $.get("/api/rooms", function (result) {
             $("#tableRooms").show();
             $("#submit").hide();
             $("#addroom").hide();
-            $("#inputaddnumber").val(data.roomNumberreal);
+            $("#inputaddnumber").val(data.roomNumber);
             $("#inputaddtype").val(data.roomType);
-            $("#inputboolean").prop('checked', data.availability)
+            $("#inputboolean").prop('checked', data.available);
             $("#edit").click(function (event) {
                 event.preventDefault();
                 editRoom(data);
@@ -40,20 +40,21 @@ $("#addroom").click(function (event) {
     $("#edit").hide();
     $("#addroom").hide();
 
-     $("#submit").click(function (event) {
-     event.preventDefault();
-     addroom();
+    $("#submit").click(function (event) {
+        event.preventDefault();
+        addroom();
 
     });
 
 });
 
 function editRoom(data) {
-    var edit ={ roomNumber: data.roomNumber,
-                roomNumberreal: $("#inputaddnumber").val(),
-                roomType: $("#inputaddtype").val(),
-                availability: $("#inputboolean").is(':checked')
-                };
+    var edit = {
+        roomID: data.roomID,
+        roomNumber: $("#inputaddnumber").val(),
+        roomType: $("#inputaddtype").val(),
+        available: $("#inputboolean").is(':checked')
+    };
 
     $.ajax({
         contentType: "application/json",
@@ -78,7 +79,7 @@ function deleteRoom(data) {
     $.ajax({
         contentType: "application/json",
         type: "DELETE",
-        url: "/api/rooms/" + data.roomNumber,
+        url: "/api/rooms/" + data.roomID,
         success: function (result) {
             console.log(result);
             location.href = "room.html"
@@ -98,10 +99,10 @@ function addroom() {
         type: "POST",
         url: "/api/rooms",
         data: JSON.stringify({
-                    roomNumberreal: $("#inputaddnumber").val(),
-                    roomType: $("#inputaddtype").val(),
-                    availability: $("#inputboolean").is(':checked')
-                           }),
+            roomNumberreal: $("#inputaddnumber").val(),
+            roomType: $("#inputaddtype").val(),
+            available: $("#inputboolean").is(':checked')
+        }),
         success: function (result) {
             console.log(result);
             location.href = "room.html"
@@ -115,45 +116,20 @@ function addroom() {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //bestaande kamer opzoeken
 //$("#zoek").click(function (event) {
 //    event.preventDefault();
-//    var roomNumber = $("#tf1").val();
-//    console.log("Kamernummer = " + roomNumber);
+//    var roomID = $("#tf1").val();
+//    console.log("Kamernummer = " + roomID);
 //
 //    $.ajax({
 //
 //        contentType: "application/json",
 //        type: "GET",
-//        url: "/api/rooms/" + roomNumber,
+//        url: "/api/rooms/" + roomID,
 //        success: function (result) {
 //            console.log(result);
-//            $("#content").text("Kamer " + result.roomNumber + " is een " + result.roomType + " kamer ");
+//            $("#content").text("Kamer " + result.roomID + " is een " + result.roomType + " kamer ");
 //        },
 //        error: function (e) {
 //            console.log(e);

@@ -1,7 +1,6 @@
 package com.capgemini.Model.Kamers;
 
 
-public enum Etype {
+public enum RoomType {
     Standaard,Luxe
-
 }

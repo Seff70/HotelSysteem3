@@ -20,45 +20,45 @@ $.get("/api/guests",function (result){
            data: result
     });
 
-    $('#guestList tbody').on('click', 'tr', function () {
+    $('#guestList tbody').on('click','tr', function () {
         var data = table.row(this).data();
-        table.search(data.guestID).draw();
-    });
+        console.log('API row values : ', data);
+        $("#newguestform").show();
+        $("#guestList").hide();
+        $("#deleteGuest").show();
+        $("#editGuest").show();
 
-//    $('#guestList tbody').on('click','tr', function () {
-//            var data = table.row(this).data();
-//        console.log('API row values : ', data);
-//        $("#newguestform").show();
-//        $("#guestList").hide();
-//        $("#deleteGuest").show();
-//        $("#editGuest").show();
-//
-//        $("#InputName").val(data.name);
-//        $("#InputAddress").val(data.address);
-//        $("#InputZipcode").val(data.zipcode);
-//        $("#InputCity").val(data.city);
-//        $("#InputCountry").val(data.country);
-//        $("#InputTelephone").val(data.phonenumber);
-//        $("#InputSpecial").val(data.special);
-//
-//        $("#addGuest").click(function (event) {
-//            event.preventDefault();
-//            addGuest(data);
-//        });
-//        $("#editGuest").click(function (event){
-//            event.preventDefault();
-//            editGuest(data);
-//        });
-//        $("#deleteGuest").click(function (event){
-//            event.preventDefault();
-//            deleteGuest(data);
-//        });
-//    });
+        $("#InputName").val(data.name);
+        $("#InputAddress").val(data.address);
+        $("#InputZipcode").val(data.zipcode);
+        $("#InputCity").val(data.city);
+        $("#InputCountry").val(data.country);
+        $("#InputTelephone").val(data.phonenumber);
+        $("#InputSpecial").val(data.special);
+
+        $("#editGuest").click(function (event){
+            event.preventDefault();
+            editGuest(data);
+        });
+        $("#deleteGuest").click(function (event){
+            event.preventDefault();
+            deleteGuest(data);
+        });
+    });
 });
 
-function addGuest(data){
-    var newGuest = {
+$('#btnAddGuest').click(function() {
+    $("#newguestform").show();
+    $("#guestList").hide();
+});
 
+$("#addGuest").click(function (event) {
+    event.preventDefault();
+    addGuest();
+});
+
+function addGuest(){
+    var newGuest = {
             name:$("#InputName").val(),
             address:$("#InputAddress").val(),
             zipcode:$("#InputZipcode").val(),
@@ -70,7 +70,6 @@ function addGuest(data){
             console.log("test bij new guest");
 
     $.ajax({
-
             contentType:"application/json",
             type: "POST",
             url: "/api/guests",
@@ -91,7 +90,7 @@ function editGuest(data){
         type: "PUT",
         url: "/api/guests/" + data.guestID,
         data: JSON.stringify({
-//           guestID: data.guestID,
+           guestID: data.guestID,
            name:$("#InputName").val(),
            address:$("#InputAddress").val(),
            zipcode:$("#InputZipcode").val(),
@@ -124,8 +123,3 @@ function deleteGuest(data){
 };
 
 
-$('#btnAddGuest').click(function() {
-    $("#newguestform").show();
-    $("#guestlist").hide();
-
-})
