@@ -20,7 +20,6 @@ public class WindowedWebApp extends Application {
     public void start(Stage primaryStage) throws Exception {
         Properties properties = new Properties();
         properties.setProperty("spring.jpa.generate-ddl", "true");
-        properties.setProperty("spring.data.rest.base-path","api");
         SpringApplication springApplication = new SpringApplication(Main.class);
         springApplication.setDefaultProperties(properties);
         ConfigurableApplicationContext applicationContext = springApplication.run();
