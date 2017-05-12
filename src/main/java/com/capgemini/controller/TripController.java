@@ -25,6 +25,5 @@ public class TripController {
     @RequestMapping(value = "/api/Tochten", method = RequestMethod.POST)
     public Trip addtochtlist(@RequestBody Trip trip) throws SQLException {
         return tripRepository.save(trip);
-
     }
 }
