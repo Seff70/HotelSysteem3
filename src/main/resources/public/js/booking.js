@@ -12,8 +12,20 @@ $.get("api/bookings", function(result) {
     dataSet.push([result[i].bookingNumber, result[i].guest.name, result[i].guest.address, start, eind, result[i].room.roomNumber, result[i].room.roomType]);
     }
 
-$("#bookings").DataTable( {
-        data: dataSet
+    $("#bookings").DataTable( {
+            data: dataSet
+        });
+
+    $("#availableRooms tbody").on('click', 'tr', function () {
+        event.preventDefault();
+        var room = table.row( this ).data();
+        console.log("room: " + room + ", roomnr " + room.roomNumber);
+
+        $("#datetimepicker1").val();
+        $("#datetimepicker2").val();
+
+
+
     });
 
 });
