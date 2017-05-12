@@ -1,6 +1,8 @@
 $.get("api/bookings", function(result) {
     console.table(result);
 
+    //zodat we stap 1 en twee overslaan, en direct naar gast-kiezen gaan.
+    toGuestSelect();
     var dataSet = [];
 
     for (var i = 0; i<result.length; i++) {
@@ -20,41 +22,38 @@ $.get("api/bookings", function(result) {
         event.preventDefault();
         var room = table.row( this ).data();
         console.log("room: " + room + ", roomnr " + room.roomNumber);
-
-        $("#datetimepicker1").val();
-        $("#datetimepicker2").val();
-
-
-
     });
 
 });
 //to room select
 function toDateSelect () {
-        $
+        $("#datetimepicker1").show;
+        $("#datetimepicker2").show;
 }
 
 function toRoomSelect() {
+
 }
 
 function toGuestSelect() {
-        $("#GuestPickerTable").show();
+    $("#GuestPickerTable").show();
 
-        $.get("/api/guests",function (result){
-            console.table(result);
+    $.get("/api/guests",function (result){
+        console.table(result);
         var table = $('#GuestPickerTable').DataTable({
-        columns: [
-            {data: "guestID"},
-            {data: "name"},
-            {data: "address"},
-            {data: "zipcode"},
-            {data: "city"},
-            {data: "country"},
-            {data: "phonenumber"},
-            {data: "special"}
-        ],
-           data: result
-    });
+            columns: [
+                {data: "guestID"},
+                {data: "name"},
+                {data: "address"},
+                {data: "zipcode"},
+                {data: "city"},
+                {data: "country"},
+                {data: "phonenumber"},
+                {data: "special"}
+            ],
+               data: result
+        });
+    }
 }
 
 function toConfirmBooking () {
