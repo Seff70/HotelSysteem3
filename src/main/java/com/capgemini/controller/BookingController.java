@@ -6,18 +6,15 @@ import com.capgemini.Model.Kamers.Room;
 import com.capgemini.repository.BookingRepository;
 import com.capgemini.repository.GuestRepository;
 import com.capgemini.repository.RoomRepository;
-import org.apache.tomcat.jni.Local;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.awt.print.Book;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 
 
@@ -48,5 +45,10 @@ public class BookingController {
             Booking b = new Booking(start.plusDays(i), end.plusDays(i),g ,r );
             bookingRepository.save(b);
         }
+    }
+
+    @RequestMapping(value = "api/addbooking", method = RequestMethod.POST)
+    public Booking addBooking(@RequestBody Booking b) throws SQLException {
+        return bookingRepository.save(b);
     }
 }
