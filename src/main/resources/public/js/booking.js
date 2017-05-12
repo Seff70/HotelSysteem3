@@ -27,8 +27,8 @@ $.get("api/bookings", function(result) {
 });
 //to room select
 function toDateSelect () {
-        $("#datetimepicker1").show;
-        $("#datetimepicker2").show;
+        $("#datetimepicker1").show();
+        $("#datetimepicker2").show();
 }
 
 function toRoomSelect() {

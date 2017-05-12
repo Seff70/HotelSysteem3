@@ -6,9 +6,11 @@ $.get("api/bookings", function (result) {
     var table = $('#availableRooms').DataTable({
         columns: [
             {data: "bookingNumber"},
+            {data: "room.roomType"},
+            {data: "guest.name"},
             {data: "start"},
-            {data: "end"},
-            {data: "room"}
+            {data: "eind"}
+
         ],
         data: result
     });
