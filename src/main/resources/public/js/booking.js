@@ -86,10 +86,10 @@ function toConfirmBooking () {
 //            start   : $("#start").val(),
 //            end     : $("#end").val(),
 //            room    : roomTable.row(0).data(),
-            start   :
-            end     :
+            start   : "12-12-12",
+            end     :   "13-12-12",
             room    : $.get("/api/rooms/50"),
-            guest   : guestTable.row(0).data(),
+            guest   : guestTable.row(0).data()
         };
 
         $.ajax({
