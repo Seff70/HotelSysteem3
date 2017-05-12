@@ -18,7 +18,7 @@ public class Rivier extends Trip {
     }
 
     @Override
-    Duration getDuur() {
+    public Duration getDuur() {
         Duration d = super.getDuur().minusMinutes(30);
         if (d.isNegative()) {
             return Duration.ZERO;

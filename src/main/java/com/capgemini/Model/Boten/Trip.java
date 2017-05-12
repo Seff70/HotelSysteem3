@@ -69,7 +69,7 @@ public abstract class Trip {
     }
 
     @JsonProperty
-    Duration getDuur() {
+    public Duration getDuur() {
         if (startTime != null && endTime != null) {
             return Duration.between(startTime, endTime);
         } else {
