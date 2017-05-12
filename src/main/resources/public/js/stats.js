@@ -1,5 +1,6 @@
-$.get("api/stats", function(result) {
-      $("#numberOfTrips").text(result[0]);
+$.get("/api/stats", function(result) {
+        console.log(result);
+      $("#totalNumberTrips").text(result[0]);
       $("#numberOfLakeTrips").text(result[1]);
       $("#numberOfRiverTrips").text(result[2]);
       $("#averageDurationOfTrip").text(result[3]);

@@ -4,22 +4,24 @@ import com.capgemini.Model.Boten.Rivier;
 import com.capgemini.Model.Boten.Trip;
 import com.capgemini.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by diveldhu on 11-5-2017.
  */
 
-
-public class Stats{
+@Service
+public class StatsService{
 
     @Autowired
     TripRepository tripRepository;
 
     public ArrayList<String> stats(){
-        ArrayList<String> stats=new ArrayList<>();
+        ArrayList<String> stats= new ArrayList <>();
         int numberOfTrips=0;
         int numberOfLakeTrips=0;
         int numberOfRiverTrips=0;

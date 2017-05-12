@@ -163,6 +163,7 @@ $.get("/api/boats", function(result) {
                end + ". \n De tocht duurde: " +
                duration + "."
                );
+               var tripStats = [trip.tripID, trip.type, trip.duur];
                location.href="Bootpage.html";
                $("#boatTableBig").show();
                $("#header").text("Overzicht Boten");

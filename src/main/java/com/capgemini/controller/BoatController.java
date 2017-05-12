@@ -63,7 +63,7 @@ public class BoatController {
     }
 
     @RequestMapping(value = "/api/getTotalNumberTrips", method = RequestMethod.GET)
-    public Iterable<Boat> boot() throws SQLException {
+    public Iterable<Boat> bootStats() throws SQLException {
         return boatRepository.findAll();
     }
 
