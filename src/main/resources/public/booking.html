@@ -53,36 +53,33 @@
     <br>
 
     <form id="search">
-      <span> <div class="well">
-          <div id="datetimepicker1" class="input-append date">
-                <p>Incheck datum</p>   <input data-format="dd/MM/yyyy" type="text"/>
-                <span class="add-on">
-                    <i class= "icon-time" data-date-icon="icon-calendar"></i>
-                      <div id="datetimepicker2" class="input-append date">
-                      </div>
-                      </span>
+                                <div class="well">
+                                    <div id="datetimepicker1" class="input-append date">
+                                       <p>Incheck datum</p> <input id="start"data-format="dd/MM/yyyy" type="text"></input>
+                                        <span class="add-on">
+                              <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                              </i>
+                            </span>
+                                    </div>
+                                </div>
 
-                <p>Uitcheck datum</p>   <input data-format="dd/MM/yyyy" type="text"/>
-                <span class="add-on">
-                    <i class= "icon-time" data-date-icon="icon-calendar"></i>
-                </span>
-            </div>
+                        <div class="well">
+                            <div id="datetimepicker2" class="input-append date">
+                                <p>Uitcheck datum</p> <input id="eind"data-format="dd/MM/yyyy" type="text"></input>
+                                <span class="add-on">
+                      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                      </i>
+                    </span>
+                            </div>
+                        </div>
 
-                </span>
-            </div>
-        </div>
-
-        <select id="typeroom">
-            <option value="Geen voorkeur">Geen voorkeur</option>
-            <option value="Standaard">Standaard</option>
-            <option value="Luxe">Luxe</option>
-        </select>
-
-        <button class="btn btn-success btn-xs" id="submitagenda">Submit</button>
-        <!--<button class="btn btn-danger btn-xs"id="delete">Delete</button>-->
-        <!--<button class="btn btn-warning btn-xs"id="edit">Edit</button>-->
-    </form></span>
-
+                    <select id="typeroom">
+                        <option value="Geen voorkeur">Geen voorkeur</option>
+                        <option value="Standaard">Standaard</option>
+                        <option value="Luxe">Luxe</option>
+                    </select>
+    </form>
+<button class="btn btn-success btn-xs" id="submitagenda">Submit</button>
     <div>
 
         <!--<button class="btn btn-primary btn-block btn-xs " id="addroom">Nieuwe kamer toevoegen</button>-->
