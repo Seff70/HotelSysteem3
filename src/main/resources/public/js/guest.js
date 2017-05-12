@@ -41,13 +41,6 @@ $.get("api/guests", function(result) {
         $("#InputCountry").val(data[5]);
         $("#InputTelephone").val(data[6]);
         $("#InputSpecial").val(data[7]);
-
-
-
-
-
-
-
     });
 });
 
