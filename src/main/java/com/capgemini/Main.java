@@ -11,6 +11,7 @@ public class Main {
 //        SpringApplication.run(Main.class, args);
         Properties properties = new Properties();
         properties.setProperty("spring.jpa.generate-ddl","true");
+        properties.setProperty("spring.data.rest.base-path","api");
         SpringApplication springApplication = new SpringApplication(Main.class);
         springApplication.setDefaultProperties(properties);
         springApplication.run(args);
