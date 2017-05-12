@@ -57,17 +57,20 @@ function toGuestSelect() {
 
 function toConfirmBooking () {
     $("#ConfirmBooking").show();
-    $("#confirmBookingButton").click(function(
+    $("#confirmBookingButton").click(function(){
 
-        var guestTable = $("#GuestPickerTable").DataTable());
-        var roomTable = $("availableRooms").DataTable());
+        var guestTable = $("#GuestPickerTable").DataTable();
+        var roomTable = $("availableRooms").DataTable();
         var newBooking = {
-            start   : $("#start").val(),
-            end     : $("#end").val(),
-            guest   : guestTable.row(0).data();
-            room    : roomTable.row(0).data();
+//            start   : $("#start").val(),
+//            end     : $("#end").val(),
+//            room    : roomTable.row(0).data(),
+            start   :
+            end     :
+            room    : $.get("/api/rooms/50"),
+            guest   : guestTable.row(0).data(),
         };
-        }
+
         $.ajax({
             contentType: "application/json",
             type: "POST",
@@ -82,6 +85,6 @@ function toConfirmBooking () {
                   var e = ("Het is niet gelukt om een boeking toe te voegen")
             }
         });
-    );
+    });
 }
 
