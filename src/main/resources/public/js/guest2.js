@@ -20,35 +20,40 @@ $.get("/api/guests",function (result){
            data: result
     });
 
-    $('#guestList tbody').on('click','tr', function () {
+    $('#guestList tbody').on('click', 'tr', function () {
         var data = table.row(this).data();
-        console.log('API row values : ', data);
-        $("#newguestform").show();
-        $("#guestList").hide();
-        $("#deleteGuest").show();
-        $("#editGuest").show();
-
-        $("#InputName").val(data.name);
-        $("#InputAddress").val(data.address);
-        $("#InputZipcode").val(data.zipcode);
-        $("#InputCity").val(data.city);
-        $("#InputCountry").val(data.country);
-        $("#InputTelephone").val(data.phonenumber);
-        $("#InputSpecial").val(data.special);
-
-        $("#addGuest").click(function (event) {
-            event.preventDefault();
-            addGuest(data);
-        });
-        $("#editGuest").click(function (event){
-            event.preventDefault();
-            editGuest(data);
-        });
-        $("#deleteGuest").click(function (event){
-            event.preventDefault();
-            deleteGuest(data);
-        });
+        table.search(data.guestID).draw();
     });
+
+//    $('#guestList tbody').on('click','tr', function () {
+//            var data = table.row(this).data();
+//        console.log('API row values : ', data);
+//        $("#newguestform").show();
+//        $("#guestList").hide();
+//        $("#deleteGuest").show();
+//        $("#editGuest").show();
+//
+//        $("#InputName").val(data.name);
+//        $("#InputAddress").val(data.address);
+//        $("#InputZipcode").val(data.zipcode);
+//        $("#InputCity").val(data.city);
+//        $("#InputCountry").val(data.country);
+//        $("#InputTelephone").val(data.phonenumber);
+//        $("#InputSpecial").val(data.special);
+//
+//        $("#addGuest").click(function (event) {
+//            event.preventDefault();
+//            addGuest(data);
+//        });
+//        $("#editGuest").click(function (event){
+//            event.preventDefault();
+//            editGuest(data);
+//        });
+//        $("#deleteGuest").click(function (event){
+//            event.preventDefault();
+//            deleteGuest(data);
+//        });
+//    });
 });
 
 function addGuest(data){

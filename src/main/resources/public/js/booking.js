@@ -4,12 +4,12 @@ $.get("api/bookings", function(result) {
     var dataSet = [];
 
     for (var i = 0; i<result.length; i++) {
-    console.log("result: "+  result);
-    console.log("result[0]: " + result[0] + " "+ result[0].guest.name);
-    var start = "" + result[i].start[2]+ "-" + result[i].start[1] + "-" + result[i].start[0]
-    var eind = "" + result[i].eind[2]+ "-" + result[i].eind[1] + "-" + result[i].eind[0]
+     console.log("result: "+  result);
+     console.log("result[0]: " + result[0] + " "+ result[0].guest.name);
+     var start = "" + result[i].start[2]+ "-" + result[i].start[1] + "-" + result[i].start[0]
+     var eind = "" + result[i].eind[2]+ "-" + result[i].eind[1] + "-" + result[i].eind[0]
 
-    dataSet.push([result[i].bookingNumber, result[i].guest.name, result[i].guest.address, start, eind, result[i].room.roomNumber, result[i].room.roomType]);
+     dataSet.push([result[i].bookingNumber, result[i].guest.name, result[i].guest.address, start, eind, result[i].room.roomNumber, result[i].room.roomType]);
     }
 
     $("#bookings").DataTable( {
@@ -29,3 +29,35 @@ $.get("api/bookings", function(result) {
     });
 
 });
+//to room select
+function toDateSelect () {
+        $
+}
+
+function toRoomSelect() {
+}
+
+function toGuestSelect() {
+        $("#GuestPickerTable").show();
+
+        $.get("/api/guests",function (result){
+            console.table(result);
+        var table = $('#GuestPickerTable').DataTable({
+        columns: [
+            {data: "guestID"},
+            {data: "name"},
+            {data: "address"},
+            {data: "zipcode"},
+            {data: "city"},
+            {data: "country"},
+            {data: "phonenumber"},
+            {data: "special"}
+        ],
+           data: result
+    });
+}
+
+function toConfirmBooking () {
+    $("#ConfirmBooking").show();
+}
+
