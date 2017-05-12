@@ -1,4 +1,4 @@
-package com.capgemini.controller;
+package com.capgemini.repository;
 
 import com.capgemini.Model.Boten.Trip;
 import org.springframework.data.repository.CrudRepository;
