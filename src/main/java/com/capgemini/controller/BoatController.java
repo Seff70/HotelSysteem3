@@ -61,11 +61,11 @@ public class BoatController {
         boatRepository.save(b);
         return trip;
     }
-
-    @RequestMapping(value = "/api/getTotalNumberTrips", method = RequestMethod.GET)
-    public Iterable<Boat> bootStats() throws SQLException {
-        return boatRepository.findAll();
-    }
+//
+//    @RequestMapping(value = "/api/getTotalNumberTrips", method = RequestMethod.GET)
+//    public Iterable<Boat> boot() throws SQLException {
+//        return boatRepository.findAll();
+//    }
 
 }
 
