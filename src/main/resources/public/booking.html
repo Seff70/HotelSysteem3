@@ -25,54 +25,53 @@
 
 <body>
 <br class="container">
-    <table id="availableRooms" class="display">
-        <br>
-        <h1>Agenda</h1>
-        <br>
-        <thead>
-        <tr>
-            <th>Kamernummer</th>
-            <th>Kamertype</th>
-            <th>Incheck datum</th>
-            <th>Uitcheck datum</th>
-        </tr>
-        </thead>
-    </table>
-    <br/>
-    <br/>
+<table id="availableRooms" class="display">
     <br>
+    <h1>Agenda</h1>
+    <br>
+    <thead>
+    <tr>
+        <th>Kamernummer</th>
+        <th>Kamertype</th>
+        <th>Incheck datum</th>
+        <th>Uitcheck datum</th>
+    </tr>
+    </thead>
+</table>
+<br/>
+<br/>
+<br>
 
-    <form id="search">
-        <select id="typeroom" class="btn btn-primary dropdown-toggle">
-            <option value="Geen voorkeur">Geen voorkeur</option>
-            <option value="Standaard">Standaard</option>
-            <option value="Luxe">Luxe</option>
-        </select>
-            </form>
+<form id="search">
+    <select id="typeroom" class="btn btn-primary dropdown-toggle">
+        <option value="Geen voorkeur">Geen voorkeur</option>
+        <option value="Standaard">Standaard</option>
+        <option value="Luxe">Luxe</option>
+    </select>
+</form>
 </br>
 </br>
 
 <div class="container">
     <div class='col-md-5'>
         <div class="input-daterange input-group" id="datepicker">
-            <input type="text" class="input-sm form-control" id="start" />
+            <input type="text" class="input-sm form-control" id="start"/>
             <span class="input-group-addon">to</span>
-            <input type="text" class="input-sm form-control" id="end" />
+            <input type="text" class="input-sm form-control" id="end"/>
         </div>
     </div>
 </div>
 </br>
 </br>
 <button class="btn btn-primary" id="submitagenda">Submit</button>
-    <div>
+<div>
 
-        <!--<button class="btn btn-primary btn-block btn-xs " id="addroom">Nieuwe kamer toevoegen</button>-->
+    <!--<button class="btn btn-primary btn-block btn-xs " id="addroom">Nieuwe kamer toevoegen</button>-->
 
-    </div>
 </div>
 
 <div id="GuestPickerTableBig">
-    <table id="GuestPickerTable" class="table table-striped" style="width:80%">
+    <table id="GuestPickerTable" class="table table-striped" style="width:80%" hidden>
 
         <thead>
         <tr>
@@ -87,11 +86,16 @@
         </tr>
         </thead>
 
+        <tbody>
+            <tr></tr>
+        </tbody>
+
     </table>
 </div>
 
-<button class="btn btn-primary" id="confirmBookingButton">Bevestig boeking voor bovenstaande gegevens</button>
+<button class="btn btn-primary" id="confirmBookingButton" hidden>Bevestig boeking voor bovenstaande gegevens</button>
 
+<script src="js/agenda.js"></script>
 <script src="js/booking.js"></script>
 
 </body>
