@@ -3,10 +3,7 @@ package com.capgemini.Model.Boten;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
