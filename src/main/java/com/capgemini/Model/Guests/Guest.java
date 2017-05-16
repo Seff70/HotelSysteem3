@@ -11,7 +11,7 @@ public class Guest {
     // we geven het volgende mee
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int GuestID;
+    private int guestID;
 
     private String name;
     private String address;
@@ -23,7 +23,7 @@ public class Guest {
 
 
     public int getGuestID() {
-        return GuestID;
+        return guestID;
     }
 
     public String getSpecial() {

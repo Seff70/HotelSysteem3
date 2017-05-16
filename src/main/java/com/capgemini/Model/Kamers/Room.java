@@ -6,7 +6,6 @@ package com.capgemini.Model.Kamers;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -17,6 +16,15 @@ public class Room {
     private int roomNumber;
     private RoomType roomType;
     private boolean available;
+
+    public Room(){
+    }
+
+    public Room(int roomNumber, RoomType roomType, boolean available) {
+        this.roomNumber = roomNumber;
+        this.roomType = roomType;
+        this.available = available;
+    }
 
     public int getRoomID() {
         return roomID;

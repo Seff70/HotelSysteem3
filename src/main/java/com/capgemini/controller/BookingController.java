@@ -8,10 +8,7 @@ import com.capgemini.repository.GuestRepository;
 import com.capgemini.repository.RoomRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -33,6 +30,11 @@ public class BookingController {
         return bookingRepository.findAll();
     }
 
+    @RequestMapping(value = "api/booking/{bookingID}", method = RequestMethod.GET)
+    public Booking get(@PathVariable int bookingID) throws SQLException {
+        return bookingRepository.findOne(bookingID);
+    }
+
     @RequestMapping(value = "api/make4bookings", method = RequestMethod.GET)
     public void make4Bookings() throws SQLException {
         System.out.println("new random booking");
@@ -49,6 +51,7 @@ public class BookingController {
 
     @RequestMapping(value = "api/addbooking", method = RequestMethod.POST)
     public Booking addBooking(@RequestBody Booking b) throws SQLException {
+        System.out.println("nu bij bookingController");
         return bookingRepository.save(b);
     }
 }
