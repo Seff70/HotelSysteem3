@@ -11,10 +11,8 @@ import java.sql.SQLException;
 @RestController
 public class RoomController {
 
-//    @Autowired
-//    RoomRepository roomRepository;
     @Autowired
-RoomRepository roomRepository;
+    RoomRepository roomRepository;
 
 
     @RequestMapping(value= "/api/rooms", method=RequestMethod.GET)
@@ -31,7 +29,6 @@ RoomRepository roomRepository;
     public Room saveRoom (@RequestBody Room room) throws SQLException {
         return roomRepository.save(room);
     }
-
 
     @RequestMapping(value= "/api/rooms/{roomNumber}", method=RequestMethod.DELETE)
     public void deleteRoom (@PathVariable int roomNumber) throws SQLException {
