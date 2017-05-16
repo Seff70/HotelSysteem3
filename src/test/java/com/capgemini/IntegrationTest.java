@@ -37,10 +37,10 @@ public class IntegrationTest {
         final Guest guest = new Guest("Jarno", "Straat 1", "1234 AB", "Amersfoort", "NL", "112", "");
         Guest result = guestController.addGuestList(guest);
         
-        assertNotNull(guest);
-        assertTrue(guest.getGuestID() > 0);
+        assertNotNull(result);
+        assertTrue(result.getGuestID() > 0);
 
-        System.out.println(guest.getGuestID());
+        System.out.println(result.getGuestID());
         
         final Guest lookup = guestController.getGuest(guest.getGuestID());
         assertNotNull(lookup);

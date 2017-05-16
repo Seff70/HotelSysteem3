@@ -8,10 +8,6 @@ $.get("api/bookings", function(result) {
 });
 
 
-$("#submitagenda").click(function(event){
-    $('#availableRooms').show();
-});
-
 function toDateSelect () {
         $("#datepicker").show();
         $("#availableRooms").hide();
@@ -26,6 +22,10 @@ function toDateSelect () {
         });
 
         $('#start').datepicker('update', new Date());
+
+        $("#submitagenda").click(function(event){
+            $('#availableRooms').show();
+        });
 }
 
 function toRoomSelect() {
