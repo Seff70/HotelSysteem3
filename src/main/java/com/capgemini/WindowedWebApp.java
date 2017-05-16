@@ -13,7 +13,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import java.util.Properties;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class WindowedWebApp extends Application {
 
     @Override
