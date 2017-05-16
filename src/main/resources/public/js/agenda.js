@@ -6,13 +6,13 @@ $('#datepicker').datepicker({
 });
 $('#start').datepicker('update', new Date());
 
-$.get("api/bookings", function (result) {
+$.get("api/rooms", function (result) {
 
     console.table(result);
     var table = $('#availableRooms').DataTable({
         columns: [
-            {data: "room.roomType"},
-            {data: "room.roomNumber"},
+            {data: "roomType"},
+            {data: "roomNumber"},
         ],
         data: result
     });

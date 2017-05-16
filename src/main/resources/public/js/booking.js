@@ -72,7 +72,7 @@ function toGuestSelect() {
            console.log("tot hier")
            var table = $("#GuestPickerTable").DataTable();
            var guest = table.row( this ).data();
-           table.search(guest.name).draw();
+           table.search(guest.guestID).draw();
            toConfirmBooking(guest);
     });
 }
