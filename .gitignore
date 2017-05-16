@@ -9,7 +9,7 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
-.src.main.java.PasswordValidator
-.src.main.java.Reverser
-.src.test.java.ReverserTest
-.src.test.java.PasswordValidatorTest
+src/main/java/com/capgemini/PasswordValidator.java
+src/main/java/com/capgemini/Reverser.java
+src/test/java/com/capgemini/PasswordValidatorTest.java
+src/test/java/com/capgemini/ReverserTest.java
