@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
     <title>Hotel Klaas</title>
 
+
 </head>
 
 <body>
@@ -23,6 +24,7 @@
                 <th>Kamernummer</th>
                 <th>Kamertype</th>
                 <th>Beschikbaar</th>
+                <th>Startdatum</th>
             </tr>
         </thead>
 
@@ -46,14 +48,16 @@
     <form id="newroom" hidden>
         <input type="text" id="inputaddnumber" placeholder="Kamernummer"/>
 
-        <label for="inputaddtype">Kamertype</label>
+        <label for="inputaddtype">Kamerafstype</label>
         <select id="inputaddtype">
             <option value="Standaard">Standaard</option>
             <option value="Luxe">Luxe</option>
         </select>
-
+        <input name="startDate" type="date" id="startDate" placeholder="Ingangsdatum Kamer"/>
         <label for="inputboolean">Beschikbaar?</label>
         <input type="checkbox" id="inputboolean" placeholder="Beschikbaar ja of nee"/>
+    <br>
+
 
         <button class="btn btn-success btn-xs" id="submit">Submit</button>
         <button class="btn btn-danger btn-xs"id="delete">Delete</button>
@@ -65,6 +69,7 @@
         <button class="btn btn-primary btn-block btn-xs "id="addroom">Nieuwe kamer toevoegen</button>
 
     </div>
+
 </div>
 
 

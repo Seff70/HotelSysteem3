@@ -1,11 +1,12 @@
 $.get("/api/rooms", function (result) {
     console.table(result);
     var table = $('#tableRooms').DataTable({
+
         columns: [
             {data: "roomNumber"},
             {data: "roomType"},
             {data: "available"}
-        ],
+            ],
         data: result
     });
 
@@ -48,7 +49,7 @@ $("#addroom").click(function (event) {
 
 });
 
-function editRoom(data) {
+function editRoom() {
     var edit = {
         roomID: data.roomID,
         roomNumber: $("#inputaddnumber").val(),
@@ -92,16 +93,19 @@ function deleteRoom(data) {
     });
 }
 
-function addroom() {
+function addroom(data) {
+var startdate = new Date ($("#startDate").val());
 
+console.log(startdate);
     $.ajax({
         contentType: "application/json",
         type: "POST",
         url: "/api/rooms",
         data: JSON.stringify({
-            roomNumberreal: $("#inputaddnumber").val(),
+            roomNumber: $("#inputaddnumber").val(),
             roomType: $("#inputaddtype").val(),
-            available: $("#inputboolean").is(':checked')
+            available: $("#inputboolean").is(':checked'),
+            startDate: startdate
         }),
         success: function (result) {
             console.log(result);
