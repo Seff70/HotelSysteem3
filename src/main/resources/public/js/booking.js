@@ -2,50 +2,65 @@ $.get("api/bookings", function(result) {
     console.log("start van booking.js, get all bookings: ");
     console.table(result);
 
+    toDateSelect();
     //zodat we stap 1 en twee overslaan, en direct naar gast-kiezen gaan.
-    toGuestSelect();
-//    var dataSet = [];
-//
-//    for (var i = 0; i<result.length; i++) {
-//     console.log("result: "+  result);
-//     console.log("result[0]: " + result[0] + " "+ result[0].guest.name);
-//
-//     var start = ""
-//      if(result[i].start != null) {
-//        start += result[i].start[2]+ "-" + result[i].start[1] + "-" + result[i].start[0]
-//      }
-//     var eind = ""
-//      if(result[i].eind != null) {
-//      eind += result[i].eind[2]+ "-" + result[i].eind[1] + "-" + result[i].eind[0]
-//      }
-//
-//     dataSet.push([result[i].bookingNumber, result[i].guest.name, result[i].guest.address, start, eind, result[i].room.roomNumber, result[i].room.roomType]);
-//    }
-//
-//    $("#bookings").DataTable( {
-//            data: dataSet
-//        });
+    //toGuestSelect();
+});
 
-    $("#availableRooms tbody").on('click', 'tr', function () {
-        event.preventDefault();
-        var table = $("#availableRooms").DataTable();
-        var room = table.row( this ).data();
-        console.log("room: " + room + ", roomnr " + room.roomNumber);
-    });
 
+$("#submitagenda").click(function(event){
+    $('#availableRooms').show();
 });
 
 function toDateSelect () {
-        $("#datetimepicker1").show();
-        $("#datetimepicker2").show();
+        $("#datepicker").show();
+        $("#availableRooms").hide();
+        $("#GuestPickerTable").hide();
+        $("#ConfirmBooking").hide();
 
+        $('#datepicker').datepicker({
+            todayBtn: true,
+            todayHighlight: true,
+            language: 'nl',
+            format: 'dd-mm-yyyy'
+        });
+
+        $('#start').datepicker('update', new Date());
 }
 
 function toRoomSelect() {
+        $("#datepicker").show();
+        $("#availableRooms").show();
+        $("#GuestPickerTable").hide();
+        $("#ConfirmBooking").hide();
 
+        $.get("api/rooms", function (result) {
+
+            console.table(result);
+            var table = $('#availableRooms').DataTable({
+                columns: [
+                    {data: "roomType"},
+                    {data: "roomNumber"},
+                ],
+                data: result
+            });
+
+        });
+
+        $("#availableRooms tbody").on('click', 'tr', function () {
+                event.preventDefault();
+                var table = $("#availableRooms").DataTable();
+                var room = table.row( this ).data();
+                console.log("room: " + room + ", roomnr " + room.roomNumber);
+        });
 }
 
 function toGuestSelect() {
+        $("#datepicker").show();
+        $("#availableRooms").show();
+        $("#GuestPickerTable").show();
+        $("#ConfirmBooking").hide();
+
     $.get("/api/guests",function (result){
         console.table("toGuestSelect: "+ result);
         var table = $('#GuestPickerTable').DataTable({
@@ -78,6 +93,11 @@ function toGuestSelect() {
 }
 
 function toConfirmBooking () {
+    $("#datepicker").show();
+    $("#availableRooms").show();
+    $("#GuestPickerTable").show();
+    $("#ConfirmBooking").show();
+
     console.log("toConfirmBooking")
     $("#ConfirmBooking").show();
     $("#confirmBookingButton").click(function(){
@@ -111,6 +131,7 @@ function toConfirmBooking () {
                   var e = ("Het is niet gelukt om een boeking toe te voegen")
             }
         });
+        toDateSelect();
     });
 }
 
