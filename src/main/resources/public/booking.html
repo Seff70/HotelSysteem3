@@ -48,37 +48,30 @@
         <input type="text" class="input-sm form-control" id="end"/>
 
     </div>
-    <button class="btn btn-success btn-block " id="submitagenda">Submit</button>
+    <br>
+    <br>
+        <button class="btn btn-success btn-lg " id="submitagenda">Submit</button>
     </br>
     </br>
 
 </div>
+<div id="availableRoomsBig" hidden>
+    <table id="availableRooms" class="table table-striped" >
+        <thead>
+        <tr>
+            <th>Kamertype</th>
+            <th>Kamernummer</th>
+        </tr>
+        </thead>
 
-<table id="availableRooms" class="table table-striped" hidden>
-    <thead>
-    <tr>
-        <th>Kamertype</th>
-        <th>Kamernummer</th>
-    </tr>
-    </thead>
-</table>
-<br/>
-<br/>
-<br>
-
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-
-<!--<button class="btn btn-primary btn-block btn-xs " id="addroom">Nieuwe kamer toevoegen</button>-->
-
+        <tbody>
+            <tr></tr>
+        </tbody>
+    </table>
 </div>
 
-<div id="GuestPickerTableBig">
-    <table id="GuestPickerTable" class="table table-striped" style="width:80%" hidden>
+<div id="GuestPickerTableBig" hidden>
+    <table id="GuestPickerTable" class="table table-striped" style="width:80%">
 
         <thead>
         <tr>
@@ -99,10 +92,10 @@
 
     </table>
 </div>
-
-<button class="btn btn-primary" id="confirmBookingButton" hidden>Bevestig boeking voor bovenstaande gegevens</button>
-
-<script src="js/agenda.js"></script>
+<div id="ConfirmBooking" hidden>
+    <button class="btn btn-primary" id="confirmBookingButton" >Bevestig boeking voor bovenstaande gegevens</button>
+</div>
+<!--<script src="js/agenda.js"></script>-->
 <script src="js/booking.js"></script>
 
 </body>
