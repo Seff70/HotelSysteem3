@@ -1,6 +1,6 @@
 package com.capgemini.repository;
 
-import com.capgemini.Model.Boten.Trip;
+import com.capgemini.Model.Trip;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.hateoas.RelProvider;

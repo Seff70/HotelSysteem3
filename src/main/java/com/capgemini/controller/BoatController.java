@@ -1,9 +1,9 @@
 package com.capgemini.controller;
 
-import com.capgemini.Model.Boten.Boat;
-import com.capgemini.Model.Boten.Meer;
-import com.capgemini.Model.Boten.Rivier;
-import com.capgemini.Model.Boten.Trip;
+import com.capgemini.Model.Boat;
+import com.capgemini.Model.Meer;
+import com.capgemini.Model.Rivier;
+import com.capgemini.Model.Trip;
 import com.capgemini.repository.BoatRepository;
 import com.capgemini.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
