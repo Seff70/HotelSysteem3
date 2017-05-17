@@ -1,5 +1,7 @@
 package com.capgemini.Model;
 
+import com.capgemini.Model.Trip;
+
 import javax.persistence.*;
 
 @Entity

@@ -3,6 +3,7 @@ $.get("/api/rooms", function (result) {
     var table = $('#tableRooms').DataTable({
 
         columns: [
+//            {data: "roomID"},
             {data: "roomNumber"},
             {data: "roomType"},
             {data: "available"}
@@ -50,7 +51,7 @@ $("#addroom").click(function (event) {
 
 });
 
-function editRoom() {
+function editRoom(data) {
     var edit = {
         roomID: data.roomID,
         roomNumber: $("#inputaddnumber").val(),

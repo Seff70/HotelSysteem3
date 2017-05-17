@@ -9,7 +9,6 @@ import java.sql.SQLException;
 
 @RestController
 // het is een referentie naar een stukje code in dit geval de restcontroller
-
 public class GuestController {
 
     @Autowired
