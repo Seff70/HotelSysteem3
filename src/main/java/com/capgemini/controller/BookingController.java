@@ -26,7 +26,7 @@ public class BookingController {
     RoomRepository roomRepository;
 
     @RequestMapping(value = "api/bookings", method = RequestMethod.GET)
-    public Iterable<Booking> get() throws SQLException {
+    public Iterable<Booking> getAll() throws SQLException {
         return bookingRepository.findAll();
     }
 

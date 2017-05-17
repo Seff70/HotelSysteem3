@@ -10,9 +10,15 @@ $.get("api/bookings", function(result) {
 
 function toDateSelect () {
         $("#datepicker").show();
-        $("#availableRooms").hide();
-        $("#GuestPickerTable").hide();
+        $("#submitagenda").show();
+        $("#availableRoomsBig").hide();
+        $("#GuestPickerTableBig").hide();
         $("#ConfirmBooking").hide();
+
+//        var table = $("#GuestPickerTable").DataTable();
+//        table.search("").draw();
+//        table = $("#availableRooms").DataTable();
+//        table.search("").draw();
 
         $('#datepicker').datepicker({
             todayBtn: true,
@@ -25,16 +31,48 @@ function toDateSelect () {
 
         $("#submitagenda").click(function(event){
             $('#availableRooms').show();
+            toRoomSelect();
         });
+}
+
+function parseDate(d) {
+        var month;
+        console.log(d.getMonth());
+         if (d.getMonth()<9) {
+            month = "0"+(d.getMonth()+1);
+         } else {
+            month = "" + (d.getMonth()+1);
+         }
+
+        console.log(d.getDate());
+         var day;
+         if (d.getDate()<10){
+            day = "0" + d.getDate();
+         } else {
+            day = "" + d.getDate();
+         }
+
+         return day + month + d.getFullYear();
 }
 
 function toRoomSelect() {
         $("#datepicker").show();
-        $("#availableRooms").show();
-        $("#GuestPickerTable").hide();
+        $("#submitagenda").hide();
+        $("#availableRoomsBig").show();
+        $("#GuestPickerTableBig").hide();
         $("#ConfirmBooking").hide();
+//          "/api/rooms/{startDate}&{endDate}&{roomType}"
+        var start = $("#start").datepicker("getDate");
+        var end = $("#end").datepicker("getDate");
+        var type = $("#typeroom").val();
+        if (type == "Geen voorkeur") { type = "Geenvoorkeur";}
+        console.log("start, end, type " + start + ", " + end + ", "+type);
+        console.log("parsedate "+parseDate(start));
+        start = parseDate(start);
+        end = parseDate(end);
+        console.log(start);
 
-        $.get("api/rooms", function (result) {
+        $.get("api/rooms/"+start+"/"+end+"/"+type, function (result) {
 
             console.table(result);
             var table = $('#availableRooms').DataTable({
@@ -52,13 +90,17 @@ function toRoomSelect() {
                 var table = $("#availableRooms").DataTable();
                 var room = table.row( this ).data();
                 console.log("room: " + room + ", roomnr " + room.roomNumber);
+                table.search(room.roomNumber).draw();
+                toGuestSelect();
         });
 }
 
 function toGuestSelect() {
+        console.log("in guestselect")
         $("#datepicker").show();
-        $("#availableRooms").show();
-        $("#GuestPickerTable").show();
+        $("#submitagenda").hide();
+        $("#availableRoomsBig").show();
+        $("#GuestPickerTableBig").show();
         $("#ConfirmBooking").hide();
 
     $.get("/api/guests",function (result){
@@ -88,14 +130,15 @@ function toGuestSelect() {
            var table = $("#GuestPickerTable").DataTable();
            var guest = table.row( this ).data();
            table.search(guest.guestID).draw();
-           toConfirmBooking(guest);
+           toConfirmBooking();
     });
 }
 
 function toConfirmBooking () {
     $("#datepicker").show();
-    $("#availableRooms").show();
-    $("#GuestPickerTable").show();
+    $("#submitagenda").hide();
+    $("#availableRoomsBig").show();
+    $("#GuestPickerTableBig").show();
     $("#ConfirmBooking").show();
 
     console.log("toConfirmBooking")
@@ -107,11 +150,8 @@ function toConfirmBooking () {
         var newBooking = {
             start   : $("#start").datepicker("getDate"),
             end     : $("#end").datepicker("getDate"),
-            room    : roomTable.rows({"filter":"applied"}).data()[0],
-//            start   : "12-12-12",
-//            end     :   "13-12-12",
-//            room    : $.get("/api/rooms/50"),
-            guest   : guestTable.rows( {"filter":"applied"} ).data()[0]           //guestTable.row(0).data()
+            room    : roomTable.rows( {"filter":"applied"}).data()[0],
+            guest   : guestTable.rows({"filter":"applied"}).data()[0]           //guestTable.row(0).data()
         };
         console.log("toConfirmBooking, nu table van nieuwe booking");
         console.table(newBooking);
@@ -131,6 +171,10 @@ function toConfirmBooking () {
                   var e = ("Het is niet gelukt om een boeking toe te voegen")
             }
         });
+        guestTable.search("");
+        roomTable.search("");
+        guestTable.draw();
+        roomTable.draw();
         toDateSelect();
     });
 }
