@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @DiscriminatorColumn(name = "type")
@@ -60,6 +61,13 @@ public abstract class Trip {
         }
     }
 
+//    public LocalDateTime formatter() {
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy, hh:mm");
+//        String text = startTime.format(formatter);
+//        LocalDateTime parsedStartTime = LocalDateTime.parse(text, formatter);
+//        return parsedStartTime;
+//    }
+
     @JsonProperty
     public Duration getDuur() {
         if (startTime != null && endTime != null) {
@@ -73,4 +81,5 @@ public abstract class Trip {
     public String getType() {
         return getClass().getSimpleName();
     }
+
 }

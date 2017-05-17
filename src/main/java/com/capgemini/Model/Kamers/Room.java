@@ -7,6 +7,8 @@ package com.capgemini.Model.Kamers;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 public class Room {
@@ -17,13 +19,25 @@ public class Room {
     private RoomType roomType;
     private boolean available;
 
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    private Date startDate;
+    private Date endDate;
+
     public Room(){
     }
 
-    public Room(int roomNumber, RoomType roomType, boolean available) {
+    public Room(int roomNumber, RoomType roomType, boolean available, Date startDate) {
         this.roomNumber = roomNumber;
         this.roomType = roomType;
         this.available = available;
+        this.startDate = startDate;
     }
 
     public int getRoomID() {
