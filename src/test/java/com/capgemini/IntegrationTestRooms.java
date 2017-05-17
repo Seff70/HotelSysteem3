@@ -12,9 +12,7 @@
 //
 //import java.util.List;
 //
-//import static org.junit.Assert.assertEquals;
-//import static org.junit.Assert.assertNotNull;
-//import static org.junit.Assert.assertTrue;
+//import static org.junit.Assert.*;
 //
 ///**
 // * Basis integratietest voor Spring boot applicatie
@@ -30,7 +28,7 @@
 //    public void testRoomRetrieval() throws Exception {
 //        final List<Room> rooms = Lists.newArrayList(roomController.getRoomList());
 //        assertNotNull(rooms);
-//        assertEquals(8, rooms.size());
+//        assertEquals(10, rooms.size());
 //    }
 //
 //    @Test
@@ -48,5 +46,7 @@
 //        assertEquals(result.getRoomID(), lookup.getRoomID());
 //
 //        roomController.deleteRoom(room.getRoomID());
+//
+//        assertNull(roomController.getRoom(result.getRoomNumber()));
 //    }
 //}

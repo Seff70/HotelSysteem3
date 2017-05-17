@@ -40,11 +40,11 @@ public class Booking {
         this.start = start;
     }
 
-    public LocalDate getEind() {
+    public LocalDate getEnd() {
         return end;
     }
 
-    public void setEind(LocalDate end) {
+    public void setEnd(LocalDate end) {
         this.end = end;
     }
 
@@ -68,9 +68,9 @@ public class Booking {
         return bookingNumber;
     }
 
-    public void setBookingNumber(int bookingNumber) {
-        this.bookingNumber = bookingNumber;
-    }
+//    public void setBookingNumber(int bookingNumber) {
+//        this.bookingNumber = bookingNumber;
+//    }
 
        
     

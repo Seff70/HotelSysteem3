@@ -65,8 +65,8 @@
     </table>
     <br/><br/>
 
-    <div id="GuestPickerTableBig">
-        <table id="GuestPickerTable" class="table table-striped" style="width:80%" hidden>
+    <div id="GuestPickerTableBig" hidden>
+        <table id="GuestPickerTable" class="table table-striped" style="width:80%">
 
             <thead>
             <tr>
@@ -94,19 +94,10 @@
         </button>
     </div>
 </div>
-
-<!--<button class="btn btn-primary btn-block btn-xs " id="addroom">Nieuwe kamer toevoegen</button>-->
-<script src="lib/jquery-3.2.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-<script src="lib/js/bootstrap-datepicker.js"></script>
-<script src="lib/locales/bootstrap-datepicker.nl.min.js"></script>
-
-
-
-<script src="js/agenda.js"></script>
+<div id="ConfirmBooking" hidden>
+    <button class="btn btn-primary" id="confirmBookingButton" >Bevestig boeking voor bovenstaande gegevens</button>
+</div>
+<!--<script src="js/agenda.js"></script>-->
 <script src="js/booking.js"></script>
 </body>
 </html>
