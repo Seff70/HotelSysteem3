@@ -11,7 +11,7 @@ $.get("/api/boats", function(result) {
                         return "Beschikbaar";
                     }
                     else {
-                        return "Onderweg met tochtnummer " + trip.tripID + " sinds " + trip.startTime;
+                        return "Onderweg met tochtnummer " + trip.tripID + " sinds " + Date.parse(trip.startTime).toString();
                     }
                 }
             }
