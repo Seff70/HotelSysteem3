@@ -1,7 +1,6 @@
-package com.capgemini.Model.Boten;
+package com.capgemini.Model;
 
 import javax.persistence.Entity;
-import java.time.LocalDateTime;
 
 /**
  * Created by Skucukde on 9-5-2017.

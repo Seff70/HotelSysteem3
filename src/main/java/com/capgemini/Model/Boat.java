@@ -1,4 +1,4 @@
-package com.capgemini.Model.Boten;
+package com.capgemini.Model;
 
 import javax.persistence.*;
 
@@ -12,14 +12,12 @@ public class Boat {
     @OneToOne
     private Trip currentTrip;
 
-    protected Boat() {
-    }
+    protected Boat() {}
 
     public Boat(int boatID, int nummer) {
         this.boatID = boatID;
         this.nummer = nummer;
     }
-
 
     public Trip getTrip() {
         return currentTrip;
@@ -29,21 +27,21 @@ public class Boat {
         this.currentTrip = trip;
     }
 
-    public int getBoatID() {
-        return boatID;
-    }
-
-    public void setBoatID(int boatID) {
-        this.boatID = boatID;
-    }
+//    public int getBoatID() {
+//        return boatID;
+//    }
+//
+//    public void setBoatID(int boatID) {
+//        this.boatID = boatID;
+//    }
 
     public int getNummer() {
         return nummer;
     }
 
-    public void setNummer(int nummer) {
-        this.nummer = nummer;
-    }
+//    public void setNummer(int nummer) {
+//        this.nummer = nummer;
+//    }
 
 }
 

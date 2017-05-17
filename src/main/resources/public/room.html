@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+    <script src="lib/jquery-3.2.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <title>Hotel Klaas</title>
 
 
@@ -15,40 +20,40 @@
 
 <body>
 <div class="container">
-    <table id="tableRooms" class="display">
-        <br>
-        <h1>Kamerlijst</h1>
-        <br>
+    <br>
+    <h1>Kamerlijst</h1>
+    <br>
+    <p>Bekijk en beheer uw kamers in dit overzicht.</p>
+
+    <table id="tableRooms" class="display" style="width:100%;">
         <thead>
             <tr>
                 <th>Kamernummer</th>
                 <th>Kamertype</th>
-                <th>Beschikbaar</th>
-                <th>Startdatum</th>
+                <th>Beschikbaarheid</th>
+                <!--<th>Startdatum</th>-->
             </tr>
         </thead>
 
         <tbody>
             <tr>
-                <td>Row 1 Data 1</td>
-                <td>Row 1 Data 2</td>
-                <td>Row 1 Data 3</td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
             <tr>
-                <td>Row 2 Data 1</td>
-                <td>Row 2 Data 2</td>
-                <td>Row 2 Data 3</td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
         </tbody>
     </table>
-    <br/>
-    <br/>
-    <br>
+    <br/><br/><br/>
 
     <form id="newroom" hidden>
         <input type="text" id="inputaddnumber" placeholder="Kamernummer"/>
 
-        <label for="inputaddtype">Kamerafstype</label>
+        <label for="inputaddtype">Kamertype</label>
         <select id="inputaddtype">
             <option value="Standaard">Standaard</option>
             <option value="Luxe">Luxe</option>
@@ -59,23 +64,23 @@
     <br>
 
 
-        <button class="btn btn-success btn-xs" id="submit">Submit</button>
-        <button class="btn btn-danger btn-xs"id="delete">Delete</button>
-        <button class="btn btn-warning btn-xs"id="edit">Edit</button>
+        <button class="btn btn-success btn-xs" id="submit">Bevestig</button>
+        <button class="btn btn-danger btn-xs"id="delete">Verwijder</button>
+        <button class="btn btn-warning btn-xs"id="edit">Wijzig</button>
     </form>
 
-    <div>
+            <button class="btn btn-primary btn-block btn-xs "id="addroom" style="border: 0!important;
+            border-radius: 0!important;
+            background-color: rgba(2, 80, 173, 0.8) !important;
+            background-image: none!important;
+            height: 50px; width:100%;">Nieuwe kamer toevoegen</button>
 
-        <button class="btn btn-primary btn-block btn-xs "id="addroom">Nieuwe kamer toevoegen</button>
 
     </div>
 
 </div>
 
 
-<script src="lib/jquery-3.2.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <script src="js/room.js"></script>
 </body>
 

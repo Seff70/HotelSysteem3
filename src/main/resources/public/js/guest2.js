@@ -27,6 +27,8 @@ $.get("/api/guests",function (result){
         $("#guestList").hide();
         $("#deleteGuest").show();
         $("#editGuest").show();
+        $("#backToPrevious").show();
+        $("#headerForm").text("Wijzig gast");
 
         $("#InputName").val(data.name);
         $("#InputAddress").val(data.address);
@@ -47,14 +49,22 @@ $.get("/api/guests",function (result){
     });
 });
 
+
+
 $('#btnAddGuest').click(function() {
     $("#newguestform").show();
     $("#guestList").hide();
+    $("#btnAddGuest").hide();
+    $("#deleteGuest").hide();
+    $("#editGuest").hide();
+
+    $("#headerForm").text("Nieuwe gast");
 });
 
 $("#addGuest").click(function (event) {
     event.preventDefault();
     addGuest();
+
 });
 
 function addGuest(){

@@ -46,19 +46,20 @@ $.get("/api/boats", function(result) {
 
      $('#botentabel tbody').on('click', 'tr', function () {
                 event.preventDefault();
+                $("#boatSubText").hide();
                 var boat = table.row( this ).data();
                 console.log("boot: " + boat + ", bootnr " + boat.nummer);
                 //start een nieuwe tocht
                 if (boat.trip==null) {
                     $("#boatTableBig").hide();
-                    $("#header").text("Gegevens van boot " + boat.nummer);
+                    $("#header").text("Overzicht boot #" + boat.nummer);
                     $("#oneBoat").show();
                     startTrip(boat);
                 }
                 // beeindig de aangeklikte tocht
                 else {
                     $("#boatTableBig").hide();
-                    $("#header").text("Gegevens van boot " + boat.nummer);
+                    $("#header").text("Overzicht boot #" + boat.nummer);
                     $("#endTripContainer").show();
                     $("#tripID").text("Tochtnummer "+ boat.trip.tripID);
                     //$("#startTime").val("")

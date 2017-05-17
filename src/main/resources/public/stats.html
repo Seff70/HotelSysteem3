@@ -10,29 +10,27 @@
 
 
 <body>
-<div id="numberOfTrips"></div><br>
-<div id="numberOfLakeTrips"></div><br>
-<div id="numberOfRiverTrips"></div><br>
-<div id="averageDurationOfTrip"></div><br>
-<div id="averageDurationOfLakeTrip"></div><br>
-<div id="averageDurationOfRiverTrip"></div><br>
+<div id="numberOfTrips"></div>
+<div id="numberOfLakeTrips"></div>
+<div id="numberOfRiverTrips"></div>
+<div id="averageDurationOfTrip"></div>
+<div id="averageDurationOfLakeTrip"></div>
+<div id="averageDurationOfRiverTrip"></div>
 
     <div class="container">
         <br>
         <div class="row">
             <h1 id="header">Overzicht statistiek boottochten</h1>
+            <p>Bekijk in dit overzicht de statistieken van alle boottochten. De data kunt u vernieuwen door op de knop "Vernieuw data" te klikken.</p>
         </div>
         <br>
 
         <div class="row" id="statsTable">
-            <div class="col-md-12">
-
                 <table id="botentabel" class="table table-striped" width="100%">
-
                     <thead style='display:none;'>
                         <tr>
-                            <th colspan="2">Does not show</th>
-                            <th>Does not show</th>
+                            <th colspan="2"></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -68,16 +66,15 @@
                             <td></td>
                             <td id="durationRiverTrips"></td>
                         </tr>
-
-
                     </tbody>
-
                 </table>
-
+            <button id="refresh" style="border: 0!important;
+            border-radius: 0!important;
+            background-color: rgba(2, 80, 173, 0.8) !important;
+            background-image: none!important;
+            height: 50px; width:100%; color: white">Vernieuw data</button>
             </div>
 
-        </div>
-        <button id="refresh">Refresh page</button>
     </div>
 
 

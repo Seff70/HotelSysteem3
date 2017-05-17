@@ -1,4 +1,4 @@
-package com.capgemini.Model.Boten;
+package com.capgemini.Model;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;

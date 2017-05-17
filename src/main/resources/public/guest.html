@@ -9,89 +9,112 @@
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+
 </head>
 
 <body>
+
 <!-- Start container -->
 <div class="container">
-
-
-    <!-- Start Guestlist -->
     <br>
     <h1>Gastenlijst</h1>
     <br>
 
-
-    <div id="Gastenlijst">
-        <table id="guestList" class="table table-striped" style="width:80%">
-
-            <thead>
-            <tr>
-                <th>GuestID</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Zipcode</th>
-                <th>City</th>
-                <th>Country</th>
-                <th>Phonenumber</th>
-                <th>Special</th>
-            </tr>
-            </thead>
-
-        </table>
-    </div>
-    <!-- End Guestlist -->
-
-    <button type="button" class="btn btn-default" id="btnAddGuest">Voeg nieuwe gast toe</button>
-    <br>
-    <br>
-
     <!-- Start Guestlist -->
-    <form id="newguestform" hidden>
-        <br>
-        <h3>Nieuwe gast</h3>
-        <p>Voer de volgende data in om een nieuwe gast aan te maken</p>
-        <br>
-        <div class="form-group">
-            <label for="InputName">Naam</label>
-            <input type="text" class="form-control" id="InputName" placeholder="Naam">
-        </div>
-        <div class="form-group">
-            <label for="InputAddress">Adres</label>
-            <input type="text" class="form-control" id="InputAddress" placeholder="Adres">
-        </div>
-        <div class="form-group">
-            <label for="InputZipcode">Postcode</label>
-            <input type="text" class="form-control" id="InputZipcode" placeholder="1234 AB">
-        </div>
-        <div class="form-group">
-            <label for="InputCity">Woonplaats</label>
-            <input type="text" class="form-control" id="InputCity" placeholder="Woonplaats">
-        </div>
-        <div class="form-group">
-            <label for="InputCountry">Land</label>
-            <input type="text" class="form-control" id="InputCountry" placeholder="Land">
-        </div>
-        <div class="form-group">
-            <label for="InputTelephone">Tel. nr</label>
-            <input type="text" class="form-control" id="InputTelephone" placeholder="Telefoon">
-        </div>
-        <div class="form-group">
-            <label for="InputSpecial">Opmerkingen</label>
-            <input type="text" class="form-control" id="InputSpecial" placeholder="Opmerkingen">
-        </div>
+    <div class="row">
+        <div id="Gastenlijst">
+            <p>U kunt hier beheer uitvoeren op uw bestaande gasten en nieuwe gasten toevoegen. </p>
+            <p>Klik op een gast om deze te wijzigen of te verwijderen of klik op 'Voeg gast toe' om een gast toe te voegen.</p>
+            <br><br>
 
-        <div class="checkbox">
-            <label>
-                <input type="checkbox"> Is zakelijke gast (werkt nog niet)
-            </label>
+            <table id="guestList" class="table table-striped" style="width:100%">
+                <thead>
+                <tr>
+                    <th>GastID</th>
+                    <th>Naam</th>
+                    <th>Adres</th>
+                    <th>Postcode</th>
+                    <th>Stad</th>
+                    <th>Land</th>
+                    <th>Telefoonnummer</th>
+                    <th>Opmerkingen</th>
+                </tr>
+                </thead>
+            </table>
+
+            <!-- Add new Guest -->
+            <button type="button" class="btn btn-default" id="btnAddGuest" style="border: 0!important;
+            border-radius: 0!important;
+            background-color: rgba(2, 80, 173, 0.8) !important;
+            background-image: none!important;
+            height: 50px; width:100%; color: white" hidden>
+                Voeg nieuwe gast toe
+            </button>
+            <br><br>
+
+
+            <!-- Start Guestlist -->
+            <form id="newguestform" hidden>
+                <br>
+                <h3 id="headerForm">Nieuwe gast</h3>
+                <p>Voer de volgende data in om een nieuwe gast aan te maken</p>
+                <br>
+                <div class="form-group">
+                    <label for="InputName">Naam</label>
+                    <input type="text" class="form-control" id="InputName" placeholder="Vul hier een voor- en achternaam in">
+                </div>
+
+                <div class="form-group">
+                    <label for="InputAddress">Adres</label>
+                    <input type="text" class="form-control" id="InputAddress" placeholder="Vul hier een adres met huisnummer in">
+                </div>
+
+                <div class="form-group">
+                    <label for="InputZipcode">Postcode</label>
+                    <input type="text" class="form-control" id="InputZipcode" placeholder="Bijvoorbeeld 1234 AB">
+                </div>
+
+                <div class="form-group">
+                    <label for="InputCity">Woonplaats</label>
+                    <input type="text" class="form-control" id="InputCity" placeholder="Vul hier een woonplaats in">
+                </div>
+
+                <div class="form-group">
+                    <label for="InputCountry">Land</label>
+                    <input type="text" class="form-control" id="InputCountry" placeholder="Vul hier een land in">
+                </div>
+
+                <div class="form-group">
+                    <label for="InputTelephone">Telefoonnummer</label>
+                    <input type="text" class="form-control" id="InputTelephone" placeholder="Vul hier een telefoonnummer in">
+                </div>
+
+                <div class="form-group">
+                    <label for="InputTelephone">E-mailadres</label>
+                    <input type="text" class="form-control" id="InputEmail" placeholder="E-mail">
+                </div>
+
+                <div class="form-group">
+                    <label for="InputSpecial">Opmerkingen</label>
+                    <input type="text" class="form-control" id="InputSpecial" placeholder="Opmerkingen">
+                </div>
+
+                <!-- <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> Is zakelijke gast (werkt nog niet)
+                    </label>
+                </div> -->
+                <br>
+                <button type="submit" class="btn btn-default" id="addGuest" >Voeg gast toe</button>
+                <button type="submit" class="btn btn-default" id="deleteGuest" hidden>Verwijder gast</button>
+                <button type="submit" class="btn btn-default" id="editGuest" hidden>Wijzig gast</button>
+                <button type="submit" class="btn btn-default" id="backToPrevious" hidden>Annuleren</button>
+            </form>
+            <!-- End Guestlist -->
+
         </div>
-        <br>
-        <button type="submit" class="btn btn-default" id="addGuest">Submit</button>
-        <button type="submit" class="btn btn-default" id="deleteGuest" hidden>Delete</button>
-        <button type="submit" class="btn btn-default" id="editGuest" hidden>Edit Guest</button>
-    </form>
-    <!-- End Guestlist -->
+        <!-- End Guestlist -->
+    </div>
 </div>
 <!-- Start main container -->
 

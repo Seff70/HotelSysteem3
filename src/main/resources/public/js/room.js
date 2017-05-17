@@ -6,6 +6,7 @@ $.get("/api/rooms", function (result) {
             {data: "roomNumber"},
             {data: "roomType"},
             {data: "available"}
+
             ],
         data: result
     });
