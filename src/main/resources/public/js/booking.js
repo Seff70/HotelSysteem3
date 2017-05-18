@@ -1,8 +1,8 @@
-$.get("api/bookings", function(result) {
-    console.log("start van booking.js, get all bookings: ");
-    toCurrentBookings();
-});
-
+//$.get("api/bookings", function(result) {
+//    console.log("start van booking.js, get all bookings: ");
+//    toCurrentBookings();
+//});
+toCurrentBookings();
 function toCurrentBookings() {
     $("#currentBookingsBig").show();
     $("#datepicker").hide();
@@ -46,6 +46,7 @@ function toCurrentBookings() {
            data: result
         });
     });
+}
 
     $("#newBooking").click(function(event){
         toDateSelect();
@@ -53,9 +54,9 @@ function toCurrentBookings() {
 
     $("#currentBookings tbody").on('click', 'tr', function () {
                     event.preventDefault();
-                    var table = $("#currenBookings").DataTable();
+                    var table = $("#currentBookings").DataTable();
                     toEditBooking();
-}
+    });
 
 function toDateSelect () {
         $("#currentBookingsBig").hide();
@@ -240,5 +241,5 @@ function toConfirmBooking () {
 //        $("#ConfirmBooking").show();
         console.log("TOEDITBOOKING IS NOG NIET GEIMPLEMENTEERD")
     }
-}
+    }
 
