@@ -27,13 +27,16 @@
 <body>
 <div class="container">
     <br>
-    <h1 class="card-title">Boekingsoverzicht</h1>
+    <h1 class="card-title">Boekingen</h1>
     <br>
-    <p>
-        Bekijk en beheer hier uw boekingenin dit overzicht. Om een nieuwe boeking te starten selecteert u een start- en einddatum en eventueel
+    <p font size="13">
+        Bekijk en beheer uw boekingen in dit overzicht. Om een nieuwe boeking te starten selecteert u een start- en einddatum en eventueel
         een kamertype.
     </p>
     <br><br>
+
+    <!--Hier komt boekingsoverzicht-->
+
 
     <div class="input-daterange input-group" id="datepicker">
         <select id="typeroom" class="btn btn-primary btn-block btn-lg dropdown-toggle" style="border: 0!important;
@@ -70,7 +73,11 @@
         </tr>
         </thead>
     </table>
-    <br/><br/>
+    <br/>
+    <br/>
+    <p id="textAddGuest" font-size="13" hidden>Voeg een gast toe door in de tabel op de gast te klikken. Gaat het om een nieuwe gast, voer deze gast dan eerst in via <a href="guest.html">Gasten</a>.</p>
+    <br>
+    <br>
 
     <div id="GuestPickerTableBig" hidden>
         <table id="GuestPickerTable" class="table table-striped" style="width:80%">
