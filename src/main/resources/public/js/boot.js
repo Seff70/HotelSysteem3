@@ -52,6 +52,7 @@ $.get("/api/boats", function(result) {
                 console.log("boot: " + boat + ", bootnr " + boat.nummer);
                 //start een nieuwe tocht
                 if (boat.trip==null) {
+                    $("#header").text("Gegevens van boot " + boat.nummer);
                     $("#boatTableBig").hide();
                     $("#header").text("Overzicht boot #" + boat.nummer);
                     $("#oneBoat").show();
@@ -59,6 +60,7 @@ $.get("/api/boats", function(result) {
                 }
                 // beeindig de aangeklikte tocht
                 else {
+                    $("#header").text("Gegevens van boot " + boat.nummer);
                     $("#boatTableBig").hide();
                     $("#header").text("Overzicht boot #" + boat.nummer);
                     $("#endTripContainer").show();

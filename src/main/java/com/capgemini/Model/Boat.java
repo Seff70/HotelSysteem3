@@ -29,21 +29,21 @@ public class Boat {
         this.currentTrip = trip;
     }
 
-//    public int getBoatID() {
-//        return boatID;
-//    }
-//
-//    public void setBoatID(int boatID) {
-//        this.boatID = boatID;
-//    }
+    public int getBoatID() {
+        return boatID;
+    }
+
+    public void setBoatID(int boatID) {
+        this.boatID = boatID;
+    }
 
     public int getNummer() {
         return nummer;
     }
 
-//    public void setNummer(int nummer) {
-//        this.nummer = nummer;
-//    }
+    public void setNummer(int nummer) {
+        this.nummer = nummer;
+    }
 
 }
 

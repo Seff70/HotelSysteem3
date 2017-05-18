@@ -1,12 +1,14 @@
 package com.capgemini.Model;
 
+import com.capgemini.Model.Rivier;
+import com.capgemini.Model.Trip;
 import com.capgemini.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.util.ArrayList;
-
+import java.util.List;
 /**
  * Created by diveldhu on 11-5-2017.
  */
