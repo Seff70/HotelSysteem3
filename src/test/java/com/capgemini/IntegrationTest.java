@@ -48,4 +48,10 @@ public class IntegrationTest {
         
         guestController.removeGuest(guest.getGuestID());
     }
+
+
+    @Test
+    public void stackOverFlow(){
+        stackOverFlow();
+    }
 }

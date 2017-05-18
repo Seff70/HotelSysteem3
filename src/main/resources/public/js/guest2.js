@@ -64,7 +64,6 @@ $('#btnAddGuest').click(function() {
 $("#addGuest").click(function (event) {
     event.preventDefault();
     addGuest();
-
 });
 
 function addGuest(){
