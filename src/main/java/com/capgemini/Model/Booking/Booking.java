@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Date;
 
 /**
  * Created by DIVELDHU on 8-5-2017.
@@ -18,35 +19,47 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int bookingNumber;
-    private LocalDate start;
-    private LocalDate end;
+    private Date start;
+    private Date end;
     @ManyToOne
     private Guest guest;
     @ManyToOne
     private Room room;
 
-    public Booking(LocalDate start, LocalDate end, Guest guest, Room room) {
+    public Booking(Date start, Date end, Guest guest, Room room) {
         this.start = start;
         this.end = end;
         this.guest = guest;
         this.room = room;
     }
 
-    public Booking(){}
+    public Booking(BookingDTO b) {
+        this.start = b.getStart();
+        this.end = b.getEnd();
+        this.guest = b.getGuest();
+        this.room = b.getRoom();
+    }
 
-    public LocalDate getStart() {
+    public BookingDTO toBookingDTO() {
+        return new BookingDTO(this);
+    }
+
+    public Booking() {
+    }
+
+    public Date getStart() {
         return start;
     }
 
-    public void setStart(LocalDate start) {
+    public void setStart(Date start) {
         this.start = start;
     }
 
-    public LocalDate getEnd() {
+    public Date getEnd() {
         return end;
     }
 
-    public void setEnd(LocalDate end) {
+    public void setEnd(Date end) {
         this.end = end;
     }
 
@@ -74,9 +87,5 @@ public class Booking {
 //        this.bookingNumber = bookingNumber;
 //    }
 
-    @JsonProperty
-    public int getDuration(){
-         return Period.between(this.getStart(), this.getEnd()).getDays();
-     }
-    
+
 }

@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.constraints.Null;
 import java.awt.print.Book;
 import java.sql.SQLException;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -82,12 +84,11 @@ public class RoomController {
         ArrayList<Room> roomsToBeRemovedFromSelectedRooms = new ArrayList <>();
 
         for (Booking booking : bookingRepository.findAll()) {
-
-            if (booking.getEnd() == null) { booking.setEnd(LocalDate.MAX);}
-
+            LocalDate s = Instant.ofEpochMilli(booking.getStart().getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate e = Instant.ofEpochMilli(booking.getEnd().getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
             for (Room room : selectedRooms) {
                 if (booking.getRoom().equals(room)) {
-                    if (!(booking.getEnd().isBefore(start.plusDays(1)) || eind.isBefore(booking.getStart().plusDays(1)) ) ) {
+                    if (!(e.isBefore(start.plusDays(1)) || eind.isBefore(s.plusDays(1)) ) ) {
                         System.out.println("room " + room.getRoomNumber() + " is verwijderd uit de lijst, omdat er een boeking op was");
 //                        selectedRooms.remove(room);
                         roomsToBeRemovedFromSelectedRooms.add(room);

@@ -1,8 +1,8 @@
-//$.get("api/bookings", function(result) {
-//    console.log("start van booking.js, get all bookings: ");
-//    toCurrentBookings();
-//});
-toCurrentBookings();
+$.get("api/bookings", function(result) {
+    console.log("start van booking.js, get all bookings: ");
+    toCurrentBookings();
+});
+
 function toCurrentBookings() {
     $("#currentBookingsBig").show();
     $("#datepicker").hide();
@@ -15,38 +15,15 @@ function toCurrentBookings() {
         console.log(result);
         var table = $('#currentBookings').DataTable({
            columns: [
-               {data: "startDate",
-                    render: function(data, type, row) {
-                        return "" + row.start[2] + "-" + row.start[1] + "-" + row.start[0];
-                    }
-               },
-               {data: "endDate",
-                    render: function(data, type, row) {
-                       return "" + row.end[2] + "-" + row.end[1] + "-" + row.end[0];
-                   }
-               },
-               {data: "duration",
-                    render: function(data, type, row) {
-                        //var start = row;
-                        //var duration = row.getDuration(); //$.get("api/getDuration/" + row.bookingID,
-                        return row.duration;
-                    }
-               },
-               {data: "roomNumber",
-                    render: function(data, type, row) {
-                        return row.room.roomNumber;
-                    }
-               },
-               {data: "guest",
-                    render: function(data, type, row) {
-                       return row.guest.name;
-                   }
-               }
+               {data: "startString"},
+               {data: "endString"},
+               {data: "duration"},
+               {data: "roomNumber"},
+               {data: "guestName"}
            ],
            data: result
         });
     });
-}
 
     $("#newBooking").click(function(event){
         toDateSelect();
@@ -57,6 +34,7 @@ function toCurrentBookings() {
                     var table = $("#currentBookings").DataTable();
                     toEditBooking();
     });
+}
 
 function toDateSelect () {
         $("#currentBookingsBig").hide();
@@ -138,6 +116,7 @@ function toRoomSelect() {
         });
 
         $("#availableRooms tbody").on('click', 'tr', function () {
+                console.log("jajass")
                 event.preventDefault();
                 var table = $("#availableRooms").DataTable();
                 var room = table.row( this ).data();
@@ -229,7 +208,7 @@ function toConfirmBooking () {
         roomTable.search("");
         guestTable.draw();
         roomTable.draw();
-        toCurrentBookings();
+        location.href="booking.html";
     });
 
     function toEditBooking() {
@@ -241,5 +220,5 @@ function toConfirmBooking () {
 //        $("#ConfirmBooking").show();
         console.log("TOEDITBOOKING IS NOG NIET GEIMPLEMENTEERD")
     }
-    }
+}
 

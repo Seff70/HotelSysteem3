@@ -1,6 +1,7 @@
 package com.capgemini.controller;
 
 import com.capgemini.Model.Booking.Booking;
+import com.capgemini.Model.Booking.BookingDTO;
 import com.capgemini.Model.Guests.Guest;
 import com.capgemini.Model.Kamers.Room;
 import com.capgemini.repository.BookingRepository;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 
 @RestController
@@ -26,39 +29,29 @@ public class BookingController {
     RoomRepository roomRepository;
 
     @RequestMapping(value = "api/bookings", method = RequestMethod.GET)
-    public Iterable<Booking> getAll() throws SQLException {
-        return bookingRepository.findAll();
+    public Iterable<BookingDTO> getAll() throws SQLException {
+        Iterator<Booking> bookings = bookingRepository.findAll().iterator();
+        ArrayList<BookingDTO> result = new ArrayList<>();
+        while(bookings.hasNext()){
+            BookingDTO bookingDTO = new BookingDTO(bookings.next());
+            result.add(bookingDTO);
+        }
+        return result;
 
     }
 
     @RequestMapping(value = "api/booking/{bookingID}", method = RequestMethod.GET)
-    public Booking get(@PathVariable int bookingID) throws SQLException {
-        return bookingRepository.findOne(bookingID);
+    public BookingDTO get(@PathVariable int bookingID) throws SQLException {
+
+        return new BookingDTO(bookingRepository.findOne(bookingID));
     }
 
-    @RequestMapping(value = "api/make4bookings", method = RequestMethod.GET)
-    public void make4Bookings() throws SQLException {
-        System.out.println("new random booking");
-        LocalDate start = LocalDate.now();
-        LocalDate end = LocalDate.now().plusDays(7);
-        for (int i = 13; i < 17; i++) {
-            System.out.println("new random booking " + i);
-            Room r = roomRepository.findOne(i+37);
-            Guest g = guestRepository.findOne(i);
-            Booking b = new Booking(start.plusDays(i), end.plusDays(i),g ,r );
-            bookingRepository.save(b);
-        }
-    }
-
-    @RequestMapping(value = "api/addbooking", method = RequestMethod.POST)
-    public Booking addBooking(@RequestBody Booking b) throws SQLException {
+     @RequestMapping(value = "api/addbooking", method = RequestMethod.POST)
+    public BookingDTO addBooking(@RequestBody BookingDTO b) throws SQLException {
         System.out.println("nu bij bookingController");
-        return bookingRepository.save(b);
+        Booking booking = new Booking(b);
+        return new BookingDTO(bookingRepository.save(booking));
     }
 
-    @RequestMapping(value = "api/getDuration/{bookingID}", method = RequestMethod.GET)
-    public int getDurationOfBooking(@PathVariable int bookingID) throws SQLException {
-        Booking booking = bookingRepository.findOne(bookingID);
-        return Period.between(booking.getStart(), booking.getEnd()).getDays();
-    }
+
 }
