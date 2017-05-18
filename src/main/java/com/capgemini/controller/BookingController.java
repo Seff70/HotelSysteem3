@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
-
+import java.time.Period;
 
 
 @RestController
@@ -28,6 +28,7 @@ public class BookingController {
     @RequestMapping(value = "api/bookings", method = RequestMethod.GET)
     public Iterable<Booking> getAll() throws SQLException {
         return bookingRepository.findAll();
+
     }
 
     @RequestMapping(value = "api/booking/{bookingID}", method = RequestMethod.GET)
@@ -53,5 +54,11 @@ public class BookingController {
     public Booking addBooking(@RequestBody Booking b) throws SQLException {
         System.out.println("nu bij bookingController");
         return bookingRepository.save(b);
+    }
+
+    @RequestMapping(value = "api/getDuration/{bookingID}", method = RequestMethod.GET)
+    public int getDurationOfBooking(@PathVariable int bookingID) throws SQLException {
+        Booking booking = bookingRepository.findOne(bookingID);
+        return Period.between(booking.getStart(), booking.getEnd()).getDays();
     }
 }
