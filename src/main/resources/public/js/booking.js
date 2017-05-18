@@ -15,33 +15,11 @@ function toCurrentBookings() {
         console.log(result);
         var table = $('#currentBookings').DataTable({
            columns: [
-               {data: "startDate",
-                    render: function(data, type, row) {
-                        return "" + row.start[2] + "-" + row.start[1] + "-" + row.start[0];
-                    }
-               },
-               {data: "endDate",
-                    render: function(data, type, row) {
-                       return "" + row.end[2] + "-" + row.end[1] + "-" + row.end[0];
-                   }
-               },
-               {data: "duration",
-                    render: function(data, type, row) {
-                        //var start = row;
-                        //var duration = row.getDuration(); //$.get("api/getDuration/" + row.bookingID,
-                        return row.duration;
-                    }
-               },
-               {data: "roomNumber",
-                    render: function(data, type, row) {
-                        return row.room.roomNumber;
-                    }
-               },
-               {data: "guest",
-                    render: function(data, type, row) {
-                       return row.guest.name;
-                   }
-               }
+               {data: "startString"},
+               {data: "endString"},
+               {data: "duration"},
+               {data: "roomNumber"},
+               {data: "guestName"}
            ],
            data: result
         });
@@ -55,6 +33,7 @@ function toCurrentBookings() {
                     event.preventDefault();
                     var table = $("#currenBookings").DataTable();
                     toEditBooking();
+    });
 }
 
 function toDateSelect () {
@@ -137,6 +116,7 @@ function toRoomSelect() {
         });
 
         $("#availableRooms tbody").on('click', 'tr', function () {
+                console.log("jajass")
                 event.preventDefault();
                 var table = $("#availableRooms").DataTable();
                 var room = table.row( this ).data();
@@ -228,7 +208,7 @@ function toConfirmBooking () {
         roomTable.search("");
         guestTable.draw();
         roomTable.draw();
-        toCurrentBookings();
+        location.href="booking.html";
     });
 
     function toEditBooking() {
