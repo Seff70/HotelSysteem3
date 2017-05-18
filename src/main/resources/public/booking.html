@@ -34,11 +34,39 @@
         een kamertype.
     </p>
     <br><br>
+    <div id="currentBookingsBig">
+        <table id="currentBookings" class="table table-striped">
+            <thead>
+            <tr>
+                <th>Begindatum</th>
+                <th>Einddatum</th>
+                <th>Duur</th>
+                <th>Kamernummer</th>
+                <th>Gast</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>rij1</td>
+                    <td>rij2</td>
+                    <td>rij3</td>
+                    <td>rij4</td>
+                    <td>rij5</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-success btn-block " id="newBooking" style="border: 0!important;
+                border-radius: 0!important;
+                background-color: rgb(41, 216, 41) !important;
+                background-image: none!important;
+                height: 50px;"> Maak nieuwe boeking
+        </button>
+    </div>
 
-    <!--Hier komt boekingsoverzicht-->
 
 
-    <div class="input-daterange input-group" id="datepicker">
+ <!--datepicker-->
+    <div class="input-daterange input-group" id="datepicker" hidden>
         <select id="typeroom" class="btn btn-primary btn-block btn-lg dropdown-toggle" style="border: 0!important;
         border-radius: 0!important;
         background-color: rgba(2, 80, 173, 0.8) !important;
@@ -57,7 +85,7 @@
 
     </div>
     <br><br>
-    <button class="btn btn-success btn-block " id="submitagenda" style="border: 0!important;
+    <button class="btn btn-success btn-block " id="submitagenda" hidden style="border: 0!important;
             border-radius: 0!important;
             background-color: rgb(41, 216, 41) !important;
             background-image: none!important;
@@ -112,7 +140,7 @@
     </div>
 </div>
 
-<script src="js/agenda.js"></script>
+<!--<script src="js/agenda.js"></script>-->
 <script src="js/booking.js"></script>
 </body>
 </html>

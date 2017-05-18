@@ -64,7 +64,6 @@ $('#btnAddGuest').click(function() {
 $("#addGuest").click(function (event) {
     event.preventDefault();
     addGuest();
-
 });
 
 function addGuest(){
@@ -89,7 +88,9 @@ function addGuest(){
                         location.href="guest.html"
                         },
             error: function(){
-                console.log("Het werkt niet om nieuwe gast aan te maken");
+//                console.log("Het werkt niet om nieuwe gast aan te maken");
+
+                alert("Ingevoerde naam in combinatie met adress en postcode bestaat al!!!");
             }
     });
 };

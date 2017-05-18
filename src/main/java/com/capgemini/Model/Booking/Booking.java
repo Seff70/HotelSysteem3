@@ -2,9 +2,11 @@ package com.capgemini.Model.Booking;
 
 import com.capgemini.Model.Guests.Guest;
 import com.capgemini.Model.Kamers.Room;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.Period;
 
 /**
  * Created by DIVELDHU on 8-5-2017.
@@ -72,6 +74,9 @@ public class Booking {
 //        this.bookingNumber = bookingNumber;
 //    }
 
-       
+    @JsonProperty
+    public int getDuration(){
+         return Period.between(this.getStart(), this.getEnd()).getDays();
+     }
     
 }
