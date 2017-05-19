@@ -38,6 +38,7 @@ public class Booking {
         this.end = b.getEnd();
         this.guest = b.getGuest();
         this.room = b.getRoom();
+        this.bookingNumber = b.getBookingNumber();
     }
 
     public BookingDTO toBookingDTO() {
