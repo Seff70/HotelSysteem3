@@ -5,6 +5,7 @@ $.get("api/bookings", function(result) {
 
 function toCurrentBookings() {
     $("#currentBookingsBig").show();
+    $("#textDatePicker").hide();
     $("#datepicker").hide();
     $("#submitagenda").hide();
     $("#availableRoomsBig").hide();
@@ -24,20 +25,22 @@ function toCurrentBookings() {
            data: result
         });
     });
-
-    $("#newBooking").click(function(event){
-        toDateSelect();
-    });
-
-    $("#currentBookings tbody").on('click', 'tr', function () {
-                    event.preventDefault();
-                    var table = $("#currentBookings").DataTable();
-                    toEditBooking();
-    });
 }
 
+$("#newBooking").click(function(event){
+    toDateSelect();
+});
+
+$("#currentBookings tbody").on('click', 'tr', function () {
+                event.preventDefault();
+                var table = $("#currentBookings").DataTable();
+                toEditBooking();
+});
+
 function toDateSelect () {
+        $("#textNewBooking").hide();
         $("#currentBookingsBig").hide();
+        $("#textDatePicker").show();
         $("#datepicker").show();
         $("#submitagenda").show();
         $("#availableRoomsBig").hide();
@@ -57,35 +60,17 @@ function toDateSelect () {
         });
 
         $('#start').datepicker('update', new Date());
-
-        $("#submitagenda").click(function(event){
-            $('#availableRooms').show();
-            toRoomSelect();
-        });
 }
 
-function parseDate(d) {
-        var month;
-        console.log(d.getMonth());
-         if (d.getMonth()<9) {
-            month = "0"+(d.getMonth()+1);
-         } else {
-            month = "" + (d.getMonth()+1);
-         }
-
-        console.log(d.getDate());
-         var day;
-         if (d.getDate()<10){
-            day = "0" + d.getDate();
-         } else {
-            day = "" + d.getDate();
-         }
-
-         return day + month + d.getFullYear();
-}
+$("#submitagenda").click(function(event){
+    $('#availableRooms').show();
+    toRoomSelect();
+});
 
 function toRoomSelect() {
+        $("#textNewBooking").hide();
         $("#currentBookingsBig").hide();
+        $("#textDatePicker").hide();
         $("#datepicker").show();
         $("#submitagenda").hide();
         $("#availableRoomsBig").show();
@@ -115,20 +100,42 @@ function toRoomSelect() {
 
         });
 
-        $("#availableRooms tbody").on('click', 'tr', function () {
-                console.log("jajass")
-                event.preventDefault();
-                var table = $("#availableRooms").DataTable();
-                var room = table.row( this ).data();
-                console.log("room: " + room + ", roomnr " + room.roomNumber);
-                table.search(room.roomNumber).draw();
-                toGuestSelect();
-        });
+        function parseDate(d) {
+                var month;
+                console.log(d.getMonth());
+                 if (d.getMonth()<9) {
+                    month = "0"+(d.getMonth()+1);
+                 } else {
+                    month = "" + (d.getMonth()+1);
+                 }
+
+                console.log(d.getDate());
+                 var day;
+                 if (d.getDate()<10){
+                    day = "0" + d.getDate();
+                 } else {
+                    day = "" + d.getDate();
+                 }
+
+                 return day + month + d.getFullYear();
+        }
 }
+
+$("#availableRooms tbody").on('click', 'tr', function () {
+        console.log("jajass")
+        event.preventDefault();
+        var table = $("#availableRooms").DataTable();
+        var room = table.row( this ).data();
+        console.log("room: " + room + ", roomnr " + room.roomNumber);
+        table.search(room.roomNumber).draw();
+        toGuestSelect();
+});
 
 function toGuestSelect() {
         console.log("in guestselect");
+        $("#textNewBooking").hide();
         $("#currentBookingsBig").hide();
+        $("#textDatePicker").hide();
         $("#datepicker").show();
         $("#submitagenda").hide();
         $("#availableRoomsBig").show();
@@ -155,19 +162,21 @@ function toGuestSelect() {
     $("#GuestPickerTable").show();
 
     console.log("hiero");
-
-    $("#GuestPickerTable tbody").on('click', 'tr', function () {
-           event.preventDefault();
-           console.log("tot hier")
-           var table = $("#GuestPickerTable").DataTable();
-           var guest = table.row( this ).data();
-           table.search(guest.guestID).draw();
-           toConfirmBooking();
-    });
 }
 
+$("#GuestPickerTable tbody").on('click', 'tr', function () {
+       event.preventDefault();
+       console.log("tot hier")
+       var table = $("#GuestPickerTable").DataTable();
+       var guest = table.row( this ).data();
+       table.search(guest.guestID).draw();
+       toConfirmBooking();
+});
+
 function toConfirmBooking () {
+    $("#textNewBooking").hide();
     $("#currentBookingsBig").hide();
+    $("#textDatePicker").hide();
     $("#datepicker").show();
     $("#submitagenda").hide();
     $("#availableRoomsBig").show();
@@ -210,8 +219,11 @@ function toConfirmBooking () {
         roomTable.draw();
         location.href="booking.html";
     });
+}
+
 
     function toEditBooking() {
+//        $("#textNewBooking").hide();
 //        $("#currentBookingsBig").hide();
 //        $("#datepicker").show();
 //        $("#submitagenda").hide();
@@ -220,5 +232,4 @@ function toConfirmBooking () {
 //        $("#ConfirmBooking").show();
         console.log("TOEDITBOOKING IS NOG NIET GEIMPLEMENTEERD")
     }
-}
 

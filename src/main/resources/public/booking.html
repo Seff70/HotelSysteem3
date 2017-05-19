@@ -29,12 +29,20 @@
     <br>
     <h1 class="card-title">Boekingen</h1>
     <br>
-    <p font size="13">
-        Bekijk en beheer uw boekingen in dit overzicht. Om een nieuwe boeking te starten selecteert u een start- en einddatum en eventueel
-        een kamertype.
-    </p>
+    <div id="textNewBooking">
+        <p font size="13">
+            Bekijk en beheer uw boekingen in dit overzicht. Om een nieuwe boeking te starten, klik op de knop "Nieuwe boeking aanmaken".
+        </p>
+    </div>
+    <div id=""textDatePicker hidden>
+        <p font size="13">
+            Voer hier de gewenste start- en einddatum in en selecteer eventueel het gewenste kamertype.
+        </p>
+    </div>
     <br>
     <br>
+
+
     <div id="currentBookingsBig">
         <table id="currentBookings" class="table table-striped">
             <thead>
@@ -56,14 +64,14 @@
                 </tr>
             </tbody>
         </table>
+        <br>
         <button class="btn btn-success btn-block " id="newBooking" style="border: 0!important;
                 border-radius: 0!important;
                 background-color: rgb(41, 216, 41) !important;
                 background-image: none!important;
-                height: 50px;"> Maak nieuwe boeking
+                height: 50px;"> Nieuwe boeking aanmaken
         </button>
     </div>
-
 
 
  <!--datepicker-->
@@ -93,6 +101,7 @@
             height: 50px;">Check beschikbaarheid</button>
     <br>
     <br>
+
 
     <div id="availableRoomsBig" hidden>
         <table id="availableRooms" class="table table-striped" hidden>
@@ -130,6 +139,7 @@
             <tr></tr>
             </tbody>
         </table>
+        <br><br>
 
         <div id="ConfirmBooking" hidden>
         <button class="btn btn-primary" id="confirmBookingButton" style="border: 0!important;
