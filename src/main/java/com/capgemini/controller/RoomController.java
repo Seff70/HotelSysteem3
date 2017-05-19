@@ -8,6 +8,7 @@ import com.capgemini.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.PermitAll;
 import javax.validation.constraints.Null;
 import java.awt.print.Book;
 import java.sql.SQLException;
@@ -49,9 +50,8 @@ public class RoomController {
          roomRepository.delete(roomNumber);
 
     }
-
-    @RequestMapping(value = "/api/rooms/{startDate}/{endDate}/{roomType}", method = RequestMethod.GET)
-    public Iterable<Room> getSelectedRooms (@PathVariable String startDate,@PathVariable String endDate,@PathVariable String roomType) throws SQLException {
+    @RequestMapping(value = "/api/rooms/{startDate}/{endDate}/{roomType}/{bookingID}", method = RequestMethod.GET)
+    public Iterable<Room> getAvailableRoomsExceptBooking (@PathVariable String startDate, @PathVariable String endDate, @PathVariable String roomType, @PathVariable int bookingID) throws SQLException {
         System.out.println("in getSelectedRooms");
         LocalDate start = LocalDate.parse(startDate, DateTimeFormatter.ofPattern("ddMMyyyy"));
         LocalDate eind = LocalDate.parse(endDate, DateTimeFormatter.ofPattern("ddMMyyyy"));
@@ -84,6 +84,7 @@ public class RoomController {
         ArrayList<Room> roomsToBeRemovedFromSelectedRooms = new ArrayList <>();
 
         for (Booking booking : bookingRepository.findAll()) {
+            if (booking.getBookingNumber() == bookingID) break;
             LocalDate s = Instant.ofEpochMilli(booking.getStart().getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
             LocalDate e = Instant.ofEpochMilli(booking.getEnd().getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
             for (Room room : selectedRooms) {
@@ -99,6 +100,12 @@ public class RoomController {
         }
         selectedRooms.removeAll(roomsToBeRemovedFromSelectedRooms);
         return selectedRooms;
+    }
+
+    @RequestMapping(value = "/api/rooms/{startDate}/{endDate}/{roomType}", method = RequestMethod.GET)
+    public Iterable<Room> getAvailableRooms (@PathVariable String startDate,@PathVariable String endDate,@PathVariable String roomType) throws SQLException {
+        int bookingID = -1;
+        return getAvailableRoomsExceptBooking(startDate, endDate, roomType, bookingID);
     }
 }
 
