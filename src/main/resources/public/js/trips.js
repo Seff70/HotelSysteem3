@@ -6,7 +6,8 @@ $.get("/api/trips", function (result) {
             {data: 'tripID'},
             {data: 'type'},
             {data: 'startTime'},
-            {data: 'endTime'}
+            {data: 'endTime'},
+            {data: 'prijs'}
         ],
         data: trips
     });
