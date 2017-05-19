@@ -15,9 +15,8 @@
         <br>
         <div class="row">
             <h1 id="header">Bootoverzicht</h1>
-            <p id="boatSubText">In dit overzicht kunt u uw boten en bijbehorende tochten beheren. <br/>
-            Klik op een boot om een tocht te starten of te beeindigen.</p>
-            <br>
+            <h3 id="boatSubText">In dit overzicht kunt u uw boten en bijbehorende tochten beheren. <br/>
+            Klik op een boot om een tocht te starten of te beeindigen.</h3> <br>
         </div>
         <br>
 
@@ -41,6 +40,7 @@
             <div id="tripID"></div><br>
             <div id="startTime"></div><br>
             <div id="tripType"></div><br>
+            <div id="prijs"></div><br>
                 <button type="submit" class="btn btn-default" id="endTrip" style="border: 0!important;
             border-radius: 0!important;
             background-color: rgba(2, 80, 173, 0.8) !important;
@@ -56,13 +56,14 @@
 
         <!-- Boat container -->
         <div class="row" id="oneBoat" hidden>
-            <p>Kies het type tocht dat u wilt starten:
+            <h3>Kies het type tocht dat u wilt starten:
                 <br><br>
-                <button type="submit" class="btn btn-default" id="startLakeTrip">Start Meer tocht</button>
+                <button type="submit" class="btn btn-primary" id="startLakeTrip">Start Meer tocht</button>
+                <br/></br>
+
+                <button type="submit" class="btn btn-primary" id="startRiverTrip">Start Rivier tocht</button>
                 <br/><br/>
-                <button type="submit" class="btn btn-default" id="startRiverTrip">Start Rivier tocht</button>
-                <br/><br/>
-            </p>
+            </h3>
             <br>
             <div class="col-md-1"></div>
 
@@ -72,7 +73,7 @@
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-2">
-                <button type="cancel" class="btn btn-default" id="cancelStartTrip">Cancel</button>
+                <button type="cancel" class="btn btn-primary" id="cancelStartTrip">Cancel</button>
             </div>
         </div>
         <!--<div class="row">-->

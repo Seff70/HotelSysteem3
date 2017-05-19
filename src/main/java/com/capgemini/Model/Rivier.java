@@ -4,17 +4,15 @@ import javax.persistence.Entity;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-/**
- * Created by Skucukde on 9-5-2017.
- */
+
 @Entity
 public class Rivier extends Trip {
 
     public Rivier() {
     }
 
-    public Rivier(int tripID, LocalDateTime startTime, LocalDateTime endTime) {
-        super(tripID, startTime, endTime);
+    public Rivier(int tripID, LocalDateTime startTime, LocalDateTime endTime, int prijs) {
+        super(tripID, startTime, endTime, prijs);
     }
 
     @Override
@@ -27,6 +25,5 @@ public class Rivier extends Trip {
         }
 
     }
-
 
 }

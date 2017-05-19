@@ -18,13 +18,24 @@ public abstract class Trip {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
+    public int getPrijs() {
+        return prijs;
+    }
+
+    public void setPrijs(int prijs) {
+        this.prijs = prijs;
+    }
+
+    public int prijs;
+
     protected Trip() {
     }
 
-    public Trip(int tripID, LocalDateTime startTime, LocalDateTime endTime) {
+    public Trip(int tripID, LocalDateTime startTime, LocalDateTime endTime, int prijs) {
         this.tripID = tripID;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.prijs = prijs;
     }
 
     public Trip(LocalDateTime startTime) {
