@@ -197,7 +197,6 @@ $.ajax({
            type: "GET",
            url: "/api/priceCalc",
 
-
 });
 });
 }
