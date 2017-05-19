@@ -27,24 +27,15 @@
 <body>
 <div class="container">
     <br>
-    <h1 class="card-title">Boekingen</h1>
+    <h1 class="card-title text-center">Agenda</h1>
     <br>
-    <div id="textNewBooking">
-        <p font size="13">
-            Bekijk en beheer uw boekingen in dit overzicht. Om een nieuwe boeking te starten, klik op de knop "Nieuwe boeking aanmaken".
-        </p>
-    </div>
-    <div id=""textDatePicker hidden>
-        <p font size="13">
-            Voer hier de gewenste start- en einddatum in en selecteer eventueel het gewenste kamertype.
-        </p>
-    </div>
-    <br>
-    <br>
-
-
+    <p>
+        Bekijk en beheer hier uw boekingen. Om een nieuwe boeking te starten selecteert u een start- en einddatum en eventueel
+        een kamertype.
+    </p>
+    <br><br>
     <div id="currentBookingsBig">
-        <table id="currentBookings" class="table table-striped">
+        <table id="currentBookings" class="table table-striped table-hover">
             <thead>
             <tr>
                 <th>Begindatum</th>
@@ -64,18 +55,18 @@
                 </tr>
             </tbody>
         </table>
-        <br>
         <button class="btn btn-success btn-block " id="newBooking" style="border: 0!important;
                 border-radius: 0!important;
                 background-color: rgb(41, 216, 41) !important;
                 background-image: none!important;
-                height: 50px;"> Nieuwe boeking aanmaken
+                height: 50px;"> Maak nieuwe boeking
         </button>
     </div>
 
 
+
  <!--datepicker-->
-    <div class="input-daterange input-group" id="datepicker" hidden>
+    <div class="input-daterange input-group hidden" id="datepicker" hidden>
         <select id="typeroom" class="btn btn-primary btn-block btn-lg dropdown-toggle" style="border: 0!important;
         border-radius: 0!important;
         background-color: rgba(2, 80, 173, 0.8) !important;
@@ -94,7 +85,7 @@
 
     </div>
     <br><br>
-    <button class="btn btn-success btn-block " id="submitagenda" hidden style="border: 0!important;
+    <button class="btn btn-success btn-block hidden" id="submitagenda" hidden style="border: 0!important;
             border-radius: 0!important;
             background-color: rgb(41, 216, 41) !important;
             background-image: none!important;
@@ -102,26 +93,19 @@
     <br>
     <br>
 
-
-    <div id="availableRoomsBig" hidden>
-        <table id="availableRooms" class="table table-striped" hidden>
-            <thead>
-            <tr>
-                <th>Kamertype</th>
-                <th>Kamernummer</th>
-            </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-        <br/>
-        <br/>
-        <p id="textAddGuest" font-size="13">Voeg een gast toe door in de tabel op de gast te klikken. Gaat het om een nieuwe gast, voer deze gast dan eerst in via <a href="guest.html">Gasten</a>.</p>
-        <br>
-        <br>
-    </div>
+    <table id="availableRooms" class="table table-striped table-hover" hidden>
+        <thead>
+        <tr>
+            <th>Kamertype</th>
+            <th>Kamernummer</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <br/><br/>
 
     <div id="GuestPickerTableBig" hidden>
-        <table id="GuestPickerTable" class="table table-striped" style="width:80%">
+        <table id="GuestPickerTable" class="table table-striped table-hover" style="width:80%">
 
             <thead>
             <tr>
@@ -139,7 +123,6 @@
             <tr></tr>
             </tbody>
         </table>
-        <br><br>
 
         <div id="ConfirmBooking" hidden>
         <button class="btn btn-primary" id="confirmBookingButton" style="border: 0!important;
