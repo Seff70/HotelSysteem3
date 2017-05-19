@@ -189,4 +189,19 @@ $.get("/api/boats", function(result) {
        return s;
    }
 
+
+function PriceCalc(){
+$("#tempPrice").keyup(function(){
+$.ajax({
+           contentType: "application/json",
+           type: "GET",
+           url: "/api/priceCalc",
+
 });
+});
+}
+
+});
+
+
+

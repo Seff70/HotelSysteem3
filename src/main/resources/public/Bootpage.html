@@ -10,106 +10,78 @@
 
 </head>
 <body>
-    <!-- Start container -->
-    <div class="container">
-        <br>
-        <div class="row">
-            <h1 id="header">Bootoverzicht</h1>
-            <h3 id="boatSubText">In dit overzicht kunt u uw boten en bijbehorende tochten beheren. <br/>
+<!-- Start container -->
+<div class="container">
+    <br>
+    <div class="row">
+        <h1 id="header" class="text text-center">Bootoverzicht</h1>
+        <h3 id="boatSubText" class="text text-center">In dit overzicht kunt u uw boten en bijbehorende tochten beheren. <br/>
             Klik op een boot om een tocht te starten of te beeindigen.</h3> <br>
+    </div>
+    <br>
+
+    <!-- Start Boat Table -->
+    <div class="row" id="boatTableBig">
+        <div class="col-md-12">
+            <table id="botentabel" class="table table-striped" width="100%">
+                <thead>
+                <tr>
+                    <th>Bootnummer</th>
+                    <th>Beschikbaarheid</th>
+                </tr>
+                </thead>
+            </table>
         </div>
-        <br>
-
-        <!-- Start Boat Table -->
-        <div class="row" id="boatTableBig">
-            <div class="col-md-12">
-                <table id="botentabel" class="table table-striped" width="100%">
-                    <thead>
-                        <tr>
-                            <th>Bootnummer</th>
-                            <th>Beschikbaarheid</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-         </div>
-
-        <!-- Ended Trip container -->
-        <div class="row" id="endTripContainer" hidden>
-            <p>Wilt u de volgende tocht beeindigen?</p>
-            <div id="tripID"></div><br>
-            <div id="startTime"></div><br>
-            <div id="tripType"></div><br>
-            <div id="prijs"></div><br>
-                <button type="submit" class="btn btn-default" id="endTrip" style="border: 0!important;
-            border-radius: 0!important;
-            background-color: rgba(2, 80, 173, 0.8) !important;
-            background-image: none!important;
-            height: 50px; width:100%; color: white">Ja, beëindig deze tocht</button>
-                <br/><br/>
-                <button type="submit" class="btn btn-default" id="cancelEndTrip" style="border: 0!important;
-            border-radius: 0!important;
-            background-color: rgba(2, 80, 173, 0.8) !important;
-            background-image: none!important;
-            height: 50px; width:100%; color: white">Annuleren</button>
-        </div>
-
-        <!-- Boat container -->
-        <div class="row" id="oneBoat" hidden>
-            <h3>Kies het type tocht dat u wilt starten:
-                <br><br>
-                <button type="submit" class="btn btn-primary" id="startLakeTrip">Start Meer tocht</button>
-                <br/></br>
-
-                <button type="submit" class="btn btn-primary" id="startRiverTrip">Start Rivier tocht</button>
-                <br/><br/>
-            </h3>
-            <br>
-            <div class="col-md-1"></div>
-
-            <div class ="col-md-1"></div>
-            <div class="col-md-2">
-
-            </div>
-            <div class="col-md-1"></div>
-            <div class="col-md-2">
-                <button type="cancel" class="btn btn-primary" id="cancelStartTrip">Cancel</button>
-            </div>
-        </div>
-        <!--<div class="row">-->
-
-            <!--<div class="col-md-3"></div>-->
-            <!--<div class="col-md-2">-->
-                <!--<button type="submit" class="btn btn-default" id="startLakeTrip">Start meertocht</button>-->
-            <!--</div>-->
-            <!--<div class ="col-md-2"></div>-->
-            <!--<div class="col-md-2">-->
-                <!--<button type="submit" class="btn btn-default" id="endLakeTrip">Beëindig meertocht</button>-->
-            <!--</div>-->
-            <!--<div class="col-md-3"></div>-->
-
-        <!--</div>-->
-        <!--<div class="row" ></div>-->
-        <!--<div class="row">-->
-
-            <!--<div class="col-md-3"></div>-->
-            <!--<div class="col-md-2">-->
-                <!--<button type="submit" class="btn btn-default" id="startRiverTrip">Start riviertocht</button>-->
-            <!--</div>-->
-            <!--<div class ="col-md-2"></div>-->
-            <!--<div class="col-md-2">-->
-                <!--<button type="submit" class="btn btn-default" id="endRiverTrip">Beëindig riviertocht</button>-->
-            <!--</div>-->
-            <!--<div class="col-md-3"></div>-->
-
-        <!--</div>-->
     </div>
 
+    <!-- Ended Trip container -->
+    <div class="row" id="endTripContainer" hidden>
+        <p>Wilt u de volgende tocht beeindigen?</p>
+        <div id="tripID"></div><br>
+        <div id="startTime"></div><br>
+        <div id="tripType"></div><br>
 
-<script src="lib/jquery-3.2.1.min.js"></script>
-<script src="js/boot.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+
+        <!-- input fields for price-->
+        <div class="col-md-4">
+            <h4>Voer temparatuur in</h4>
+            <input class="form-control" type="text" id="tempPrice" placeholder="What is the weather today?" input> </div>
+        <div class="col-md-4">
+            <h4>voorgestelde prijs is</h4>
+            <input class="form-control" type="text" id="calcPrice" placeholder="The price for this trip is" readonly></div>
+        <div class="col-md-4">
+            <h4> Voer aangepaste prijs in</h4>
+            <input class="form-control" type="text"  id="newPrice" placeholder="Vul hier uw aangepaste prijs in" input></div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+        <!-- buttons for end trip actions-->
+        <div class="col-md-6">
+            <button type="submit" class="btn btn-success btn btn-block" id="endTrip" >beëindig deze tocht</button></div>
+        <div class="col-md-6">
+            <button type="submit" class="btn btn-danger btn btn-block" id="cancelEndTrip" >Annuleren</button> </div>
+    </div>
+
+    <!-- Boat container -->
+    <div class="row" id="oneBoat" hidden>
+        <h3>Kies het type tocht dat u wilt starten: </h3>
+        <br><br>
+
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary btn btn-block" id="startLakeTrip">Start Meer tocht</button></div>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary btn btn-block" id="startRiverTrip">Start Rivier tocht</button></div>
+        <div class="col-md-4">
+            <button type="cancel" class="btn btn-danger btn btn-block" id="cancelStartTrip">Annuleren</button></div>
+    </div>
+
+    <script src="lib/jquery-3.2.1.min.js"></script>
+    <script src="js/boot.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
 </body>
 </html>

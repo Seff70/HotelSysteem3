@@ -1,6 +1,7 @@
 package com.capgemini.controller;
 
 import com.capgemini.Model.Boat;
+import com.capgemini.Model.Boten.PriceCalc;
 import com.capgemini.Model.Meer;
 import com.capgemini.Model.Rivier;
 import com.capgemini.Model.Trip;
@@ -11,9 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.sql.SQLException;
-
-
-import java.sql.SQLException;
+import java.time.Duration;
+import java.time.LocalTime;
 
 
 @RestController
@@ -64,6 +64,12 @@ public class BoatController {
         b.setTrip(null);
         boatRepository.save(b);
         return trip;
+    }
+
+    @RequestMapping(value = "/api/priceCalc", method = RequestMethod.GET)
+    public Integer priceCalc() throws SQLException {
+//    return new PriceCalc().berekenPrijs(25, LocalTime.now(), LocalTime.of( 0,30 ),Duration.ZERO);
+return 100;
     }
 //
 //    @RequestMapping(value = "/api/getTotalNumberTrips", method = RequestMethod.GET)
