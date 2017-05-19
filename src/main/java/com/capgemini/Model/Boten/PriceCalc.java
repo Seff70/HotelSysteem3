@@ -37,11 +37,10 @@ public class PriceCalc{
         this.temp = temp;
     }
 
+    public PriceCalc() {
 
-    public PriceCalc(int temp, Duration duur) {
-        this.temp = temp;
-        this.duur = duur;
     }
+
 
     public Integer berekenPrijs(int temp, LocalTime start, LocalTime end, Duration duur) {
         // fields voor startprijzen

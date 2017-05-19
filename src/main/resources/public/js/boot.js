@@ -191,18 +191,18 @@ $.get("/api/boats", function(result) {
 
 
 function PriceCalc(){
+$("#tempPrice").keyup(function(){
+$.ajax({
+           contentType: "application/json",
+           type: "GET",
+           url: "/api/priceCalc",
 
- $("#tempPrice").keyup(function(){
-  var calc = $("#calcPrice").PriceCalc(berekenPrijs).val();
-   console.log(calc);
-    });
 
-    $("#tempPrice").keydown(function(){
-        $("#Calcprice").PriceCalc(berekenPrijs).val();
-           console.log(calc);
-    });
-
-    }
 });
+});
+}
+
+});
+
 
 
