@@ -28,6 +28,7 @@ public abstract class Trip {
 
     public int prijs;
 
+
     protected Trip() {
     }
 
@@ -36,6 +37,7 @@ public abstract class Trip {
         this.startTime = startTime;
         this.endTime = endTime;
         this.prijs = prijs;
+
     }
 
     public Trip(LocalDateTime startTime) {

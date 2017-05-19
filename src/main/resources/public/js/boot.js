@@ -189,4 +189,20 @@ $.get("/api/boats", function(result) {
        return s;
    }
 
+
+function PriceCalc(){
+
+ $("#tempPrice").keyup(function(){
+  var calc = $("#calcPrice").PriceCalc(berekenPrijs).val();
+   console.log(calc);
+    });
+
+    $("#tempPrice").keydown(function(){
+        $("#Calcprice").PriceCalc(berekenPrijs).val();
+           console.log(calc);
+    });
+
+    }
 });
+
+
