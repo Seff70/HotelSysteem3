@@ -21,9 +21,12 @@
 <body>
 <div class="container">
     <br>
-    <h1>Kamerlijst</h1>
+    <h1>Kameroverzicht</h1>
     <br>
-    <p>Bekijk en beheer uw kamers in dit overzicht.</p>
+    <p font size="13">Bekijk en beheer uw kamers in dit overzicht.</p>
+    <p font size="13">Om een kamer toe te voegen, klik op "Voeg kamer toe".</p>
+    <p font size="13">Om een kamer te wijzigen of verwijderen, klik op de desbetreffende kamer in de lijst.</p>
+    <br>
 
     <table id="tableRooms" class="display table-hover" style="width:100%;">
         <thead>
@@ -37,20 +40,21 @@
 
         <tbody>
             <tr>
-                <td>Row 1 Data 1</td>
-                <td>Row 1 Data 2</td>
-                <td>Row 1 Data 3</td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
             <tr>
-                <td>Row 2 Data 1</td>
-                <td>Row 2 Data 2</td>
-                <td>Row 2 Data 3</td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
         </tbody>
     </table>
-    <br/><br/><br/>
+    <br/>
+    <br/>
 
-    <form id="newroom" hidden>
+    <form id="newroom" class="hidden">
         <input type="text" id="inputaddnumber" placeholder="Kamernummer"/>
 
         <label for="inputaddtype">Kamertype</label>
@@ -61,23 +65,24 @@
         <input name="startDate" type="date" id="startDate" placeholder="Ingangsdatum Kamer"/>
         <label for="inputboolean">Beschikbaar?</label>
         <input type="checkbox" id="inputboolean" placeholder="Beschikbaar ja of nee"/>
-    <br>
-
-
-        <button class="btn btn-success btn-xs" id="submit">Bevestig</button>
-        <button class="btn btn-danger btn-xs"id="delete">Verwijder</button>
-        <button class="btn btn-warning btn-xs"id="edit">Wijzig</button>
+        <br>
+        <button class="btn btn-success btn-xs hidden" id="submit" font size="13">Bevestig</button>
+        <button class="btn btn-warning btn-xs hidden" id="edit" font size="13">Wijzig</button>
+        <button class="btn btn-danger btn-xs hidden" id="delete"font size="13">Verwijder</button>
+        <button class="btn btn-default btn-xs hidden" id="backToPrevious" font size="13" >Annuleren</button>
+        <br>
+        <br>
     </form>
 
-            <button class="btn btn-primary btn-block btn-xs "id="addroom" style="border: 0!important;
+    <button type="button" class="btn btn-default" id="addroom" style="border: 0!important;
             border-radius: 0!important;
             background-color: rgba(2, 80, 173, 0.8) !important;
             background-image: none!important;
-            height: 50px; width:100%;">Nieuwe kamer toevoegen</button>
-
-
-    </div>
-
+            height: 50px; width:100%; color: white" font size="13">
+        Voeg nieuwe kamer toe
+    </button>
+    <br>
+    <br>
 </div>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

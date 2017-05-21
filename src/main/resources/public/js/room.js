@@ -15,10 +15,12 @@ $.get("/api/rooms", function (result) {
     $('#tableRooms tbody').on('click', 'tr', function () {
             var data = table.row(this).data();
             console.log('API row values : ', data);
-            $("#newroom").show();
-            $("#tableRooms").show();
-            $("#submit").hide();
-            $("#addroom").hide();
+            $("#newroom").removeClass('hidden');
+            $("#addroom").addClass('hidden');
+            $("#submit").addClass('hidden');
+            $("#delete").removeClass('hidden');
+            $("#edit").removeClass('hidden');
+            $("#backToPrevious").removeClass('hidden');
             $("#inputaddnumber").val(data.roomNumber);
             $("#inputaddtype").val(data.roomType);
             $("#inputboolean").prop('checked', data.available);
@@ -38,10 +40,12 @@ $.get("/api/rooms", function (result) {
 
 //nieuwe kamer toevoegen
 $("#addroom").click(function (event) {
-    $("#newroom").show();
-    $("#delete").hide();
-    $("#edit").hide();
-    $("#addroom").hide();
+    $("#newroom").removeClass('hidden');
+    $("#addroom").addClass('hidden');
+    $("#submit").removeClass('hidden');
+    $("#backToPrevious").removeClass('hidden');
+    $("#edit").addClass('hidden');
+    $("#delete").addClass('hidden');
 
     $("#submit").click(function (event) {
         event.preventDefault();
