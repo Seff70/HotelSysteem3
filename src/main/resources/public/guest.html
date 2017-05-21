@@ -20,15 +20,16 @@
     <!-- Start Guestlist -->
     <div class="row">
         <div id="Gastenlijst">
-            <br>
-            <h1>Gasten</h1>
-            <br>
-            <p font size="13">Bekijk en beheer uw gasten in dit overzicht.</p>
-            <p font size="13">Om een nieuwe gast toe te voegen, klik op "Voeg nieuwe gast toe".</p>
-            <p font size="13">Om een bestaande gast te wijzigen of verwijderen, klik op de desbetreffende gast in de tabel.</p>
-            <br><br>
-
-            <table id="guestList" class="hidden table table-striped table-hover" style="width:100%">
+            <div id="introGuestList">
+                <br>
+                <h1>Gastenoverzicht</h1>
+                <br>
+                <p font size="13">Bekijk en beheer uw gasten in dit overzicht.</p>
+                <p font size="13">Om een nieuwe gast toe te voegen, klik op "Voeg nieuwe gast toe".</p>
+                <p font size="13">Om een bestaande gast te wijzigen of verwijderen, klik op de desbetreffende gast in de tabel.</p>
+                <br><br>
+            </div>
+            <table id="guestList" class="table table-striped table-hover" style="width:100%">
                 <thead>
                 <tr>
                     <th>GastID</th>
@@ -48,26 +49,34 @@
             border-radius: 0!important;
             background-color: rgba(2, 80, 173, 0.8) !important;
             background-image: none!important;
-            height: 50px; width:100%; color: white" font size="13" class="hidden">
+            height: 50px; width:100%; color: white" font size="13">
                 Voeg nieuwe gast toe
             </button>
-            <br><br>
 
 
             <!-- Start Guestlist -->
-            <form id="newguestform" class="hidden">
-                <br>
+            <br>
+            <div id="introAddGuest" class="hidden">
                 <h1 id="headerForm">Nieuwe gast</h1>
-                <p font-size="13">Vul onderstaande gegevens in om een nieuwe gast aan te maken.</p>
                 <br>
+                <p font size="13">Vul onderstaande gegevens in om een nieuwe gast aan te maken.</p>
+                <br>
+            </div>
+            <div id="introEditGuest" class="hidden">
+                <h1 id="headerFormEdit">Bestaande gast wijzigen of verwijderen</h1>
+                <br>
+                <p font size="13">Wijzig onderstaande gegevens en klik op "Wijzig gast", of om een gast te verwijderen, klik op "Verwijder gast".</p>
+                <br>
+            </div>
+            <form id="newguestform" class="hidden">
                 <div class="form-group">
                     <label for="InputName">Naam</label>
-                    <input type="text" class="form-control" id="InputName" placeholder="Vul hier een voor- en achternaam in">
+                    <input type="text" class="form-control" id="InputName" placeholder="Voor- en achternaam">
                 </div>
 
                 <div class="form-group">
                     <label for="InputAddress">Adres</label>
-                    <input type="text" class="form-control" id="InputAddress" placeholder="Vul hier een adres met huisnummer in">
+                    <input type="text" class="form-control" id="InputAddress" placeholder="Straatnaam en huisnummer">
                 </div>
 
                 <div class="form-group">
@@ -77,22 +86,22 @@
 
                 <div class="form-group">
                     <label for="InputCity">Woonplaats</label>
-                    <input type="text" class="form-control" id="InputCity" placeholder="Vul hier een woonplaats in">
+                    <input type="text" class="form-control" id="InputCity" placeholder="Woonplaats">
                 </div>
 
                 <div class="form-group">
                     <label for="InputCountry">Land</label>
-                    <input type="text" class="form-control" id="InputCountry" placeholder="Vul hier een land in">
+                    <input type="text" class="form-control" id="InputCountry" placeholder="Land">
                 </div>
 
                 <div class="form-group">
                     <label for="InputTelephone">Telefoonnummer</label>
-                    <input type="text" class="form-control" id="InputTelephone" placeholder="Vul hier een telefoonnummer in">
+                    <input type="text" class="form-control" id="InputTelephone" placeholder="Telefoonnummer">
                 </div>
 
                 <div class="form-group">
                     <label for="InputTelephone">E-mailadres</label>
-                    <input type="text" class="form-control" id="InputEmail" placeholder="E-mail">
+                    <input type="text" class="form-control" id="InputEmail" placeholder="E-mailadres">
                 </div>
 
                 <div class="form-group">
@@ -106,10 +115,10 @@
                     </label>
                 </div> -->
                 <br>
-                <button type="submit" class="btn btn-default" id="addGuest" font size="13">Voeg gast toe</button>
-                <button type="submit" class="btn btn-default" id="deleteGuest" font size="13" class="hidden">Verwijder gast</button>
-                <button type="submit" class="btn btn-default" id="editGuest" font size="13" class="hidden">Wijzig gast</button>
-                <button type="submit" class="btn btn-default" id="backToPrevious" font size="13" class="hidden">Annuleren</button>
+                <button type="submit" class="btn btn-default hidden" id="addGuest" font size="13">Voeg gast toe</button>
+                <button type="submit" class="btn btn-default hidden" id="editGuest" font size="13">Wijzig gast</button>
+                <button type="submit" class="btn btn-default hidden" id="deleteGuest" font size="13">Verwijder gast</button>
+                <button type="submit" class="btn btn-default hidden" id="backToPrevious" font size="13" >Annuleren</button>
             </form>
             <!-- End Guestlist -->
 

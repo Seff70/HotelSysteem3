@@ -1,13 +1,13 @@
 $.get("/api/guests",function (result){
     console.table(result);
 
-    $("#guestlist").removeClass('hidden');
-    $("#btnAddGuest").removeClass('hidden');
     $("#newguestform").addClass('hidden');
     $("#addGuest").addClass('hidden');
     $("#deleteGuest").addClass('hidden');
     $("#editGuest").addClass('hidden');
     $("#backToPrevious").addClass('hidden');
+    $("#introAddGuest").addClass('hidden');
+    $("#introEditGuest").addClass('hidden');
 
     var table = $('#guestList').DataTable({
         columns: [
@@ -26,8 +26,11 @@ $.get("/api/guests",function (result){
     $('#guestList tbody').on('click','tr', function () {
         var data = table.row(this).data();
         console.log('API row values : ', data);
-        $("#guestlist").addClass('hidden');
+        $("#introGuestList").addClass('hidden');
+        $("#guestList_wrapper").addClass('hidden');
         $("#btnAddGuest").addClass('hidden');
+        $("#introAddGuest").addClass('hidden');
+        $("#introEditGuest").removeClass('hidden');
         $("#newguestform").removeClass('hidden');
         $("#addGuest").addClass('hidden');
         $("#deleteGuest").removeClass('hidden');
@@ -56,13 +59,17 @@ $.get("/api/guests",function (result){
 
 
 $('#btnAddGuest').click(function() {
-    $("#guestlist").addClass('hidden');
+console.log('kijk ik doe wat');
+    $("#introGuestList").addClass('hidden');
+    $("#guestList_wrapper").addClass('hidden');
     $("#btnAddGuest").addClass('hidden');
     $("#newguestform").removeClass('hidden');
+    $("#introAddGuest").removeClass('hidden');
+    $("#introEditGuest").addClass('hidden');
     $("#addGuest").removeClass('hidden');
     $("#deleteGuest").addClass('hidden');
     $("#editGuest").addClass('hidden');
-    $("#backToPrevious").addClass('hidden');
+    $("#backToPrevious").removeClass('hidden');
 
     $("#headerForm").text("Nieuwe gast");
 });
