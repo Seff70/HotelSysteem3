@@ -1,10 +1,13 @@
 $.get("/api/guests",function (result){
     console.table(result);
 
-    $("#newguestform").hide();
-    $("#guestlist").show();
-    $("#deleteGuest").hide();
-    $("#editGuest").hide();
+    $("#guestlist").removeClass('hidden');
+    $("#btnAddGuest").removeClass('hidden');
+    $("#newguestform").addClass('hidden');
+    $("#addGuest").addClass('hidden');
+    $("#deleteGuest").addClass('hidden');
+    $("#editGuest").addClass('hidden');
+    $("#backToPrevious").addClass('hidden');
 
     var table = $('#guestList').DataTable({
         columns: [
@@ -23,12 +26,13 @@ $.get("/api/guests",function (result){
     $('#guestList tbody').on('click','tr', function () {
         var data = table.row(this).data();
         console.log('API row values : ', data);
-        $("#newguestform").show();
-        $("#guestList").hide();
-        $("#deleteGuest").show();
-        $("#editGuest").show();
-        $("#backToPrevious").show();
-        $("#headerForm").text("Wijzig gast");
+        $("#guestlist").addClass('hidden');
+        $("#btnAddGuest").addClass('hidden');
+        $("#newguestform").removeClass('hidden');
+        $("#addGuest").addClass('hidden');
+        $("#deleteGuest").removeClass('hidden');
+        $("#editGuest").removeClass('hidden');
+        $("#backToPrevious").removeClass('hidden');
 
         $("#InputName").val(data.name);
         $("#InputAddress").val(data.address);
@@ -52,11 +56,13 @@ $.get("/api/guests",function (result){
 
 
 $('#btnAddGuest').click(function() {
-    $("#newguestform").show();
-    $("#guestList").hide();
-    $("#btnAddGuest").hide();
-    $("#deleteGuest").hide();
-    $("#editGuest").hide();
+    $("#guestlist").addClass('hidden');
+    $("#btnAddGuest").addClass('hidden');
+    $("#newguestform").removeClass('hidden');
+    $("#addGuest").removeClass('hidden');
+    $("#deleteGuest").addClass('hidden');
+    $("#editGuest").addClass('hidden');
+    $("#backToPrevious").addClass('hidden');
 
     $("#headerForm").text("Nieuwe gast");
 });
@@ -90,7 +96,7 @@ function addGuest(){
             error: function(){
 //                console.log("Het werkt niet om nieuwe gast aan te maken");
 
-                alert("Ingevoerde naam in combinatie met adress en postcode bestaat al!!!");
+                alert("Deze gast bestaat al.");
             }
     });
 };
